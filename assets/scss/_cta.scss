@@ -1,0 +1,281 @@
+.cta-banner-section {
+    position: relative;
+    background-attachment: fixed;
+
+    &::before {
+        @include before;
+        background-image: $color-gradient-2;
+    }
+}
+
+.cta-banner-wrapper {
+    .video-box {
+        text-align: center;
+        margin: 0 auto;
+        padding: 120px 0;
+
+        @include breakpoint (max-md) {
+            padding: 100px 0;
+        }
+
+        @include breakpoint (max-sm) {
+            padding: 80px 0;
+        }
+
+        .video-buttton {
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: $white;
+            color: $theme-color;
+            display: inline-block;
+            font-size: 18px;
+
+            @include breakpoint (max-xl) {
+                width: 90px;
+                height: 90px;
+                line-height: 90px;
+            }
+
+            @include breakpoint (max-md) {
+                width: 80px;
+                height: 80px;
+                line-height: 80px;
+                font-size: 18px;
+            }
+
+            @include breakpoint (max-sm) {
+                width: 70px;
+                height: 70px;
+                line-height: 70px;
+            }
+        }
+
+        .ripple {
+            &::before,&::after {
+                width: 100px;
+                height: 100px;
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+
+                @include breakpoint (max-xl) {
+                    width: 90px;
+                    height: 90px;
+                }
+    
+                @include breakpoint (max-md) {
+                    width: 80px;
+                    height: 80px;
+                }
+    
+                @include breakpoint (max-sm) {
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+        }
+
+    }
+}
+
+.cta-chat-wrapper {
+    background-color: $theme-color;
+    padding: 55px 40px;
+    border-radius: 7px;
+    @include flex;
+    justify-content: space-between;
+
+    @include breakpoint (max-xl){
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    @include breakpoint (max-sm){
+        text-align: center;
+    }
+
+    .chat-items {
+        @include flex;
+        gap: 35px;
+
+        @include breakpoint (max-xl){
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .icon {
+            font-size: 52px;
+            color: $white;
+        }
+
+        .content {
+            h3 {
+                font-size: 36px;
+                color: $white;
+                margin-bottom: 10px;
+
+                @include breakpoint (max-sm){
+                    font-size: 28px;
+                }
+            }
+
+            p {
+                font-size: 18px;
+                color: rgba(255, 255, 255, 0.52);
+            }
+        }
+    }
+
+    &.style-2 {
+        background-color: $theme-color-2;
+    }
+}
+
+.cta-chat-section-2 {
+    position: relative;
+
+    &::before {
+        @include before;
+        background-color: $bg-color-6;
+        z-index: -1;
+        height: 50%;
+    }
+}
+
+.cta-banner-2 {
+    background-color: $theme-color;
+    max-width: 800px;
+    margin: 60px auto;
+    border-radius: 10px;
+    @include flex;
+    justify-content: space-between;
+    padding: 25px 30px;
+    position: relative;
+    z-index: 9;
+
+    @include breakpoint (max-md){
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+
+    .cta-items {
+        @include flex;
+        gap: 30px;
+
+        @include breakpoint (max-md){
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .content {
+            p {
+                font-weight: 600;
+                color: #C5C3C3;
+
+                @include breakpoint (max-xxs){
+                    text-align: center;
+                }
+            }
+
+            h6 {
+                font-size: 16px;
+                color: $white;
+            }
+        }
+    }
+
+    .theme-btn {
+        line-height: 1;
+    }
+}
+
+
+.cta-banner-style-1 {
+    position: relative;
+    z-index: 99;
+    padding: 60px 100px;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+    @include flex;
+    justify-content: space-between;
+
+    @include breakpoint (max-xl){
+        flex-wrap: wrap;
+        padding: 55px;
+    }
+
+    @include breakpoint (max-lg){
+        justify-content: center;
+        text-align: center;
+    }
+
+    @include breakpoint (max-md){
+        padding: 50px;
+    }
+
+    @include breakpoint (max-sm){
+        padding: 40px;
+    }
+
+    &::before {
+        @include before;
+        background-color: $theme-color;
+        opacity: .9;
+    }
+}
+
+.cta-banner-section-4 {
+    position: relative;
+    z-index: 9;
+
+    &::before {
+        @include before;
+        background-color: $bg-color-4;
+        top: 50%;
+        z-index: -1;
+    }
+}
+
+.cta-banner-contact-section {
+    position: relative;
+    z-index: 2;
+    background-attachment: fixed;
+
+    &::before {
+        @include before;
+        background: linear-gradient(90deg, #16171A 0.06%, rgba(22, 23, 26, 0) 99.93%);
+        z-index: -1;
+    }
+}
+
+.cta-banner-concat-wrapper {
+    @include flex;
+    justify-content: space-between;
+
+    @include breakpoint (max-lg){
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    h2 {
+        color: $white;
+        font-size: 48px;
+
+        @include breakpoint (max-md){
+            font-size: 40px;
+        }
+
+        @include breakpoint (max-sm){
+            font-size: 32px;
+        }
+    }
+}
