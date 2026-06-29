@@ -613,7 +613,7 @@ input.main-search-input::placeholder {
 .section-title {
   position: relative;
   z-index: 99;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   margin-top: -6px;
 }
 @media (max-width: 767px) {
@@ -3589,7 +3589,7 @@ input.main-search-input::placeholder {
   }
 }
 .choose-us-wrapper-2 .icon-items {
-  margin-top: 40px;
+  margin-top: 20px;
   display: block;
 }
 .choose-us-wrapper-2 .icon-items li {
@@ -3597,7 +3597,7 @@ input.main-search-input::placeholder {
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 25px 30px;
+  padding: 20px 25px;
 }
 .choose-us-wrapper-2 .icon-items li:not(:last-child) {
   margin-bottom: 15px;
