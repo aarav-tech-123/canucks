@@ -10331,7 +10331,7 @@ p.sticky-label {
   color: var(--text);
 }
 .contact-main-wrapper .contact-form-items .form-clt textarea {
-  padding: 20px 30px 110px;
+  padding: 20px 30px 30px;
 }
 .contact-main-wrapper .contact-form-items .theme-btn i {
   margin-right: 10px;
