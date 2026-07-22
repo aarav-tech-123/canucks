@@ -1,72 +1,30 @@
 <?php
+// ✅ Enable debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-// --------------------
-// Database connection
-// --------------------
 // ✅ Connect to local XAMPP MySQL database
 $servername = "localhost";
 $username = "u868210921_LWn5H";
 $password = ")rkw_t0FWV";
-$dbname = "u868210921_sO6aT";  // your DB name
+$dbname = "u868210921_sO6aT"; // ⚠️ Change this to your actual DB name
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
-    die("Database Connection failed: " . $conn->connect_error);
+    die("❌ Connection failed: " . $conn->connect_error);
 }
-
-// --------------------
-// Validate blog ID
-// --------------------
-if (!isset($_GET['slug'])) {
-    die("Invalid blog slug");
-}
-
-$slug = $_GET['slug'];
-$sql = "SELECT * FROM wp_posts WHERE post_name = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $slug);;
-
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows === 0) {
-    die("Blog not found!");
-}
-
-$blog = $result->fetch_assoc();
-$stmt->close();
-
-$sql_meta = "
-    SELECT meta_key, meta_value
-    FROM wp_postmeta
-    WHERE post_id = ?
-";
-
-$stmt_meta = $conn->prepare($sql_meta);
-$stmt_meta->bind_param("i", $blog['ID']);
-$stmt_meta->execute();
-$result_meta = $stmt_meta->get_result();
-
-$post_meta = [];
-while ($row = $result_meta->fetch_assoc()) {
-    $post_meta[$row['meta_key']] = $row['meta_value'];
-}
-
-$stmt_meta->close();
 
 // Fetch published blog posts
 $sql = "SELECT ID, post_title, post_content, post_date, post_author,post_name
         FROM wp_posts
-        WHERE post_type='post' AND post_status='publish' AND post_name != '$slug'
+        WHERE post_type='post' AND post_status='publish'
         ORDER BY post_date DESC";
 $result = $conn->query($sql);
 
 if ($result === false) {
     die("❌ SQL Error: " . $conn->error);
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -77,11 +35,10 @@ if ($result === false) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://canucksimmigration.com/img/favicon.png">
     <meta name="robots" content="index, follow">
-    <meta name="title" content="<?php echo htmlspecialchars($post_meta['rank_math_title'] ?? $blog['post_title']); ?>">
-    <meta name="description" content="<?php echo htmlspecialchars($post_meta['rank_math_description'] ?? 'Default meta description here.'); ?>">
-    <meta name="keywords" content="<?php echo htmlspecialchars($post_meta['rank_math_focus_keyword'] ?? ''); ?>">
-    <link rel="canonical" href="https://canucksimmigration.com/blogs/<?php echo $slug; ?>" />
-    <title><?php echo htmlspecialchars($post_meta['rank_math_title'] ?? $blog['post_title']); ?></title>
+    <title>Explore Our Blog Section | Learn, Apply & Grow with Insights</title>
+    <meta name="description"
+        content="Unlock expert articles on marketing, design & technology. Learn what works, apply it & see results. Browse CanucksMigration blogs now and grow smarter today.">
+    <link rel="canonical" href="https://canucksimmigration.com/blogs.php" />
 
     <!-- CSS -->
     <link rel="shortcut icon" href="https://canucksimmigration.com/assets/img/logo/logo.png">
@@ -95,24 +52,6 @@ if ($result === false) {
     <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/nice-select.css">
     <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/main.css">
     <link rel="stylesheet" href="https://canucksimmigration.com/style.css">
-    <!-- Google Tag Manager -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-MSPXHW6R');
-    </script>
-    <!-- End Google Tag Manager -->
     <style>
         /* ===== UPDATED COLOR SCHEME ===== */
         :root {
@@ -142,23 +81,15 @@ if ($result === false) {
             ---box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
             /* extended for design */
-            --bs-bg-light: #FFFFFF;
-            --bs-dark: var(--header);
-            --bs-text-primary: var(--header);
-            --bs-text-secondary: var(--text);
-            --bs-text-muted: var(--text2);
+            --bs-bg-dark: var(--header);
+            --bs-light: var(--bg);
             --accent: var(--theme);
             --accent-light: #ff3b5e;
-            --accent-lighter: #fde8ec;
-            --gradient-bg: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
             --gradient-primary: linear-gradient(135deg, #E20935 0%, #b0072a 100%);
-            --gradient-light: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
-            --gradient-card: linear-gradient(145deg, #FFFFFF 0%, #F7FAFC 100%);
+            --gradient-secondary: linear-gradient(135deg, #16171A 0%, #2a2c33 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, #f8f8fa 100%);
             --gradient-text: linear-gradient(90deg, #E20935, #ff4b6e, #E20935);
-            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --border-light: 1px solid #E2E8F0;
+            --gradient-pricing: linear-gradient(135deg, rgba(226, 9, 53, 0.08) 0%, rgba(22, 23, 26, 0.04) 100%);
         }
 
         * {
@@ -174,17 +105,13 @@ if ($result === false) {
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
         }
 
         .container {
             width: 100%;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px 0 20px;
+            padding: 0 20px;
         }
 
         /* ===== BANNER SECTION ===== */
@@ -331,332 +258,19 @@ if ($result === false) {
             }
         }
 
-        /* Blog Hero Section */
-        .blog-hero {
-            padding: 50px 0 40px;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
-            text-align: center;
-            border-bottom: var(--border-light);
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            margin-bottom: 40px;
-        }
-
-        .blog-hero h1 {
-            font-size: 35px;
-            margin-bottom: 24px;
-            font-weight: 800;
-            line-height: 1.2;
-            letter-spacing: -1px;
-            color: var(--header);
-        }
-
-        .blog-hero h1 .gradient-text {
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: textShine 3s linear infinite;
-        }
-
-        @keyframes textShine {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        .blog-meta {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            color: var(--text2);
-            font-size: 16px;
-            margin-bottom: 40px;
-        }
-
-        .blog-meta i {
-            color: var(--theme);
-            margin-right: 8px;
-        }
-
-        /* Blog Content Section */
-        .blog-content-section {
-            position: relative;
+        /* Blog section */
+        .blog-section {
+            padding: 80px 0 100px;
             background: var(--bg);
         }
 
-        .blog-content-wrapper {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--white);
-            border-radius: 20px;
-            padding: 50px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border);
-        }
-
-        .blog-featured-image {
-            width: 100%;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            box-shadow: var(--shadow-md);
-        }
-
-        .blog-content {
-            font-size: 18px;
-            line-height: 1.8;
-            color: var(--text);
-        }
-
-        .blog-content h1,
-        .blog-content h2,
-        .blog-content h3,
-        .blog-content h4 {
-            color: var(--header);
-            margin: 30px 0 20px;
-            font-weight: 600;
-        }
-
-        .blog-content h1 {
-            font-size: 32px;
-            padding-bottom: 10px;
-        }
-
-        .blog-content h2 {
-            font-size: 28px;
-        }
-
-        .blog-content h3 {
-            font-size: 24px;
-        }
-
-        .blog-content p {
-            margin-bottom: 20px;
-            font-weight: 400;
-            color: var(--text);
-        }
-
-        .blog-content a {
-            color: var(--theme);
-            text-decoration: none;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-
-        .blog-content a:hover {
-            color: #b0072a;
-            text-decoration: underline;
-        }
-
-        .blog-content ul,
-        .blog-content ol {
-            margin: 20px 0;
-            padding-left: 30px;
-            color: var(--text);
-        }
-
-        .blog-content li {
-            margin-bottom: 10px;
-        }
-
-        .blog-content blockquote {
-            border-left: 4px solid var(--theme);
-            padding: 20px 20px 20px 30px;
-            margin: 30px 0;
-            font-style: italic;
-            color: var(--text);
-            background: var(--accent-lighter);
-            border-radius: 0 10px 10px 0;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .blog-content code {
-            background: var(--accent-lighter);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            color: var(--theme);
-        }
-
-        .blog-content pre {
-            background: var(--header);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            overflow-x: auto;
-            margin: 20px 0;
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            padding: 16px 38px;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: var(--shadow-md);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 16px;
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn-primary:hover::before {
-            left: 100%;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            color: white;
-            text-decoration: none;
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--gradient-primary);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.3s;
-            z-index: 1000;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-3px);
-            color: white;
-        }
-
-        .blog-section {
-            padding-top: 100px;
-            padding-bottom: 50px;
-        }
-
-        .blog-card {
-            background-color: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.3s ease-in-out;
-            height: 100%;
-            border: 1px solid var(--border);
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--theme);
-        }
-
-        .blog-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .blog-content {
-            padding: 20px;
-        }
-
-        .blog-content h4 {
-            font-weight: bold;
-            color: var(--header);
-        }
-
-        .blog-meta {
-            font-size: 0.9rem;
-            color: var(--text2);
-        }
-
-        .read-more-btn {
-            color: var(--theme);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .read-more-btn:hover {
-            color: #b0072a;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 100px 0;
+        .section-title {
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            background: var(--white);
-            border-top: 1px solid var(--border);
+            margin-bottom: 50px;
         }
 
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-section h2 {
-            font-size: 48px;
-            margin-bottom: 24px;
-            color: var(--header);
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .cta-section p {
-            font-size: 20px;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            color: var(--text2);
-        }
-
-        .cta-content .highlight {
-            color: var(--theme);
-        }
-
-        .cta-content .highlight-alt {
-            color: #ff4b6e;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header .subheading {
+        .section-title .subheading {
+            display: inline-block;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 600;
@@ -665,13 +279,14 @@ if ($result === false) {
             margin-bottom: 10px;
         }
 
-        .section-header .title {
-            font-size: 2.5rem;
-            font-weight: 700;
+        .section-title h2 {
+            font-size: 44px;
             color: var(--header);
+            font-weight: 700;
+            margin-bottom: 16px;
         }
 
-        .section-header .title .gradient-text {
+        .section-title h2 .gradient-text {
             background: var(--gradient-text);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -679,7 +294,7 @@ if ($result === false) {
             animation: textShine 3s linear infinite;
         }
 
-        .section-header .description {
+        .section-title p {
             color: var(--text2);
             font-size: 18px;
             max-width: 750px;
@@ -687,63 +302,159 @@ if ($result === false) {
             line-height: 1.7;
         }
 
-        .blog-slider-wrapper {
-            position: relative;
-            overflow: hidden;
+        @keyframes textShine {
+            to {
+                background-position: 200% center;
+            }
         }
 
-        .blog-slider {
-            display: flex;
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 30px;
-            transition: transform 0.6s ease-in-out;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-            padding: 1rem 0;
         }
 
-        .blog-slider::-webkit-scrollbar {
-            display: none;
-        }
-
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+        .blog-card {
             background: var(--white);
-            color: var(--header);
+            border-radius: 24px;
             border: 1px solid var(--border);
-            font-size: 2rem;
-            padding: 6px 12px;
-            cursor: pointer;
             transition: all 0.3s ease;
-            z-index: 5;
-            border-radius: 50%;
-            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
         }
 
-        .slider-btn:hover {
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            border-color: var(--theme);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: var(--bg2);
+        }
+
+        .blog-content {
+            padding: 28px 24px 30px;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 18px;
+            font-size: 14px;
+            color: var(--text2);
+            margin-bottom: 12px;
+        }
+
+        .blog-meta i {
+            color: var(--theme);
+            margin-right: 6px;
+        }
+
+        .blog-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--header);
+            margin-bottom: 14px;
+            line-height: 1.3;
+        }
+
+        .blog-excerpt {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
             background: var(--theme);
             color: white;
-            border-color: var(--theme);
-            box-shadow: 0 0 15px rgba(226, 9, 53, 0.3);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
         }
 
-        .slider-btn.left {
-            left: 10px;
+        .read-more:hover {
+            background: #b0072a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(226, 9, 53, 0.25);
+            color: white;
         }
 
-        .slider-btn.right {
-            right: 10px;
+        /* CTA */
+        .cta-section {
+            padding: 90px 0;
+            background: var(--white);
+            border-top: 1px solid var(--border);
         }
 
-        .blog-cta-container {
-            background: var(--bg);
+        .cta-section h2 {
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--header);
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: var(--text2);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-primary {
+            background: var(--theme);
+            color: white;
+            border: none;
+            padding: 14px 38px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 14px rgba(226, 9, 53, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: #b0072a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(226, 9, 53, 0.3);
+            color: white;
         }
     </style>
+    <!-- ✅ Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MSPXHW6R');
+    </script>
 </head>
 
 <body>
+    <!-- ✅ Google Tag Manager (noscript) -->
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MSPXHW6R" height="0" width="0"
             style="display:none;visibility:hidden"></iframe>
@@ -769,7 +480,6 @@ if ($result === false) {
                         <a href="https://www.instagram.com/canucks.migration?igsh=MXdtOGx1ZWJhdHFmOA=="><i
                                 class="fab fa-instagram"></i></a>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -783,7 +493,7 @@ if ($result === false) {
                     <div class="header-main">
                         <div class="header-left">
                             <div class="logo">
-                                <a href="/" class="header-logo">
+                                <a href="https://canucksimmigration.com/" class="header-logo">
                                     <img src="https://canucksimmigration.com/assets/img/logo/logo.png" alt="logo-img"
                                         style="width: 100px; height: 90px;">
                                 </a>
@@ -815,7 +525,6 @@ if ($result === false) {
                                                             Consulting Services</a></li>
                                                 </ul>
                                             </li>
-
                                             <li>
                                                 <a href="https://canucksimmigration.com/blogs.php">
                                                     Blog
@@ -865,7 +574,7 @@ if ($result === false) {
                     <p>Explore our blogs to stay informed, prepared, and confident throughout your immigration journey.</p>
                 </div>
                 <div class="banner-buttons">
-                    <a href="https://canucksimmigration.com/blogs.php#latest-blogs" class="banner-btn banner-btn-primary">
+                    <a href="#latest-blogs" class="banner-btn banner-btn-primary">
                         <i class="fas fa-arrow-down"></i> Explore Blogs
                     </a>
                     <a href="https://canucksimmigration.com/contact.html" class="banner-btn banner-btn-secondary">
@@ -876,138 +585,75 @@ if ($result === false) {
         </div>
     </section>
 
-    <!-- Blog Hero Section -->
-    <?php
-    $author_id = $blog['post_author'];
-    $author_result = $conn->query("SELECT display_name FROM wp_users WHERE ID = $author_id");
-    $author = ($author_result && $author_result->num_rows > 0)
-        ? $author_result->fetch_assoc()['display_name']
-        : "Unknown";
-
-    $image_result = $conn->query("
-        SELECT meta_value FROM wp_postmeta
-        WHERE post_id = {$blog['ID']} AND meta_key = '_thumbnail_id' LIMIT 1
-    ");
-    $thumbnail_id = ($image_result && $image_result->num_rows > 0)
-        ? $image_result->fetch_assoc()['meta_value']
-        : 0;
-
-    $img_url = '';
-    if ($thumbnail_id) {
-        $guid_result = $conn->query("SELECT guid FROM wp_posts WHERE ID = $thumbnail_id");
-        $img_url = ($guid_result && $guid_result->num_rows > 0)
-            ? $guid_result->fetch_assoc()['guid']
-            : '';
-    }
-    ?>
-
-    <section class="blog-hero">
+    <!-- ✅ Blog Section -->
+    <section class="blog-section" id="latest-blogs">
         <div class="container">
-            <h1><?php echo htmlspecialchars($blog['post_title']); ?></h1>
-            <div class="blog-meta">
-                <span><i class="fas fa-calendar-alt"></i> <?php echo date("F j, Y", strtotime($blog['post_date'])); ?></span>
-                <span><i class="fas fa-user"></i> <?php echo htmlspecialchars($author); ?></span>
+            <div class="section-title">
+                <span class="subheading">Latest Insights & Guidance</span>
+                <h2>Insights & Guidance for Your <span class="gradient-text">Immigration Journey</span></h2>
+                <p>Explore expert articles on immigration pathways, application processes, policies, and helpful tips. Gain practical knowledge, understand your options, and make informed decisions at every step of your journey.</p>
+            </div>
+
+            <div class="blog-grid">
+                <?php if ($result->num_rows > 0): ?>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <?php
+                        $author_id = $row['post_author'];
+                        $author_result = $conn->query("SELECT display_name FROM wp_users WHERE ID = $author_id");
+                        $author = ($author_result && $author_result->num_rows > 0)
+                            ? $author_result->fetch_assoc()['display_name']
+                            : "Unknown";
+
+                        $image_result = $conn->query("
+                            SELECT meta_value FROM wp_postmeta
+                            WHERE post_id = {$row['ID']} AND meta_key = '_thumbnail_id' LIMIT 1
+                        ");
+                        $thumbnail_id = ($image_result && $image_result->num_rows > 0)
+                            ? $image_result->fetch_assoc()['meta_value']
+                            : 0;
+
+                        $img_url = '';
+                        if ($thumbnail_id) {
+                            $guid_result = $conn->query("SELECT guid FROM wp_posts WHERE ID = $thumbnail_id");
+                            $img_url = ($guid_result && $guid_result->num_rows > 0)
+                                ? $guid_result->fetch_assoc()['guid']
+                                : '';
+                        }
+                        ?>
+                        <a class="blog-card" href="https://canucksimmigration.com/blogs/<?php echo $row['post_name']; ?>">
+                            <?php if ($img_url): ?>
+                                <img src="<?php echo $img_url; ?>" class="blog-image"
+                                    alt="<?php echo htmlspecialchars($row['post_title']); ?>">
+                            <?php else: ?>
+                                <div class="blog-image" style="background: var(--bg2); display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-newspaper" style="font-size: 48px; color: var(--theme);"></i>
+                                </div>
+                            <?php endif; ?>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> <?php echo date("F j, Y", strtotime($row['post_date'])); ?></span>
+                                    <span><i class="fas fa-user"></i> <?php echo htmlspecialchars($author); ?></span>
+                                </div>
+                                <h3 class="blog-title"><?php echo htmlspecialchars($row['post_title']); ?></h3>
+                                <p class="blog-excerpt"><?php echo substr(strip_tags($row['post_content']), 0, 120); ?>...</p>
+                                <span class="read-more">Read More</span>
+                            </div>
+                        </a>
+
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <div class="col-12 text-center">
+                        <p style="color: var(--text2); font-size: 18px;">No blogs found. Check back soon for new articles!</p>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
 
-    <!-- Blog Content Section -->
-    <section class="blog-content-section">
-        <div class="container">
-            <?php if ($img_url): ?>
-                <img src="<?php echo $img_url; ?>" class="blog-image" style="border-radius: 20px;"
-                    alt="<?php echo htmlspecialchars($blog['post_title']); ?>">
-            <?php else: ?>
-                <div class="blog-content-wrapper">
-                    <div class="blog-image" style="background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; height: 300px; border-radius: 20px;">
-                        <i class="fas fa-newspaper" style="font-size: 48px; color: white;"></i>
-                    </div>
-                <?php endif; ?>
-
-                <div class="blog-content-wrapper">
-                    <div class="blog-content">
-                        <?php echo $blog['post_content']; ?>
-                    </div>
-                </div>
-                </div>
-    </section>
-
-    <div class="blog-cta-container">
-        <section class="blog-section">
-            <div class="container" style="max-width: 1200px;">
-                <div class="section-header">
-                    <p class="subheading">Latest Insights & Guidance</p>
-                    <h2 class="title">Insights & Guidance for Your <span class="gradient-text">Immigration Journey</span></h2>
-                    <p class="description">Explore expert articles on immigration pathways, application processes, policies, and helpful tips. Gain practical knowledge, understand your options, and make informed decisions at every step of your journey.</p>
-                </div>
-
-                <div class="blog-slider-wrapper">
-                    <button class="slider-btn left">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-
-                    <div class="blog-slider">
-                        <?php if ($result->num_rows > 0): ?>
-                            <?php while ($row = $result->fetch_assoc()): ?>
-                                <?php
-                                $author_id = $row['post_author'];
-                                $author_result = $conn->query("SELECT display_name FROM wp_users WHERE ID = $author_id");
-                                $author = ($author_result && $author_result->num_rows > 0)
-                                    ? $author_result->fetch_assoc()['display_name']
-                                    : "Unknown";
-
-                                $image_result = $conn->query("
-                                        SELECT meta_value FROM wp_postmeta
-                                        WHERE post_id = {$row['ID']} AND meta_key = '_thumbnail_id' LIMIT 1
-                                    ");
-                                $thumbnail_id = ($image_result && $image_result->num_rows > 0)
-                                    ? $image_result->fetch_assoc()['meta_value']
-                                    : 0;
-
-                                $img_url = '';
-                                if ($thumbnail_id) {
-                                    $guid_result = $conn->query("SELECT guid FROM wp_posts WHERE ID = $thumbnail_id");
-                                    $img_url = ($guid_result && $guid_result->num_rows > 0)
-                                        ? $guid_result->fetch_assoc()['guid']
-                                        : '';
-                                }
-                                ?>
-                                <div class="blog-card">
-                                    <h3 class="blog-title" style="padding: 20px 20px 0; font-size:1.2rem; font-weight:700; color:var(--header);"><?php echo htmlspecialchars($row['post_title']) ?></h3>
-                                    <?php if ($img_url): ?>
-                                        <div class="blog-image" style="margin-bottom: 0;">
-                                            <img src="<?php echo htmlspecialchars($img_url) ?>" alt="Blog Image" />
-                                        </div>
-                                    <?php else: ?>
-                                        <div class="blog-image" style="margin-bottom: 0; background: var(--bg2); display:flex; align-items:center; justify-content:center; height:200px;">
-                                            <i class="fas fa-newspaper" style="font-size:48px; color:var(--theme);"></i>
-                                        </div>
-                                    <?php endif; ?>
-                                    <div class="blog-content">
-                                        <p style="color:var(--text);"><?php echo substr(strip_tags($row['post_content']), 0, 120); ?>...</p>
-                                        <a href="https://canucksimmigration.com/blogs/<?php echo $row['post_name']; ?>" class="read-more-btn">Read More <i class="fa fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            <?php endwhile; ?>
-                        <?php else: ?>
-                            <div class="col-12 text-center">
-                                <p style="color: var(--text2); font-size: 18px;">No blogs found. Check back soon for new articles!</p>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-
-                    <button class="slider-btn right">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-    </div>
-
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <div class="cta-content">
+            <div class="cta-content text-center">
                 <h2>Ready to Begin Your Canadian Immigration Journey?</h2>
                 <p>Get expert guidance and personalized support to explore the right immigration pathway for your goals.</p>
                 <div class="hero-buttons">
@@ -1153,12 +799,6 @@ if ($result === false) {
         </div>
     </footer>
 
-
-    <!-- Back to Top -->
-    <a href="#" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
     <!--<< All JS Plugins >>-->
     <script src="https://canucksimmigration.com/assets/js/jquery-3.7.1.min.js"></script>
     <script src="https://canucksimmigration.com/assets/js/viewport.jquery.js"></script>
@@ -1178,16 +818,6 @@ if ($result === false) {
     <script src="https://canucksimmigration.com/assets/js/circle-progress.js"></script>
     <script src="https://canucksimmigration.com/assets/js/main.js"></script>
     <script>
-        // Show/hide back to top button
-        window.addEventListener('scroll', function() {
-            const backToTop = document.querySelector('.back-to-top');
-            if (window.scrollY > 50) {
-                backToTop.style.display = 'flex';
-            } else {
-                backToTop.style.display = 'none';
-            }
-        });
-
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
@@ -1196,42 +826,10 @@ if ($result === false) {
                 navbar.classList.remove('scrolled');
             }
         });
-
-        // Smooth scrolling for back to top
-        document.querySelector('.back-to-top').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Slider functionality
-        const slider = document.querySelector(".blog-slider");
-        const leftBtn = document.querySelector(".slider-btn.left");
-        const rightBtn = document.querySelector(".slider-btn.right");
-
-        if (slider && leftBtn && rightBtn) {
-            const cardWidth = 380;
-
-            rightBtn.addEventListener("click", () => {
-                slider.scrollBy({
-                    left: cardWidth,
-                    behavior: "smooth"
-                });
-            });
-
-            leftBtn.addEventListener("click", () => {
-                slider.scrollBy({
-                    left: -cardWidth,
-                    behavior: "smooth"
-                });
-            });
-        }
     </script>
+    <script src="https://canucksimmigration.com/index.js"></script>
 </body>
 
 </html>
-<?php
-$conn->close();
-?>
+
+<?php $conn->close(); ?>
