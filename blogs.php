@@ -566,9 +566,9 @@ if ($result === false) {
     <section class="banner-section">
         <div class="container">
             <div class="banner-content">
-                <div class="banner-badge">
+                <!-- <div class="banner-badge">
                     <i class="fas fa-blog"></i> Our Blogs
-                </div>
+                </div> -->
                 <div class="banner-text">
                     <h1>Our Blogs</h1>
                     <p>A place where immigration insights meet practical guidance. Explore our blogs to stay informed, prepared, and confident throughout your immigration journey.</p>

@@ -827,9 +827,9 @@ if ($result === false) {
     <section class="banner-section">
         <div class="container">
             <div class="banner-content">
-                <div class="banner-badge">
+                <!-- <div class="banner-badge">
                     <i class="fas fa-blog"></i> Blog Post
-                </div>
+                </div> -->
                 <div class="banner-text">
                     <h1><?php echo htmlspecialchars($blog['post_title']); ?></h1>
                 </div>
