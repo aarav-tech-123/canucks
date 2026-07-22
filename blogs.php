@@ -111,87 +111,6 @@ if ($result === false) {
             padding: 0 20px;
         }
 
-        /* Header / Navbar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
-        }
-
-        .navbar .nav-link,
-        .navbar .navbar-nav .nav-link {
-            color: var(--header) !important;
-            font-weight: 500;
-        }
-
-        .navbar .nav-link:hover {
-            color: var(--theme) !important;
-        }
-
-        .glass-btn {
-            background: var(--theme);
-            color: white !important;
-            border-radius: 40px;
-            padding: 0.6rem 1.6rem;
-            font-weight: 600;
-            font-size: 0.85rem;
-            border: none;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .glass-btn:hover {
-            background: #b0072a;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(226, 9, 53, 0.25);
-            color: white !important;
-        }
-
-        .breadcrumb-item a {
-            color: var(--theme);
-            text-decoration: none;
-        }
-
-        .breadcrumb-item.active {
-            color: var(--text);
-        }
-
-        /* Hero */
-        .hero {
-            padding: 140px 0 80px;
-            background: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 60px;
-            font-weight: 800;
-            color: var(--header);
-            letter-spacing: -1px;
-        }
-
-        .hero h1 .gradient-text {
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: textShine 3s linear infinite;
-        }
-
-        @keyframes textShine {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        .hero p {
-            font-size: 20px;
-            color: var(--text);
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
 
         /* Blog section */
         .blog-section {
@@ -344,139 +263,6 @@ if ($result === false) {
             box-shadow: 0 8px 24px rgba(226, 9, 53, 0.3);
             color: white;
         }
-
-        /* Footer */
-        footer {
-            background: var(--header);
-            color: rgba(255, 255, 255, 0.8);
-            padding: 60px 0 30px;
-        }
-
-        .footer-logo-text {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .footer-column h3,
-        .footer-column h4 {
-            color: white;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .footer-links,
-        .contact-info {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li,
-        .contact-info li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a,
-        .contact-info a,
-        .contact-info span {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--theme);
-            padding-left: 6px;
-        }
-
-        .social-links a {
-            display: inline-block;
-            width: 38px;
-            height: 38px;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 38px;
-            color: white;
-            margin-right: 12px;
-            transition: 0.3s;
-        }
-
-        .social-links a:hover {
-            background: var(--theme);
-            color: white;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 10px 16px;
-            border-radius: 40px;
-            border: none;
-            background: rgba(255, 255, 255, 0.08);
-            color: white;
-        }
-
-        .newsletter-form input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .newsletter-form button {
-            background: var(--theme);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 40px;
-            color: white;
-            font-weight: 600;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            padding-top: 24px;
-            margin-top: 40px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-bottom-links a {
-            color: rgba(255, 255, 255, 0.6);
-            margin-left: 24px;
-            text-decoration: none;
-        }
-
-        .footer-bottom-links a:hover {
-            color: var(--theme);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 40px;
-            }
-
-            .section-title h2 {
-                font-size: 36px;
-            }
-
-            .cta-section h2 {
-                font-size: 34px;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 12px;
-            }
-        }
     </style>
     <!-- ✅ Google Tag Manager -->
     <script>
@@ -511,86 +297,110 @@ if ($result === false) {
         </div>
     </div>
 
-    <!-- ✅ Header - Updated to CanucksMigration -->
-    <div class="container-fluid header position-relative p-0">
-        <nav class="navbar navbar-expand-lg fixed-top navbar-light px-lg-5 py-3 py-lg-0">
-            <a href="https://canucksmigration.ca" class="navbar-brand p-0">
-                <img src="img/company_logo_white.svg" alt="CanucksMigration" id="toggleImg" style="transition: all ease .8s; height:40px;">
-            </a>
-            <button class="navbar-toggler navbar-toggler-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="fa fa-bars"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
-                    <a href="https://canucksmigration.ca" class="nav-item nav-link">Home</a>
-                    <a href="https://canucksmigration.ca/about.html" class="nav-item nav-link">About</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
-                        <div class="dropdown-menu m-0">
-                            <div class="submenu-wrapper">
-                                <div class="dropdown-item submenu-parent">
-                                    <a href="digital-marketing-services.html" class="submenu-link">Digital Marketing</a>
-                                    <button class="submenu-toggle" type="button">
-                                        <i class="fas fa-chevron-down"></i>
-                                    </button>
-                                </div>
-                                <div class="submenu">
-                                    <a class="dropdown-item" href="https://canucksmigration.ca/seo-company-in-india.html">SEO</a>
-                                    <a class="dropdown-item" href="https://canucksmigration.ca/social-media-optimization-services.html">SMO/SMM</a>
-                                    <a class="dropdown-item" href="https://canucksmigration.ca/best-ppc-marketing-agency.html">PPC</a>
-                                    <a class="dropdown-item" href="https://canucksmigration.ca/content-marketing-services.html">Content Marketing</a>
+    <!-- Header Top Start -->
+    <div class="header-top-section fix">
+        <div class="container">
+            <div class="header-top-wrapper">
+                <ul class="contact-list">
+                    <li>
+                        <i class="far fa-envelope"></i>
+                        <a href="mailto:info@canucksimmigration.com" class="link">info@canucksimmigration.com</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        6060 Silver Drive, Burnaby BC V5H 2Y3
+                    </li>
+                </ul>
+                <div class="top-right">
+                    <div class="social-icon d-flex align-items-center">
+                        <a href="#https://www.facebook.com/CanucksMigration"> <i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/canucks.migration?igsh=MXdtOGx1ZWJhdHFmOA=="><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Area Start -->
+    <header class="header-section-1">
+        <div id="header-sticky" class="header-1">
+            <div class="container-fluid">
+                <div class="mega-menu-wrapper">
+                    <div class="header-main">
+                        <div class="header-left">
+                            <div class="logo">
+                                <a href="/" class="header-logo">
+                                    <img src="assets/img/logo/logo.png" alt="logo-img"
+                                        style="width: 100px; height: 90px;">
+                                </a>
+                            </div>
+                            <div class="mean__menu-wrapper">
+                                <div class="main-menu">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                            <li class="has-dropdown active menu-thumb">
+                                                <a href="/">
+                                                    Home
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="about.html">About</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)">Services <i class="fas fa-angle-down"></i>
+                                                </a>
+                                                <ul class="submenu">
+                                                    <li><a href="business-investment-visa-for-canada.html">Business
+                                                            Investment Visa for Canada</a>
+                                                    </li>
+                                                    <li><a href="canada-express-entry.html">Canada Express Entry</a>
+                                                    </li>
+                                                    <li><a href="judicial-review.html">Judicial Review</a></li>
+                                                    <li><a href="provincial-nominee-program.html">PNP</a></li>
+                                                    <li><a href="canadian-immigration-services.html">Immigration
+                                                            Consulting
+                                                            Services</a></li>
+                                                </ul>
+                                            </li>
+
+                                            <li>
+                                                <a href="blogs.php">
+                                                    Blog
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="contact.html">Contact</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
-                            <div class="submenu-wrapper">
-                                <div class="dropdown-item submenu-parent">
-                                    <a href="web-development-services.html" class="submenu-link">Web Development</a>
-                                    <button class="submenu-toggle" type="button">
-                                        <i class="fas fa-chevron-down"></i>
-                                    </button>
+                        </div>
+                        <div class="header-right d-flex justify-content-end align-items-center">
+                            <div class="contact-info">
+                                <div class="icon">
+                                    <img src="assets/img/call.png" alt="img">
                                 </div>
-                                <div class="submenu">
-                                    <a class="dropdown-item" href="https://canucksmigration.ca/custom-website-development-services.html">Custom Website Development</a>
-                                    <a class="dropdown-item" href="https://canucksmigration.ca/ui-ux-design-services.html">UI/UX Design</a>
-                                    <a class="dropdown-item" href="https://canucksmigration.ca/web-and-mobile-app-development.html">Web/Mobile App Development</a>
+                                <div class="content">
+                                    <p>Phone:</p>
+                                    <h6>
+                                        <a href="tel:+18075007906">+1-8075007906</a>
+                                    </h6>
                                 </div>
                             </div>
-                            <div class="submenu-wrapper">
-                                <a href="https://canucksmigration.ca/logo-design-services.html" class="dropdown-item">Logo Design</a>
-                            </div>
-                            <div class="submenu-wrapper">
-                                <div class="dropdown-item submenu-parent">
-                                    <a href="bpo-services.html" class="submenu-link">BPO</a>
-                                    <button class="submenu-toggle" type="button">
-                                        <i class="fas fa-chevron-down"></i>
-                                    </button>
-                                </div>
-                                <div class="submenu">
-                                    <a class="dropdown-item" href="https://canucksmigration.ca/back-office-support-services.html">Back Office Support</a>
-                                    <a class="dropdown-item" href="https://canucksmigration.ca/call-center-services.html">Call Centre Services</a>
+                            <div class="header__hamburger d-lg-none my-auto">
+                                <div class="sidebar__toggle">
+                                    <i class="far fa-bars"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="https://canucksmigration.ca/blogs.php" class="nav-item nav-link active">Blogs</a>
-                    <a href="https://canucksmigration.ca/career.php" class="nav-item nav-link">Career</a>
-                    <a href="https://canucksmigration.ca/contact.html" class="nav-item nav-link">Contact</a>
                 </div>
-                <a href="tel:+917318083502" class="glass-btn nav-link-btn" style="margin-right: 2rem; font-size: .8rem; padding:.6rem 1.8rem;">Let's Talk</a>
             </div>
-        </nav>
-
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container hero-content text-center">
-                <ol class="breadcrumb justify-content-center mb-3">
-                    <li class="breadcrumb-item"><a href="https://canucksmigration.ca">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Blogs</li>
-                </ol>
-                <h1>Our <span class="gradient-text">Blogs</span></h1>
-                <p>A place where new ideas meet practical insights. Discover our blogs to keep you informed and inspired.</p>
-            </div>
-        </section>
-    </div>
+        </div>
+    </header>
 
     <!-- ✅ Blog Section -->
     <section class="blog-section">
@@ -670,79 +480,142 @@ if ($result === false) {
         </div>
     </section>
 
-    <!-- ✅ Footer - Updated to CanucksMigration -->
-    <footer>
-        <div class="container-fluid footer-container" style="padding: 0 2rem;">
-            <div class="footer-content" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:40px;">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <div class="footer-logo-text">CanucksMigration</div>
+    <!--<< Footer Section Start >>-->
+    <footer class="footer-section footer-bg">
+        <div class="container">
+            <div class="footer-widgets-wrapper">
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="single-footer-widget">
+                            <div class="widget-head">
+                                <a href="/">
+                                    <img src="assets/img/logo/footer-logo.png" alt="logo-img">
+                                </a>
+                            </div>
+                            <div class="footer-content">
+                                <p>
+                                    Simplifying Canadian immigration with trusted guidance.
+                                </p>
+                                <div class="social-icon d-flex align-items-center">
+                                    <a href="https://www.facebook.com/CanucksMigration"><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a href="https://www.instagram.com/canucks.migration?igsh=MXdtOGx1ZWJhdHFmOA=="><i
+                                            class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p>We provide cutting-edge technology solutions to help businesses thrive in the digital age. Our team of experts delivers innovative software and consulting services.</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/CanucksMigration/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/canucksmigration/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/company/canucks-migration/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <div class="col-xl-2 ps-lg-5 col-sm-6 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay=".4s">
+                        <div class="single-footer-widget">
+                            <div class="widget-head">
+                                <h5>Explore</h5>
+                            </div>
+                            <ul class="list-items">
+                                <li>
+                                    <a href="/">
+                                        Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="about.html">
+                                        About
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="contact.html">
+                                        Contact
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="blogs.php">
+                                        Blogs
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="https://canucksmigration.ca"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                        <li><a href="blogs.php"><i class="fas fa-chevron-right"></i> Blogs</a></li>
-                        <li><a href="career.php"><i class="fas fa-chevron-right"></i> Career</a></li>
-                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Our Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="custom-website-development-services.html"><i class="fas fa-chevron-right"></i> Web Development</a></li>
-                        <li><a href="web-and-mobile-app-development.html"><i class="fas fa-chevron-right"></i> Mobile Apps</a></li>
-                        <li><a href="graphic-designing.html"><i class="fas fa-chevron-right"></i> Graphic Designing</a></li>
-                        <li><a href="digital-marketing-services.html"><i class="fas fa-chevron-right"></i> Digital Marketing</a></li>
-                        <li><a href="ui-ux-design-services.html"><i class="fas fa-chevron-right"></i> UI/UX Design</a></li>
-                        <li><a href="bpo-services.html"><i class="fas fa-chevron-right"></i> BPO Services</a></li>
-                    </ul>
-                </div>
+                    <div class="col-xl-3 ps-lg-4 col-sm-6 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay=".6s">
+                        <div class="single-footer-widget">
+                            <div class="widget-head">
+                                <h5>Services</h5>
+                            </div>
+                            <ul class="list-items">
+                                <li>
+                                    <a href="business-investment-visa-for-canada.html">
+                                        Business Investment Visa for Canada
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="canada-express-entry.html">
+                                        Canada Express Entry
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="judicial-review.html">
+                                        Judicial Review
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="provincial-nominee-program.html">
+                                        PNP
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="canadian-immigration-services.html">
+                                        Immigration Consulting Services
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".8s">
+                        <div class="single-footer-widget">
+                            <div class="widget-head">
+                                <h5>Address:</h5>
+                            </div>
+                            <div class="footer-address-text">
+                                <p>
+                                    <i class="fa fa-location"></i>&nbsp; 6060 Silver Drive, Burnaby BC V5H 2Y3
+                                </p>
+                                <p>
+                                    <i class="fa fa-phone"></i>&nbsp; +1-8075007906 <br>
+                                </p>
+                                <a href="mailto:info@canucksimmigration.com" class="link" style="color:var(--text2)">
+                                    <i class="fa fa-envelope"></i> &nbsp; info@canucksimmigration.com
+                                </a>
 
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Kanpur Nagar, Uttar Pradesh, India</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <span>+91 7318083502</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>contact@canucksmigration.ca</span>
-                        </li>
-                    </ul>
-
-                    <h4 style="margin-top: 20px; margin-bottom: 10px;">Newsletter</h4>
-                    <p style="font-size: 0.9rem;">Subscribe to our newsletter for the latest updates.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your email address" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-wrapper d-flex align-items-center justify-content-between">
+                    <p class="wow fadeInLeft color-2" data-wow-delay=".3s">
+                        Copyright © 2026 <a href="/">Canucks Immigration</a>. All Rights Reserved. | Developed by
+                        <a href="https://aaravtech.net">Aarav Tech Services LLP</a>
+                    </p>
+                    <ul class="footer-menu wow fadeInRight" data-wow-delay=".5s">
 
-            <div class="footer-bottom">
-                <p style="margin-bottom:0;">&copy; 2026 CanucksMigration. All Rights Reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="privacy-policy.html">Privacy Policy</a>
-                    <a href="terms-and-conditions.html">Terms of Service</a>
-                    <a href="sitemap.html">Sitemap</a>
+                        <li>
+                            <a href="terms-and-conditions.html">
+                                Support
+                            </a>
+                        </li>
+                        <li>
+                            <a href="privacy-policy.html">
+                                Privacy
+                            </a>
+                        </li>
+
+                    </ul>
                 </div>
             </div>
         </div>
     </footer>
+
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
