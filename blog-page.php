@@ -96,7 +96,7 @@ if ($result === false) {
     <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/main.css">
     <link rel="stylesheet" href="https://canucksimmigration.com/style.css">
     <!-- Google Tag Manager -->
-    <script>
+    <!-- <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
@@ -111,7 +111,7 @@ if ($result === false) {
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-MSPXHW6R');
-    </script>
+    </script> -->
     <!-- End Google Tag Manager -->
     <style>
         /* ===== UPDATED COLOR SCHEME ===== */
@@ -187,9 +187,137 @@ if ($result === false) {
             padding: 20px 0 20px;
         }
 
+        /* ===== BANNER SECTION ===== */
+        .banner-section {
+            padding: 40px 0 50px;
+            background: var(--gradient-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .banner-section::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .banner-text h1 {
+            font-size: 38px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .banner-text h1 span {
+            color: #ffd700;
+        }
+
+        .banner-text p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 600px;
+            margin-bottom: 0;
+        }
+
+        .banner-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .banner-btn {
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .banner-btn-primary {
+            background: #fff;
+            color: var(--theme);
+        }
+
+        .banner-btn-primary:hover {
+            background: #ffd700;
+            color: var(--header);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .banner-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .banner-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .banner-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .banner-text h1 {
+                font-size: 28px;
+            }
+
+            .banner-text p {
+                font-size: 16px;
+                max-width: 100%;
+            }
+
+            .banner-buttons {
+                justify-content: center;
+            }
+
+            .banner-btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+
         /* Blog Hero Section */
         .blog-hero {
-            padding: 150px 0 80px;
+            padding: 80px 0 50px;
             position: relative;
             overflow: hidden;
             background: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
@@ -692,6 +820,61 @@ if ($result === false) {
         </div>
     </header>
 
+    <!-- ===== BANNER SECTION ===== -->
+    <section class="banner-section">
+        <div class="container">
+            <div class="banner-content">
+                <div class="banner-text">
+                    <h1>Your Gateway to <span>Canadian Immigration</span></h1>
+                    <p>Expert guidance, personalized support, and proven strategies to help you achieve your Canadian dream.</p>
+                </div>
+                <div class="banner-buttons">
+                    <a href="https://canucksimmigration.com/contact.html" class="banner-btn banner-btn-primary">
+                        <i class="fas fa-paper-plane"></i> Get Started
+                    </a>
+                    <a href="https://canucksimmigration.com/about.html" class="banner-btn banner-btn-secondary">
+                        <i class="fas fa-info-circle"></i> Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Hero Section -->
+    <?php
+    $author_id = $blog['post_author'];
+    $author_result = $conn->query("SELECT display_name FROM wp_users WHERE ID = $author_id");
+    $author = ($author_result && $author_result->num_rows > 0)
+        ? $author_result->fetch_assoc()['display_name']
+        : "Unknown";
+
+    $image_result = $conn->query("
+        SELECT meta_value FROM wp_postmeta
+        WHERE post_id = {$blog['ID']} AND meta_key = '_thumbnail_id' LIMIT 1
+    ");
+    $thumbnail_id = ($image_result && $image_result->num_rows > 0)
+        ? $image_result->fetch_assoc()['meta_value']
+        : 0;
+
+    $img_url = '';
+    if ($thumbnail_id) {
+        $guid_result = $conn->query("SELECT guid FROM wp_posts WHERE ID = $thumbnail_id");
+        $img_url = ($guid_result && $guid_result->num_rows > 0)
+            ? $guid_result->fetch_assoc()['guid']
+            : '';
+    }
+    ?>
+
+    <section class="blog-hero">
+        <div class="container">
+            <h1><?php echo htmlspecialchars($blog['post_title']); ?></h1>
+            <div class="blog-meta">
+                <span><i class="fas fa-calendar-alt"></i> <?php echo date("F j, Y", strtotime($blog['post_date'])); ?></span>
+                <span><i class="fas fa-user"></i> <?php echo htmlspecialchars($author); ?></span>
+            </div>
+        </div>
+    </section>
+
     <!-- Blog Content Section -->
     <section class="blog-content-section">
         <div class="container">
@@ -713,7 +896,7 @@ if ($result === false) {
                 </div>
     </section>
 
-    <div class="blog-cta-container">
+    <!-- <div class="blog-cta-container">
         <section class="blog-section">
             <div class="container" style="max-width: 1200px;">
                 <div class="section-header">
@@ -782,17 +965,16 @@ if ($result === false) {
                 </div>
             </div>
         </section>
-    </div>
+    </div> -->
 
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2>Let's Create Something Amazing Together</h2>
-                <p>Ready to transform your digital presence? Let's discuss how our expertise can help your business
-                    thrive in the digital landscape.</p>
+                <h2>Ready to Begin Your Canadian Immigration Journey?</h2>
+                <p>Get expert guidance and personalized support to explore the right immigration pathway for your goals.</p>
                 <div class="hero-buttons">
-                    <a href="https://canucksimmigration.com/contact.html" class="btn-primary">Request a Quote <i class="fas fa-paper-plane"></i></a>
+                    <a href="https://canucksimmigration.com/contact.html" class="btn-primary">Lets Get Started<i class="fas fa-paper-plane"></i></a>
                 </div>
             </div>
         </div>
