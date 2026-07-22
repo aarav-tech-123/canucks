@@ -570,8 +570,8 @@ if ($result === false) {
                     <i class="fas fa-blog"></i> Our Blogs
                 </div>
                 <div class="banner-text">
-                    <h1>A place where immigration insights meet <span>practical guidance</span></h1>
-                    <p>Explore our blogs to stay informed, prepared, and confident throughout your immigration journey.</p>
+                    <h1>Our Blogs</h1>
+                    <p>A place where immigration insights meet practical guidance. Explore our blogs to stay informed, prepared, and confident throughout your immigration journey.</p>
                 </div>
                 <div class="banner-buttons">
                     <a href="#latest-blogs" class="banner-btn banner-btn-primary">

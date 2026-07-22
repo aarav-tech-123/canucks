@@ -96,7 +96,7 @@ if ($result === false) {
     <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/main.css">
     <link rel="stylesheet" href="https://canucksimmigration.com/style.css">
     <!-- Google Tag Manager -->
-    <!-- <script>
+    <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
@@ -111,7 +111,7 @@ if ($result === false) {
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-MSPXHW6R');
-    </script> -->
+    </script>
     <!-- End Google Tag Manager -->
     <style>
         /* ===== UPDATED COLOR SCHEME ===== */
@@ -189,7 +189,7 @@ if ($result === false) {
 
         /* ===== BANNER SECTION ===== */
         .banner-section {
-            padding: 40px 0 50px;
+            padding: 60px 0 70px;
             background: var(--gradient-primary);
             position: relative;
             overflow: hidden;
@@ -222,36 +222,66 @@ if ($result === false) {
         .banner-content {
             position: relative;
             z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .banner-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .banner-badge i {
+            margin-right: 8px;
         }
 
         .banner-text h1 {
-            font-size: 38px;
+            font-size: 44px;
             font-weight: 800;
             color: #fff;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             letter-spacing: -0.5px;
+            line-height: 1.2;
         }
 
         .banner-text h1 span {
             color: #ffd700;
         }
 
-        .banner-text p {
-            font-size: 18px;
+        .banner-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
             color: rgba(255, 255, 255, 0.85);
-            max-width: 600px;
-            margin-bottom: 0;
+            font-size: 15px;
+            flex-wrap: wrap;
+        }
+
+        .banner-meta i {
+            margin-right: 6px;
+            color: #ffd700;
+        }
+
+        .banner-meta .separator {
+            color: rgba(255, 255, 255, 0.3);
         }
 
         .banner-buttons {
             display: flex;
+            justify-content: center;
             gap: 16px;
             flex-wrap: wrap;
+            margin-top: 30px;
         }
 
         .banner-btn {
@@ -291,89 +321,38 @@ if ($result === false) {
         }
 
         @media (max-width: 768px) {
-            .banner-content {
-                flex-direction: column;
-                text-align: center;
+            .banner-section {
+                padding: 40px 0 50px;
             }
 
             .banner-text h1 {
-                font-size: 28px;
+                font-size: 30px;
             }
 
-            .banner-text p {
-                font-size: 16px;
-                max-width: 100%;
+            .banner-meta {
+                font-size: 13px;
+                gap: 12px;
             }
 
             .banner-buttons {
-                justify-content: center;
+                flex-direction: column;
+                align-items: center;
             }
 
             .banner-btn {
-                padding: 12px 24px;
+                padding: 12px 28px;
                 font-size: 14px;
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
             }
-        }
-
-        /* Blog Hero Section */
-        .blog-hero {
-            padding: 80px 0 50px;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
-            text-align: center;
-            border-bottom: var(--border-light);
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            margin-bottom: 40px;
-        }
-
-        .blog-hero h1 {
-            font-size: 35px;
-            margin-bottom: 24px;
-            font-weight: 800;
-            line-height: 1.2;
-            letter-spacing: -1px;
-            color: var(--header);
-        }
-
-        .blog-hero h1 .gradient-text {
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: textShine 3s linear infinite;
-        }
-
-        @keyframes textShine {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        .blog-meta {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            color: var(--text2);
-            font-size: 16px;
-            margin-bottom: 40px;
-        }
-
-        .blog-meta i {
-            color: var(--theme);
-            margin-right: 8px;
         }
 
         /* Blog Content Section */
         .blog-content-section {
             position: relative;
             background: var(--bg);
+            padding-top: 30px;
         }
 
         .blog-content-wrapper {
@@ -820,27 +799,7 @@ if ($result === false) {
         </div>
     </header>
 
-    <!-- ===== BANNER SECTION ===== -->
-    <section class="banner-section">
-        <div class="container">
-            <div class="banner-content">
-                <div class="banner-text">
-                    <h1>Your Gateway to <span>Canadian Immigration</span></h1>
-                    <p>Expert guidance, personalized support, and proven strategies to help you achieve your Canadian dream.</p>
-                </div>
-                <div class="banner-buttons">
-                    <a href="https://canucksimmigration.com/contact.html" class="banner-btn banner-btn-primary">
-                        <i class="fas fa-paper-plane"></i> Get Started
-                    </a>
-                    <a href="https://canucksimmigration.com/about.html" class="banner-btn banner-btn-secondary">
-                        <i class="fas fa-info-circle"></i> Learn More
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Hero Section -->
+    <!-- ===== BANNER SECTION WITH BLOG TITLE & META ===== -->
     <?php
     $author_id = $blog['post_author'];
     $author_result = $conn->query("SELECT display_name FROM wp_users WHERE ID = $author_id");
@@ -865,12 +824,30 @@ if ($result === false) {
     }
     ?>
 
-    <section class="blog-hero">
+    <section class="banner-section">
         <div class="container">
-            <h1><?php echo htmlspecialchars($blog['post_title']); ?></h1>
-            <div class="blog-meta">
-                <span><i class="fas fa-calendar-alt"></i> <?php echo date("F j, Y", strtotime($blog['post_date'])); ?></span>
-                <span><i class="fas fa-user"></i> <?php echo htmlspecialchars($author); ?></span>
+            <div class="banner-content">
+                <div class="banner-badge">
+                    <i class="fas fa-blog"></i> Blog Post
+                </div>
+                <div class="banner-text">
+                    <h1><?php echo htmlspecialchars($blog['post_title']); ?></h1>
+                </div>
+                <div class="banner-meta">
+                    <span><i class="fas fa-calendar-alt"></i> <?php echo date("F j, Y", strtotime($blog['post_date'])); ?></span>
+                    <span class="separator">|</span>
+                    <span><i class="fas fa-user"></i> <?php echo htmlspecialchars($author); ?></span>
+                    <span class="separator">|</span>
+                    <span><i class="fas fa-clock"></i> <?php echo round(str_word_count(strip_tags($blog['post_content'])) / 200); ?> min read</span>
+                </div>
+                <div class="banner-buttons">
+                    <a href="https://canucksimmigration.com/blogs.php" class="banner-btn banner-btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Blogs
+                    </a>
+                    <a href="https://canucksimmigration.com/contact.html" class="banner-btn banner-btn-primary">
+                        <i class="fas fa-paper-plane"></i> Get Started
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -879,29 +856,25 @@ if ($result === false) {
     <section class="blog-content-section">
         <div class="container">
             <?php if ($img_url): ?>
-                <img src="<?php echo $img_url; ?>" class="blog-image" style="border-radius: 20px;"
+                <img src="<?php echo $img_url; ?>" class="blog-image" style="border-radius: 20px; width: 100%; max-height: 500px; object-fit: cover;"
                     alt="<?php echo htmlspecialchars($blog['post_title']); ?>">
-            <?php else: ?>
-                <div class="blog-content-wrapper">
-                    <div class="blog-image" style="background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; height: 300px; border-radius: 20px;">
-                        <i class="fas fa-newspaper" style="font-size: 48px; color: white;"></i>
-                    </div>
-                <?php endif; ?>
+            <?php endif; ?>
 
-                <div class="blog-content-wrapper">
-                    <div class="blog-content">
-                        <?php echo $blog['post_content']; ?>
-                    </div>
+            <div class="blog-content-wrapper">
+                <div class="blog-content">
+                    <?php echo $blog['post_content']; ?>
                 </div>
-                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- <div class="blog-cta-container">
+    <!-- Related Blogs Section -->
+    <div class="blog-cta-container">
         <section class="blog-section">
             <div class="container" style="max-width: 1200px;">
                 <div class="section-header">
-                    <p class="subheading">Our Blogs</p>
-                    <h2 class="title">Latest Insights & Stories</h2>
+                    <p class="subheading">Related Articles</p>
+                    <h2 class="title">More <span style="color: var(--theme);">Insights</span> for You</h2>
                 </div>
 
                 <div class="blog-slider-wrapper">
@@ -954,7 +927,7 @@ if ($result === false) {
                             <?php endwhile; ?>
                         <?php else: ?>
                             <div class="col-12 text-center">
-                                <p style="color: var(--text2); font-size: 18px;">No blogs found. Check back soon for new articles!</p>
+                                <p style="color: var(--text2); font-size: 18px;">No related blogs found. Check back soon for new articles!</p>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -965,7 +938,7 @@ if ($result === false) {
                 </div>
             </div>
         </section>
-    </div> -->
+    </div>
 
     <!-- CTA Section -->
     <section class="cta-section">
