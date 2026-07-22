@@ -269,7 +269,7 @@ if ($result === false) {
 
         .banner-meta i {
             margin-right: 6px;
-            color: #ffd700;
+            /* color: #ffd700; */
         }
 
         .banner-meta .separator {
