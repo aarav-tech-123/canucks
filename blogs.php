@@ -177,7 +177,7 @@ if ($result === false) {
         }
 
         .banner-text h1 span {
-            color: #ffd700;
+            color: #fff;
         }
 
         .banner-text p {
@@ -213,10 +213,10 @@ if ($result === false) {
         }
 
         .banner-btn-primary:hover {
-            background: #ffd700;
-            color: var(--header);
+            background: var(--theme);
+            color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(226, 9, 53, 0.3);
         }
 
         .banner-btn-secondary {
@@ -566,9 +566,6 @@ if ($result === false) {
     <section class="banner-section">
         <div class="container">
             <div class="banner-content">
-                <!-- <div class="banner-badge">
-                    <i class="fas fa-blog"></i> Our Blogs
-                </div> -->
                 <div class="banner-text">
                     <h1>Our Blogs</h1>
                     <p>A place where immigration insights meet practical guidance. Explore our blogs to stay informed, prepared, and confident throughout your immigration journey.</p>

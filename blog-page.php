@@ -253,10 +253,6 @@ if ($result === false) {
             line-height: 1.2;
         }
 
-        .banner-text h1 span {
-            color: #ffd700;
-        }
-
         .banner-meta {
             display: flex;
             justify-content: center;
@@ -269,7 +265,6 @@ if ($result === false) {
 
         .banner-meta i {
             margin-right: 6px;
-            /* color: #ffd700; */
         }
 
         .banner-meta .separator {
@@ -302,10 +297,10 @@ if ($result === false) {
         }
 
         .banner-btn-primary:hover {
-            background: #ffd700;
-            color: var(--header);
+            background: var(--theme);
+            color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(226, 9, 53, 0.3);
         }
 
         .banner-btn-secondary {
@@ -827,9 +822,6 @@ if ($result === false) {
     <section class="banner-section">
         <div class="container">
             <div class="banner-content">
-                <!-- <div class="banner-badge">
-                    <i class="fas fa-blog"></i> Blog Post
-                </div> -->
                 <div class="banner-text">
                     <h1><?php echo htmlspecialchars($blog['post_title']); ?></h1>
                 </div>
