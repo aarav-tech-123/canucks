@@ -75,25 +75,26 @@ if ($result === false) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/favicon.png">
+    <link rel="icon" href="https://canucksimmigration.com/img/favicon.png">
     <meta name="robots" content="index, follow">
     <meta name="title" content="<?php echo htmlspecialchars($post_meta['rank_math_title'] ?? $blog['post_title']); ?>">
     <meta name="description" content="<?php echo htmlspecialchars($post_meta['rank_math_description'] ?? 'Default meta description here.'); ?>">
     <meta name="keywords" content="<?php echo htmlspecialchars($post_meta['rank_math_focus_keyword'] ?? ''); ?>">
-    <link rel="canonical" href="https://canucksmigration.ca/blogs/<?php echo $slug; ?>" />
+    <link rel="canonical" href="https://canucksimmigration.com/blogs/<?php echo $slug; ?>" />
     <title><?php echo htmlspecialchars($post_meta['rank_math_title'] ?? $blog['post_title']); ?></title>
 
     <!-- CSS -->
-    <link href="https://canucksmigration.ca/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://canucksmigration.ca/css/style.css">
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/brands.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="shortcut icon" href="https://canucksimmigration.com/assets/img/logo/logo.png">
+    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/animate.css">
+    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/meanmenu.css">
+    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/slick.css">
+    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/nice-select.css">
+    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/main.css">
+    <link rel="stylesheet" href="https://canucksimmigration.com/style.css">
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
@@ -603,7 +604,7 @@ if ($result === false) {
                 </ul>
                 <div class="top-right">
                     <div class="social-icon d-flex align-items-center">
-                        <a href="#https://www.facebook.com/CanucksMigration"> <i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/CanucksMigration"> <i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/canucks.migration?igsh=MXdtOGx1ZWJhdHFmOA=="><i
                                 class="fab fa-instagram"></i></a>
                     </div>
@@ -622,7 +623,7 @@ if ($result === false) {
                         <div class="header-left">
                             <div class="logo">
                                 <a href="/" class="header-logo">
-                                    <img src="assets/img/logo/logo.png" alt="logo-img"
+                                    <img src="https://canucksimmigration.com/assets/img/logo/logo.png" alt="logo-img"
                                         style="width: 100px; height: 90px;">
                                 </a>
                             </div>
@@ -631,37 +632,36 @@ if ($result === false) {
                                     <nav id="mobile-menu">
                                         <ul>
                                             <li class="has-dropdown active menu-thumb">
-                                                <a href="/">
+                                                <a href="https://canucksimmigration.com/">
                                                     Home
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="about.html">About</a>
+                                                <a href="https://canucksimmigration.com/about.html">About</a>
                                             </li>
                                             <li>
                                                 <a href="javascript:void(0)">Services <i class="fas fa-angle-down"></i>
                                                 </a>
                                                 <ul class="submenu">
-                                                    <li><a href="business-investment-visa-for-canada.html">Business
+                                                    <li><a href="https://canucksimmigration.com/business-investment-visa-for-canada.html">Business
                                                             Investment Visa for Canada</a>
                                                     </li>
-                                                    <li><a href="canada-express-entry.html">Canada Express Entry</a>
+                                                    <li><a href="https://canucksimmigration.com/canada-express-entry.html">Canada Express Entry</a>
                                                     </li>
-                                                    <li><a href="judicial-review.html">Judicial Review</a></li>
-                                                    <li><a href="provincial-nominee-program.html">PNP</a></li>
-                                                    <li><a href="canadian-immigration-services.html">Immigration
-                                                            Consulting
-                                                            Services</a></li>
+                                                    <li><a href="https://canucksimmigration.com/judicial-review.html">Judicial Review</a></li>
+                                                    <li><a href="https://canucksimmigration.com/provincial-nominee-program.html">PNP</a></li>
+                                                    <li><a href="https://canucksimmigration.com/canadian-immigration-services.html">Immigration
+                                                            Consulting Services</a></li>
                                                 </ul>
                                             </li>
 
                                             <li>
-                                                <a href="blogs.php">
+                                                <a href="https://canucksimmigration.com/blogs.php">
                                                     Blog
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="contact.html">Contact</a>
+                                                <a href="https://canucksimmigration.com/contact.html">Contact</a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -671,7 +671,7 @@ if ($result === false) {
                         <div class="header-right d-flex justify-content-end align-items-center">
                             <div class="contact-info">
                                 <div class="icon">
-                                    <img src="assets/img/call.png" alt="img">
+                                    <img src="https://canucksimmigration.com/assets/img/call.png" alt="img">
                                 </div>
                                 <div class="content">
                                     <p>Phone:</p>
@@ -765,7 +765,7 @@ if ($result === false) {
                                     <?php endif; ?>
                                     <div class="blog-content">
                                         <p style="color:var(--text);"><?php echo substr(strip_tags($row['post_content']), 0, 120); ?>...</p>
-                                        <a href="https://canucksmigration.ca/blogs/<?php echo $row['post_name']; ?>" class="read-more-btn">Read More <i class="fa fa-arrow-right"></i></a>
+                                        <a href="https://canucksimmigration.com/blogs/<?php echo $row['post_name']; ?>" class="read-more-btn">Read More <i class="fa fa-arrow-right"></i></a>
                                     </div>
                                 </div>
                             <?php endwhile; ?>
@@ -792,7 +792,7 @@ if ($result === false) {
                 <p>Ready to transform your digital presence? Let's discuss how our expertise can help your business
                     thrive in the digital landscape.</p>
                 <div class="hero-buttons">
-                    <a href="https://canucksmigration.ca/contact.html" class="btn-primary">Request a Quote <i class="fas fa-paper-plane"></i></a>
+                    <a href="https://canucksimmigration.com/contact.html" class="btn-primary">Request a Quote <i class="fas fa-paper-plane"></i></a>
                 </div>
             </div>
         </div>
@@ -806,8 +806,8 @@ if ($result === false) {
                     <div class="col-xl-3 col-sm-6 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".2s">
                         <div class="single-footer-widget">
                             <div class="widget-head">
-                                <a href="/">
-                                    <img src="assets/img/logo/footer-logo.png" alt="logo-img">
+                                <a href="https://canucksimmigration.com/">
+                                    <img src="https://canucksimmigration.com/assets/img/logo/footer-logo.png" alt="logo-img">
                                 </a>
                             </div>
                             <div class="footer-content">
@@ -830,22 +830,22 @@ if ($result === false) {
                             </div>
                             <ul class="list-items">
                                 <li>
-                                    <a href="/">
+                                    <a href="https://canucksimmigration.com/">
                                         Home
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="about.html">
+                                    <a href="https://canucksimmigration.com/about.html">
                                         About
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">
+                                    <a href="https://canucksimmigration.com/contact.html">
                                         Contact
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="blogs.php">
+                                    <a href="https://canucksimmigration.com/blogs.php">
                                         Blogs
                                     </a>
                                 </li>
@@ -859,27 +859,27 @@ if ($result === false) {
                             </div>
                             <ul class="list-items">
                                 <li>
-                                    <a href="business-investment-visa-for-canada.html">
+                                    <a href="https://canucksimmigration.com/business-investment-visa-for-canada.html">
                                         Business Investment Visa for Canada
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="canada-express-entry.html">
+                                    <a href="https://canucksimmigration.com/canada-express-entry.html">
                                         Canada Express Entry
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="judicial-review.html">
+                                    <a href="https://canucksimmigration.com/judicial-review.html">
                                         Judicial Review
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="provincial-nominee-program.html">
+                                    <a href="https://canucksimmigration.com/provincial-nominee-program.html">
                                         PNP
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="canadian-immigration-services.html">
+                                    <a href="https://canucksimmigration.com/canadian-immigration-services.html">
                                         Immigration Consulting Services
                                     </a>
                                 </li>
@@ -912,18 +912,18 @@ if ($result === false) {
             <div class="container">
                 <div class="footer-wrapper d-flex align-items-center justify-content-between">
                     <p class="wow fadeInLeft color-2" data-wow-delay=".3s">
-                        Copyright © 2026 <a href="/">Canucks Immigration</a>. All Rights Reserved. | Developed by
-                        <a href="https://aaravtech.net">Aarav Tech Services LLP</a>
+                        Copyright © 2026 <a href="https://canucksimmigration.com/">Canucks Immigration</a>. All Rights Reserved. | Developed by
+                        <a href="https://canucksimmigration.com">Canucks Immigration</a>
                     </p>
                     <ul class="footer-menu wow fadeInRight" data-wow-delay=".5s">
 
                         <li>
-                            <a href="terms-and-conditions.html">
+                            <a href="https://canucksimmigration.com/terms-and-conditions.html">
                                 Support
                             </a>
                         </li>
                         <li>
-                            <a href="privacy-policy.html">
+                            <a href="https://canucksimmigration.com/privacy-policy.html">
                                 Privacy
                             </a>
                         </li>
@@ -940,17 +940,24 @@ if ($result === false) {
         <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script src="https://canucksmigration.ca/js/main.js"></script>
-    <script src="https://canucksmigration.ca/index.js"></script>
+    <!--<< All JS Plugins >>-->
+    <script src="https://canucksimmigration.com/assets/js/jquery-3.7.1.min.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/viewport.jquery.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/gsap/gsap.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/gsap/gsap-scroll-trigger.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/gsap/gsap-split-text.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/jquery.nice-select.min.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/jquery.waypoints.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/jquery.counterup.min.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/slick.min.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/swiper-bundle.min.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/slick-animation.min.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/jquery.meanmenu.min.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/wow.min.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/circle-progress.js"></script>
+    <script src="https://canucksimmigration.com/assets/js/main.js"></script>
     <script>
         // Show/hide back to top button
         window.addEventListener('scroll', function() {
