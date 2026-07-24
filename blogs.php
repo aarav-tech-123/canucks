@@ -748,7 +748,7 @@ if ($result === false) {
                             </ul>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".8s">
+                    <div class="col-xl-4 col-sm-6 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".8s">
                         <div class="single-footer-widget">
                             <div class="widget-head">
                                 <h5>Address:</h5>
@@ -781,7 +781,7 @@ if ($result === false) {
 
                         <li>
                             <a href="https://canucksimmigration.com/terms-and-conditions.html">
-                                Support
+                                Terms & Conditions
                             </a>
                         </li>
                         <li>

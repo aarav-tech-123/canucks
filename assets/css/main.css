@@ -3085,15 +3085,15 @@ input.main-search-input::placeholder {
   position: relative;
 }
 .feature-icon-box-wrapper .icon-box-items::before {
-  position: absolute;
-  bottom: -75%;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  content: "";
-  background: var(--theme);
-  transition: 0.3s;
-  opacity: 0;
+  /* position: absolute; */
+  /* bottom: -75%; */
+  /* left: 0; */
+  /* height: 2px; */
+  /* width: 100%; */
+  /* content: ""; */
+  /* background: var(--theme); */
+  /* transition: 0.3s; */
+  /* opacity: 0; */
 }
 @media (max-width: 1399px) {
   .feature-icon-box-wrapper .icon-box-items::before {
