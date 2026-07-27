@@ -706,8 +706,8 @@ if ($result === false) {
                 </ul>
                 <div class="top-right">
                     <div class="social-icon d-flex align-items-center">
-                        <a href="hhttps://www.facebook.com/CanucksImmigration"> <i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/canucks.migration?igsh=MXdtOGx1ZWJhdHFmOA=="><i
+                        <a href="https://www.facebook.com/CanucksImmigration"> <i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/canucks.migration.ca?igsh=MTdmYTJ4NjBya2p4eA=="><i
                                 class="fab fa-instagram"></i></a>
                     </div>
 
@@ -962,9 +962,9 @@ if ($result === false) {
                                     Simplifying Canadian immigration with trusted guidance.
                                 </p>
                                 <div class="social-icon d-flex align-items-center">
-                                    <a href="hhttps://www.facebook.com/CanucksImmigration"><i
+                                    <a href="https://www.facebook.com/CanucksImmigration"><i
                                             class="fab fa-facebook-f"></i></a>
-                                    <a href="https://www.instagram.com/canucks.migration?igsh=MXdtOGx1ZWJhdHFmOA=="><i
+                                    <a href="https://www.instagram.com/canucks.migration.ca?igsh=MTdmYTJ4NjBya2p4eA=="><i
                                             class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
