@@ -77,12 +77,11 @@ if ($result === false) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://canucksimmigration.com/img/favicon.png">
     <meta name="robots" content="index, follow">
-    <meta name="title" content="<?php echo htmlspecialchars($post_meta['rank_math_title'] ?? $blog['post_title']); ?>">
+    <meta name="title" content="<?php echo htmlspecialchars_decode($post_meta['rank_math_title'] ?? $blog['post_title'], ENT_QUOTES); ?>">
     <meta name="description" content="<?php echo htmlspecialchars($post_meta['rank_math_description'] ?? 'Default meta description here.'); ?>">
     <meta name="keywords" content="<?php echo htmlspecialchars($post_meta['rank_math_focus_keyword'] ?? ''); ?>">
     <link rel="canonical" href="https://canucksimmigration.com/blogs/<?php echo $slug; ?>" />
-    <title><?php echo htmlspecialchars($post_meta['rank_math_title'] ?? $blog['post_title']); ?></title>
-
+    <title><?php echo htmlspecialchars_decode($post_meta['rank_math_title'] ?? $blog['post_title'], ENT_QUOTES); ?></title>
     <!-- CSS -->
     <link rel="shortcut icon" href="https://canucksimmigration.com/assets/img/logo/logo.png">
     <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/bootstrap.min.css">
@@ -823,7 +822,7 @@ if ($result === false) {
         <div class="container">
             <div class="banner-content">
                 <div class="banner-text">
-                    <h1><?php echo htmlspecialchars($blog['post_title']); ?></h1>
+                    <h1><?php echo htmlspecialchars_decode($blog['post_title'], ENT_QUOTES); ?></h1>
                 </div>
                 <div class="banner-meta">
                     <span><i class="fas fa-calendar-alt"></i> <?php echo date("F j, Y", strtotime($blog['post_date'])); ?></span>
