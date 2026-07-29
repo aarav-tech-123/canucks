@@ -184,6 +184,7 @@ if ($result === false) {
             /* max-width: 800px; */
             margin: 0 auto;
             padding: 20px 0 20px;
+            max-width: 900px;
         }
 
         /* ===== BANNER SECTION ===== */
@@ -851,7 +852,7 @@ if ($result === false) {
     <section class="blog-content-section">
         <div class="container">
             <?php if ($img_url): ?>
-                <img src="<?php echo $img_url; ?>" class="blog-image" style="border-radius: 20px; width: 100%; max-height: 500px; object-fit: cover;"
+                <img src="<?php echo $img_url; ?>" class="blog-image" style="border-radius: 20px; width: 100%;object-fit: cover; margin-bottom:20px"
                     alt="<?php echo htmlspecialchars($blog['post_title']); ?>">
             <?php endif; ?>
 
