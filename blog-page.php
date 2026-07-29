@@ -689,7 +689,7 @@ echo "Decoded: " . html_entity_decode($post_meta['rank_math_title'] ?? '', ENT_Q
             background: var(--bg);
         }
 
-         .wp-block-list li {
+        .wp-block-list li {
             list-style-type: disc;
         }
     </style>
