@@ -823,7 +823,7 @@ if ($result === false) {
     ?>
 
     <section class="banner-section">
-        <div class="container" style="max-width: 900px;">
+        <div class="container">
             <div class="banner-content">
                 <div class="banner-text">
                     <h1><?php echo htmlspecialchars_decode($blog['post_title'], ENT_QUOTES); ?></h1>
@@ -849,7 +849,7 @@ if ($result === false) {
 
     <!-- Blog Content Section -->
     <section class="blog-content-section">
-        <div class="container">
+        <div class="container" style="max-width: 900px;">
             <?php if ($img_url): ?>
                 <img src="<?php echo $img_url; ?>" class="blog-image" style="border-radius: 20px; width: 100%;object-fit: cover; margin-bottom:20px"
                     alt="<?php echo htmlspecialchars($blog['post_title']); ?>">
