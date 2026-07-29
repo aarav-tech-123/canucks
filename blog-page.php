@@ -65,6 +65,9 @@ $result = $conn->query($sql);
 if ($result === false) {
     die("❌ SQL Error: " . $conn->error);
 }
+echo "ID" . $blog['ID'] . "<br>";
+echo "Post Title: " . $blog['post_title'] . "<br>";
+echo "Rank Math Title: " . ($post_meta['rank_math_title'] ?? 'Not Set');
 
 
 ?>
