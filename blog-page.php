@@ -80,7 +80,7 @@ if ($result === false) {
     <meta name="title" content="<?php echo htmlspecialchars_decode($post_meta['rank_math_title'] ?? $blog['post_title'], ENT_QUOTES); ?>">
     <meta name="description" content="<?php echo htmlspecialchars($post_meta['rank_math_description'] ?? 'Default meta description here.'); ?>">
     <meta name="keywords" content="<?php echo htmlspecialchars($post_meta['rank_math_focus_keyword'] ?? ''); ?>">
-    <link rel="canonical" href="https://canucksimmigration.com/blogs/<?php echo $slug; ?>" />
+    <link rel="canonical" href="https://www.canucksimmigration.com/blogs/<?php echo $slug; ?>" />
     <title><?php echo htmlspecialchars_decode($post_meta['rank_math_title'] ?? $blog['post_title'], ENT_QUOTES); ?></title>
     <!-- CSS -->
     <link rel="shortcut icon" href="https://canucksimmigration.com/assets/img/logo/logo.png">

@@ -38,7 +38,7 @@ if ($result === false) {
     <title>Explore Our Blog Section | Learn, Apply & Grow with Insights</title>
     <meta name="description"
         content="Unlock expert articles on marketing, design & technology. Learn what works, apply it & see results. Browse CanucksMigration blogs now and grow smarter today.">
-    <link rel="canonical" href="https://canucksimmigration.com/blogs.php" />
+    <link rel="canonical" href="https://www.canucksimmigration.com/blogs.php" />
 
     <!-- CSS -->
     <link rel="shortcut icon" href="https://canucksimmigration.com/assets/img/logo/logo.png">
