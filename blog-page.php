@@ -688,6 +688,10 @@ echo "Decoded: " . html_entity_decode($post_meta['rank_math_title'] ?? '', ENT_Q
         .blog-cta-container {
             background: var(--bg);
         }
+
+         .wp-block-list li {
+            list-style-type: disc;
+        }
     </style>
 </head>
 
