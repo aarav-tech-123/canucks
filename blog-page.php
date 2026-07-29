@@ -66,8 +66,13 @@ if ($result === false) {
     die("❌ SQL Error: " . $conn->error);
 }
 echo "ID" . $blog['ID'] . "<br>";
-echo "Post Title: " . $blog['post_title'] . "<br>";
-echo "Rank Math Title: " . ($post_meta['rank_math_title'] ?? 'Not Set');
+echo "<h3>Post Title</h3>";
+echo "Raw: " . $blog['post_title'] . "<br>";
+echo "Decoded: " . html_entity_decode($blog['post_title'], ENT_QUOTES | ENT_HTML5, 'UTF-8') . "<br><br>";
+
+echo "<h3>Rank Math Title</h3>";
+echo "Raw: " . ($post_meta['rank_math_title'] ?? 'Not Set') . "<br>";
+echo "Decoded: " . html_entity_decode($post_meta['rank_math_title'] ?? '', ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
 
 ?>
