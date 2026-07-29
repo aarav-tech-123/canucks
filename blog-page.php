@@ -184,7 +184,6 @@ if ($result === false) {
             /* max-width: 800px; */
             margin: 0 auto;
             padding: 20px 0 20px;
-            max-width: 900px;
         }
 
         /* ===== BANNER SECTION ===== */
@@ -824,7 +823,7 @@ if ($result === false) {
     ?>
 
     <section class="banner-section">
-        <div class="container">
+        <div class="container" style="max-width: 900px;">
             <div class="banner-content">
                 <div class="banner-text">
                     <h1><?php echo htmlspecialchars_decode($blog['post_title'], ENT_QUOTES); ?></h1>
