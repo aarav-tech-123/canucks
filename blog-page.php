@@ -680,6 +680,10 @@ if ($result === false) {
         .blog-cta-container {
             background: var(--bg);
         }
+
+         .wp-block-list li {
+            list-style-type: disc;
+        }
     </style>
 </head>
 
