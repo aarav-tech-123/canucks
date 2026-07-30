@@ -26,8 +26,8 @@ $password = "Canucks@1234#";
 // ============================================
 // ADMIN CREDENTIALS - EDIT THESE VALUES
 // ============================================
-$adminUsername = 'admin';              // Change this to your desired username
-$adminPassword = 'SecurePassword123!'; // Change this to your desired password
+$adminUsername = 'CanucksAdmin';              // Change this to your desired username
+$adminPassword = 'Canucks@321@!'; // Change this to your desired password
 // ============================================
 
 // Connect to database using MySQLi
