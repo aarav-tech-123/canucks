@@ -41,16 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
         $error_message = "Please enter your name or payment ID.";
     }
 }
-
-// Get all payments for admin reference (optional - can be removed)
-$all_payments = [];
-$sql_all = "SELECT * FROM payments ORDER BY created_at DESC LIMIT 50";
-$result_all = $conn->query($sql_all);
-if ($result_all && $result_all->num_rows > 0) {
-    while ($row = $result_all->fetch_assoc()) {
-        $all_payments[] = $row;
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -122,7 +112,6 @@ if ($result_all && $result_all->num_rows > 0) {
             user-select: none;
         }
 
-        /* ===== BANNER SECTION ===== */
         .banner-section {
             padding: 60px 0 70px;
             background: var(--gradient-primary);
@@ -245,7 +234,6 @@ if ($result_all && $result_all->num_rows > 0) {
             }
         }
 
-        /* ===== PAYMENT SECTION ===== */
         .payment-section {
             padding: 60px 0 80px;
             background: var(--bg);
@@ -376,7 +364,6 @@ if ($result_all && $result_all->num_rows > 0) {
             font-weight: 500;
         }
 
-        /* Payment Details Card */
         .payment-details {
             margin-top: 30px;
             border: 2px solid var(--border);
@@ -446,11 +433,13 @@ if ($result_all && $result_all->num_rows > 0) {
             align-items: center;
             justify-content: center;
             gap: 12px;
+            text-decoration: none;
         }
 
         .payment-details .btn-pay:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
+            color: #fff;
         }
 
         .payment-details .btn-pay:disabled {
@@ -459,7 +448,6 @@ if ($result_all && $result_all->num_rows > 0) {
             transform: none;
         }
 
-        /* ===== TERMS SECTION ===== */
         .terms-section {
             padding: 40px 0 60px;
             background: var(--white);
@@ -575,6 +563,13 @@ if ($result_all && $result_all->num_rows > 0) {
             display: flex;
         }
 
+        .cta-section {
+            padding: 60px 0;
+            text-align: center;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+        }
+
         @media (max-width: 768px) {
             .payment-wrapper {
                 padding: 30px 20px;
@@ -606,17 +601,23 @@ if ($result_all && $result_all->num_rows > 0) {
 
 <body>
 
-    <!-- Header -->
+    <!-- Header Top Start -->
     <div class="header-top-section fix">
         <div class="container">
             <div class="header-top-wrapper">
                 <ul class="contact-list">
-                    <li><i class="far fa-envelope"></i><a href="mailto:info@canucksimmigration.com" class="link">info@canucksimmigration.com</a></li>
-                    <li><i class="fas fa-map-marker-alt"></i>6060 Silver Drive, Burnaby BC V5H 2Y3</li>
+                    <li>
+                        <i class="far fa-envelope"></i>
+                        <a href="mailto:info@canucksimmigration.com" class="link">info@canucksimmigration.com</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        6060 Silver Drive, Burnaby BC V5H 2Y3
+                    </li>
                 </ul>
                 <div class="top-right">
                     <div class="social-icon d-flex align-items-center">
-                        <a href="https://www.facebook.com/CanucksImmigration"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/CanucksImmigration"> <i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/canucks.migration.ca"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
@@ -624,6 +625,7 @@ if ($result_all && $result_all->num_rows > 0) {
         </div>
     </div>
 
+    <!-- Header Area Start -->
     <header class="header-section-1">
         <div id="header-sticky" class="header-1">
             <div class="container-fluid">
@@ -639,8 +641,12 @@ if ($result_all && $result_all->num_rows > 0) {
                                 <div class="main-menu">
                                     <nav id="mobile-menu">
                                         <ul>
-                                            <li><a href="https://canucksimmigration.com/">Home</a></li>
-                                            <li><a href="https://canucksimmigration.com/about.html">About</a></li>
+                                            <li class="has-dropdown active menu-thumb">
+                                                <a href="https://canucksimmigration.com/">Home</a>
+                                            </li>
+                                            <li>
+                                                <a href="https://canucksimmigration.com/about.html">About</a>
+                                            </li>
                                             <li>
                                                 <a href="javascript:void(0)">Services <i class="fas fa-angle-down"></i></a>
                                                 <ul class="submenu">
@@ -651,8 +657,12 @@ if ($result_all && $result_all->num_rows > 0) {
                                                     <li><a href="https://canucksimmigration.com/canadian-immigration-services.html">Immigration Consulting Services</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="https://canucksimmigration.com/blogs.php">Blog</a></li>
-                                            <li><a href="https://canucksimmigration.com/contact.html">Contact</a></li>
+                                            <li>
+                                                <a href="https://canucksimmigration.com/blogs.php">Blog</a>
+                                            </li>
+                                            <li>
+                                                <a href="https://canucksimmigration.com/contact.html">Contact</a>
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -660,10 +670,14 @@ if ($result_all && $result_all->num_rows > 0) {
                         </div>
                         <div class="header-right d-flex justify-content-end align-items-center">
                             <div class="contact-info">
-                                <div class="icon"><img src="https://canucksimmigration.com/assets/img/call.png" alt="img"></div>
+                                <div class="icon">
+                                    <img src="https://canucksimmigration.com/assets/img/call.png" alt="img">
+                                </div>
                                 <div class="content">
                                     <p>Phone:</p>
-                                    <h6><a href="tel:+18075007906">+1-8075007906</a></h6>
+                                    <h6>
+                                        <a href="tel:+18075007906">+1-8075007906</a>
+                                    </h6>
                                 </div>
                             </div>
                             <div class="header__hamburger d-lg-none my-auto">
@@ -732,7 +746,7 @@ if ($result_all && $result_all->num_rows > 0) {
                         </button>
                     </div>
                     <div class="search-hint">
-                        <i class="fas fa-info-circle"></i> Example: "John Doe" or "PAY-001"
+                        <i class="fas fa-info-circle"></i> Example: "John Doe" or "1" (for payment ID)
                     </div>
                 </form>
 
@@ -750,7 +764,7 @@ if ($result_all && $result_all->num_rows > 0) {
 
                     <div class="detail-row">
                         <span class="label">Payment ID</span>
-                        <span class="value"><?php echo htmlspecialchars($payment_data['id'] ?? 'N/A'); ?></span>
+                        <span class="value">#<?php echo htmlspecialchars($payment_data['id'] ?? 'N/A'); ?></span>
                     </div>
                     <div class="detail-row">
                         <span class="label">Customer Name</span>
@@ -759,16 +773,6 @@ if ($result_all && $result_all->num_rows > 0) {
                     <div class="detail-row">
                         <span class="label">Email Address</span>
                         <span class="value"><?php echo htmlspecialchars($payment_data['customer_email'] ?? 'N/A'); ?></span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="label">Amount Due</span>
-                        <span class="value amount">CAD $<?php echo number_format($payment_data['amount'] ?? 0.00, 2); ?></span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="label">Payment Status</span>
-                        <span class="value" style="color: <?php echo ($payment_data['payment_status'] ?? 'pending') === 'paid' ? '#28a745' : '#ffc107'; ?>;">
-                            <?php echo ucfirst(htmlspecialchars($payment_data['payment_status'] ?? 'Pending')); ?>
-                        </span>
                     </div>
                     <div class="detail-row">
                         <span class="label">Date Created</span>
@@ -833,7 +837,7 @@ if ($result_all && $result_all->num_rows > 0) {
     </section>
 
     <!-- ===== CTA SECTION ===== -->
-    <section class="cta-section" style="padding: 60px 0; text-align: center; background: var(--bg); border-top: 1px solid var(--border);">
+    <section class="cta-section">
         <div class="container">
             <div style="max-width: 700px; margin: 0 auto;">
                 <h2 style="font-size: 36px; color: var(--header); font-weight: 700; margin-bottom: 16px;">
