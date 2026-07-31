@@ -3,9 +3,10 @@
 // Database connection
 // --------------------
 $servername = "localhost";
-$username = "u868210921_LWn5H";
-$password = ")rkw_t0FWV";
-$dbname = "u868210921_sO6aT";
+$dbname = "u868210921_canucks";
+$username = "u868210921_canucks";
+$password = "Canucks@1234#";
+
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
