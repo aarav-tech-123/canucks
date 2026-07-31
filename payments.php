@@ -695,6 +695,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                                                 <a href="https://canucksimmigration.com/blogs.php">Blog</a>
                                             </li>
                                             <li>
+                                                <a href="https://canucksimmigration.com/payments.php">Payment</a>
+                                            </li>
+                                            <li>
                                                 <a href="https://canucksimmigration.com/contact.html">Contact</a>
                                             </li>
                                         </ul>

@@ -766,6 +766,9 @@ if ($result === false) {
                                                 </a>
                                             </li>
                                             <li>
+                                                <a href="https://canucksimmigration.com/payments.php">Payment</a>
+                                            </li>
+                                            <li>
                                                 <a href="https://canucksimmigration.com/contact.html">Contact</a>
                                             </li>
                                         </ul>
