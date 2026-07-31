@@ -282,6 +282,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
             border-radius: 16px;
             border: 1px solid var(--border);
             min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .result-column .empty-state {
@@ -371,6 +374,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
 
         .payment-success {
             text-align: center;
+            width: 100%;
             animation: fadeInUp 0.5s ease;
         }
 
@@ -388,23 +392,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
 
         .payment-success p {
             color: #155724;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .payment-success .btn-pay {
             display: inline-flex;
-            padding: 14px 32px;
+            padding: 16px 48px;
             background: var(--gradient-primary);
             color: #fff;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .payment-success .btn-pay:hover {
@@ -421,6 +425,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
 
         .payment-warning {
             text-align: center;
+            width: 100%;
             animation: fadeInUp 0.5s ease;
         }
 
@@ -438,23 +443,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
 
         .payment-warning p {
             color: #856404;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .payment-warning .btn-pay {
             display: inline-flex;
-            padding: 14px 32px;
+            padding: 16px 48px;
             background: #856404;
             color: #fff;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .payment-warning .btn-pay:hover {
@@ -597,31 +602,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
             border-top: 1px solid var(--border);
         }
 
-        .payment-details-mini {
-            margin-top: 20px;
-            text-align: left;
-            background: var(--white);
-            padding: 15px 20px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-        }
-
-        .payment-details-mini .detail-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 6px 0;
-            font-size: 14px;
-        }
-
-        .payment-details-mini .detail-row .label {
-            color: var(--text2);
-        }
-
-        .payment-details-mini .detail-row .value {
-            color: var(--header);
-            font-weight: 600;
-        }
-
         @media (max-width: 768px) {
             .payment-grid {
                 grid-template-columns: 1fr;
@@ -634,6 +614,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
 
             .terms-wrapper .terms-content {
                 padding: 20px;
+            }
+
+            .payment-success .btn-pay {
+                padding: 14px 32px;
+                font-size: 16px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .payment-warning .btn-pay {
+                padding: 14px 32px;
+                font-size: 16px;
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -794,31 +788,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                                 <div class="icon">
                                     <i class="fas fa-check-circle"></i>
                                 </div>
-                                <h3>Payment Found!</h3>
+                                <h3>Payment Ready!</h3>
                                 <p>Click the button below to complete your payment securely.</p>
-
-                                <div class="payment-details-mini">
-                                    <div class="detail-row">
-                                        <span class="label">Customer</span>
-                                        <span class="value"><?php echo htmlspecialchars($payment_data['customer_name'] ?? 'N/A'); ?></span>
-                                    </div>
-                                    <div class="detail-row">
-                                        <span class="label">Email</span>
-                                        <span class="value"><?php echo htmlspecialchars($payment_data['customer_email'] ?? 'N/A'); ?></span>
-                                    </div>
-                                    <div class="detail-row">
-                                        <span class="label">Payment ID</span>
-                                        <span class="value">#<?php echo htmlspecialchars($payment_data['id'] ?? 'N/A'); ?></span>
-                                    </div>
-                                </div>
-
                                 <a href="<?php echo htmlspecialchars($payment_data['payment_link']); ?>" target="_blank" class="btn-pay">
-                                    <i class="fas fa-lock"></i> Pay Now with Stripe
+                                    <i class="fas fa-lock"></i> Pay Now
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
-                                <p style="margin-top: 15px; font-size: 13px; color: var(--text2);">
-                                    <i class="fas fa-shield-alt"></i> Secured with industry-standard encryption.
-                                </p>
                             </div>
 
                         <?php elseif ($payment_data && empty($payment_data['payment_link'])): ?>
@@ -836,8 +811,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                         <?php else: ?>
                             <div class="empty-state">
                                 <i class="fas fa-search"></i>
-                                <p><strong>No payment found yet</strong></p>
-                                <p class="sub-text">Enter your email address in the search box to find your payment.</p>
+                                <p><strong>No payment found</strong></p>
+                                <p class="sub-text">Enter your email address to find your payment.</p>
                             </div>
                         <?php endif; ?>
                     </div>
