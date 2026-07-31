@@ -250,53 +250,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
             border: 1px solid var(--border);
         }
 
-        .payment-wrapper .step-indicator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 40px;
-        }
-
-        .payment-wrapper .step-indicator .step {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .payment-wrapper .step-indicator .step .num {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: var(--border);
-            color: var(--text2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .payment-wrapper .step-indicator .step.active .num {
-            background: var(--theme);
-            color: #fff;
-        }
-
-        .payment-wrapper .step-indicator .step.completed .num {
-            background: #28a745;
-            color: #fff;
-        }
-
-        .payment-wrapper .step-indicator .line {
-            width: 40px;
-            height: 2px;
-            background: var(--border);
-        }
-
-        .payment-wrapper .step-indicator .line.active {
-            background: var(--theme);
-        }
-
         .payment-wrapper h2 {
             font-size: 28px;
             font-weight: 700;
@@ -452,6 +405,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
             transform: none;
         }
 
+        .payment-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .payment-status.paid {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .payment-status.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .payment-status.failed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
         .terms-section {
             padding: 40px 0 60px;
             background: var(--white);
@@ -588,14 +564,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                 justify-content: center;
             }
 
-            .payment-wrapper .step-indicator {
-                flex-wrap: wrap;
-            }
-
-            .payment-wrapper .step-indicator .line {
-                width: 20px;
-            }
-
             .terms-wrapper .terms-content {
                 padding: 20px;
             }
@@ -721,24 +689,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
     <section class="payment-section">
         <div class="container">
             <div class="payment-wrapper">
-                <!-- Step Indicator -->
-                <div class="step-indicator">
-                    <div class="step <?php echo $payment_data ? 'completed' : 'active'; ?>">
-                        <span class="num">1</span>
-                        <span>Find Payment</span>
-                    </div>
-                    <div class="line <?php echo $payment_data ? 'active' : ''; ?>"></div>
-                    <div class="step <?php echo $payment_data ? 'active' : ''; ?>">
-                        <span class="num">2</span>
-                        <span>Review & Pay</span>
-                    </div>
-                    <div class="line"></div>
-                    <div class="step">
-                        <span class="num">3</span>
-                        <span>Confirmation</span>
-                    </div>
-                </div>
-
                 <h2>Find Your Payment</h2>
                 <p class="subtitle">Enter your full name, email address, or the payment ID provided to you.</p>
 
@@ -783,6 +733,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                         <span class="label">Email Address</span>
                         <span class="value"><?php echo htmlspecialchars($payment_data['customer_email'] ?? 'N/A'); ?></span>
                     </div>
+                    <?php if (isset($payment_data['amount']) && !empty($payment_data['amount'])): ?>
+                        <div class="detail-row">
+                            <span class="label">Amount</span>
+                            <span class="value" style="color: var(--theme); font-size: 20px; font-weight: 700;">
+                                $<?php echo number_format($payment_data['amount'], 2); ?> CAD
+                            </span>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (isset($payment_data['payment_status']) && !empty($payment_data['payment_status'])): ?>
+                        <div class="detail-row">
+                            <span class="label">Status</span>
+                            <span class="value">
+                                <span class="payment-status <?php echo strtolower($payment_data['payment_status']); ?>">
+                                    <?php echo ucfirst(htmlspecialchars($payment_data['payment_status'])); ?>
+                                </span>
+                            </span>
+                        </div>
+                    <?php endif; ?>
                     <div class="detail-row">
                         <span class="label">Date Created</span>
                         <span class="value"><?php echo date("F j, Y", strtotime($payment_data['created_at'] ?? 'now')); ?></span>
@@ -994,18 +962,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
             const details = document.querySelector('.payment-details');
             if (details && details.classList.contains('show')) {
                 details.style.animation = 'fadeInUp 0.5s ease';
-            }
-        });
-
-        // Ensure input retains value
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('search_term');
-            if (searchInput && searchInput.value === '') {
-                const urlParams = new URLSearchParams(window.location.search);
-                const searchParam = urlParams.get('search');
-                if (searchParam) {
-                    searchInput.value = searchParam;
-                }
             }
         });
     </script>
