@@ -18,16 +18,17 @@ if ($conn->connect_error) {
 // --------------------
 $payment_data = null;
 $error_message = '';
+$search_term_value = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
-    $search_term = trim($_POST['search_term']);
+    $search_term_value = trim($_POST['search_term']);
 
-    if (!empty($search_term)) {
+    if (!empty($search_term_value)) {
         // Search by customer_name or id
         $sql = "SELECT * FROM payments WHERE customer_name LIKE ? OR id = ?";
         $stmt = $conn->prepare($sql);
-        $search_pattern = "%" . $search_term . "%";
-        $stmt->bind_param("ss", $search_pattern, $search_term);
+        $search_pattern = "%" . $search_term_value . "%";
+        $stmt->bind_param("ss", $search_pattern, $search_term_value);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -324,12 +325,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
             font-size: 16px;
             transition: all 0.3s;
             background: var(--bg);
+            color: var(--header);
         }
 
         .search-form .input-group input:focus {
             outline: none;
             border-color: var(--theme);
             box-shadow: 0 0 0 4px rgba(226, 9, 53, 0.1);
+        }
+
+        .search-form .input-group input::placeholder {
+            color: var(--text2);
         }
 
         .search-form .input-group .btn-search {
@@ -409,12 +415,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
         .payment-details .detail-row .value {
             color: var(--header);
             font-weight: 600;
-        }
-
-        .payment-details .detail-row .value.amount {
-            color: var(--theme);
-            font-size: 24px;
-            font-weight: 700;
         }
 
         .payment-details .btn-pay {
@@ -738,9 +738,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                 <h2>Find Your Payment</h2>
                 <p class="subtitle">Enter your full name or the payment ID provided to you.</p>
 
-                <form method="POST" class="search-form">
+                <form method="POST" class="search-form" id="paymentForm">
                     <div class="input-group">
-                        <input type="text" name="search_term" placeholder="Enter your name or payment ID..." value="<?php echo isset($_POST['search_term']) ? htmlspecialchars($_POST['search_term']) : ''; ?>" required>
+                        <input type="text"
+                            name="search_term"
+                            id="search_term"
+                            placeholder="Enter your name or payment ID..."
+                            value="<?php echo htmlspecialchars($search_term_value); ?>"
+                            required>
                         <button type="submit" name="lookup" class="btn-search">
                             <i class="fas fa-search"></i> Search
                         </button>
@@ -985,6 +990,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
             const details = document.querySelector('.payment-details');
             if (details && details.classList.contains('show')) {
                 details.style.animation = 'fadeInUp 0.5s ease';
+            }
+        });
+
+        // Ensure input retains value (additional safeguard)
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('search_term');
+            if (searchInput && searchInput.value === '') {
+                const urlParams = new URLSearchParams(window.location.search);
+                const searchParam = urlParams.get('search');
+                if (searchParam) {
+                    searchInput.value = searchParam;
+                }
             }
         });
     </script>
