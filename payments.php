@@ -7,7 +7,6 @@ $dbname = "u868210921_canucks";
 $username = "u868210921_canucks";
 $password = "Canucks@1234#";
 
-
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
@@ -328,18 +327,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
             font-weight: 500;
         }
 
-        .payment-details {
+        .payment-success {
             margin-top: 30px;
-            border: 2px solid var(--border);
+            background: #d4edda;
+            border: 2px solid #28a745;
             border-radius: 16px;
             padding: 30px;
-            background: var(--bg);
+            text-align: center;
             display: none;
         }
 
-        .payment-details.show {
+        .payment-success.show {
             display: block;
             animation: fadeInUp 0.5s ease;
+        }
+
+        .payment-success .icon {
+            font-size: 60px;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+
+        .payment-success h3 {
+            color: #155724;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .payment-success p {
+            color: #155724;
+            margin-bottom: 20px;
+        }
+
+        .payment-success .btn-pay {
+            display: inline-flex;
+            padding: 16px 40px;
+            background: var(--gradient-primary);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .payment-success .btn-pay:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            color: #fff;
+        }
+
+        .payment-success .btn-pay:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         @keyframes fadeInUp {
@@ -352,81 +397,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        .payment-details .detail-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .payment-details .detail-row:last-child {
-            border-bottom: none;
-        }
-
-        .payment-details .detail-row .label {
-            color: var(--text2);
-            font-weight: 500;
-        }
-
-        .payment-details .detail-row .value {
-            color: var(--header);
-            font-weight: 600;
-        }
-
-        .payment-details .btn-pay {
-            width: 100%;
-            padding: 16px;
-            background: var(--gradient-primary);
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .payment-details .btn-pay:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            color: #fff;
-        }
-
-        .payment-details .btn-pay:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .payment-status {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .payment-status.paid {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .payment-status.pending {
-            background: #fff3cd;
-            color: #856404;
-        }
-
-        .payment-status.failed {
-            background: #f8d7da;
-            color: #721c24;
         }
 
         .terms-section {
@@ -672,7 +642,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                 <div class="banner-badge"><i class="fas fa-credit-card"></i> Secure Payment</div>
                 <div class="banner-text">
                     <h1>Make a Payment</h1>
-                    <p>Enter your name, email, or payment ID to view and complete your payment securely.</p>
+                    <p>Enter your name, email, or payment ID to complete your payment securely.</p>
                 </div>
                 <div class="banner-buttons">
                     <a href="https://canucksimmigration.com/" class="banner-btn banner-btn-secondary">
@@ -716,62 +686,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                     </div>
                 <?php endif; ?>
 
-                <!-- Payment Details -->
-                <div class="payment-details <?php echo $payment_data ? 'show' : ''; ?>">
-                    <h4 style="color: var(--header); font-weight: 600; margin-bottom: 20px;">
-                        <i class="fas fa-file-invoice" style="color: var(--theme);"></i> Payment Details
-                    </h4>
-
-                    <div class="detail-row">
-                        <span class="label">Payment ID</span>
-                        <span class="value">#<?php echo htmlspecialchars($payment_data['id'] ?? 'N/A'); ?></span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="label">Customer Name</span>
-                        <span class="value"><?php echo htmlspecialchars($payment_data['customer_name'] ?? 'N/A'); ?></span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="label">Email Address</span>
-                        <span class="value"><?php echo htmlspecialchars($payment_data['customer_email'] ?? 'N/A'); ?></span>
-                    </div>
-                    <?php if (isset($payment_data['amount']) && !empty($payment_data['amount'])): ?>
-                        <div class="detail-row">
-                            <span class="label">Amount</span>
-                            <span class="value" style="color: var(--theme); font-size: 20px; font-weight: 700;">
-                                $<?php echo number_format($payment_data['amount'], 2); ?> CAD
-                            </span>
+                <!-- Payment Success - Pay Now Button -->
+                <?php if ($payment_data && isset($payment_data['payment_link']) && !empty($payment_data['payment_link'])): ?>
+                    <div class="payment-success show">
+                        <div class="icon">
+                            <i class="fas fa-check-circle"></i>
                         </div>
-                    <?php endif; ?>
-                    <?php if (isset($payment_data['payment_status']) && !empty($payment_data['payment_status'])): ?>
-                        <div class="detail-row">
-                            <span class="label">Status</span>
-                            <span class="value">
-                                <span class="payment-status <?php echo strtolower($payment_data['payment_status']); ?>">
-                                    <?php echo ucfirst(htmlspecialchars($payment_data['payment_status'])); ?>
-                                </span>
-                            </span>
-                        </div>
-                    <?php endif; ?>
-                    <div class="detail-row">
-                        <span class="label">Date Created</span>
-                        <span class="value"><?php echo date("F j, Y", strtotime($payment_data['created_at'] ?? 'now')); ?></span>
-                    </div>
-
-                    <?php if (isset($payment_data['payment_link']) && !empty($payment_data['payment_link'])): ?>
+                        <h3>Payment Found!</h3>
+                        <p>Click the button below to complete your payment securely with Stripe.</p>
                         <a href="<?php echo htmlspecialchars($payment_data['payment_link']); ?>" target="_blank" class="btn-pay">
                             <i class="fas fa-lock"></i> Pay Now with Stripe
                             <i class="fas fa-arrow-right"></i>
                         </a>
-                    <?php else: ?>
-                        <button class="btn-pay" disabled>
-                            <i class="fas fa-exclamation-triangle"></i> Payment Link Not Available
-                        </button>
-                    <?php endif; ?>
-
-                    <p style="font-size: 13px; color: var(--text2); margin-top: 15px; text-align: center;">
-                        <i class="fas fa-shield-alt"></i> Your payment is secured with industry-standard encryption.
-                    </p>
-                </div>
+                        <p style="margin-top: 15px; font-size: 13px; color: var(--text2);">
+                            <i class="fas fa-shield-alt"></i> Your payment is secured with industry-standard encryption.
+                        </p>
+                    </div>
+                <?php elseif ($payment_data && empty($payment_data['payment_link'])): ?>
+                    <div class="payment-success show" style="background: #fff3cd; border-color: #ffc107;">
+                        <div class="icon" style="color: #856404;">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 style="color: #856404;">Payment Link Not Available</h3>
+                        <p style="color: #856404;">Please contact our support team to complete your payment.</p>
+                        <a href="https://canucksimmigration.com/contact.html" class="btn-pay" style="background: #856404;">
+                            <i class="fas fa-headset"></i> Contact Support
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -958,11 +900,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
             });
         });
 
-        // Animate payment details when they appear
+        // Animate payment success when it appears
         document.addEventListener('DOMContentLoaded', function() {
-            const details = document.querySelector('.payment-details');
-            if (details && details.classList.contains('show')) {
-                details.style.animation = 'fadeInUp 0.5s ease';
+            const success = document.querySelector('.payment-success');
+            if (success && success.classList.contains('show')) {
+                success.style.animation = 'fadeInUp 0.5s ease';
             }
         });
     </script>
