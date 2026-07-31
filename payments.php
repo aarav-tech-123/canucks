@@ -2,11 +2,10 @@
 // --------------------
 // Database connection
 // --------------------
-
 $servername = "localhost";
-$username = "u868210921_canucks";
-$password = "Canucks@1234#";
-$dbname = "u868210921_canucks";
+$username = "u868210921_LWn5H";
+$password = ")rkw_t0FWV";
+$dbname = "u868210921_sO6aT";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -25,11 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
     $search_term_value = trim($_POST['search_term']);
 
     if (!empty($search_term_value)) {
-        // Search by customer_name or id
-        $sql = "SELECT * FROM payments WHERE customer_name LIKE ? OR id = ?";
+        // Search by customer_name, email, or id
+        $sql = "SELECT * FROM payments WHERE customer_name LIKE ? OR customer_email LIKE ? OR id = ?";
         $stmt = $conn->prepare($sql);
         $search_pattern = "%" . $search_term_value . "%";
-        $stmt->bind_param("ss", $search_pattern, $search_term_value);
+        $stmt->bind_param("sss", $search_pattern, $search_pattern, $search_term_value);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -40,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
         }
         $stmt->close();
     } else {
-        $error_message = "Please enter your name or payment ID.";
+        $error_message = "Please enter your name, email, or payment ID.";
     }
 }
 ?>
@@ -360,6 +359,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
             font-size: 13px;
             color: var(--text2);
             margin-top: 12px;
+        }
+
+        .search-hint i {
+            margin-right: 4px;
         }
 
         .error-message {
@@ -700,7 +703,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                 <div class="banner-badge"><i class="fas fa-credit-card"></i> Secure Payment</div>
                 <div class="banner-text">
                     <h1>Make a Payment</h1>
-                    <p>Enter your name or payment ID to view and complete your payment securely.</p>
+                    <p>Enter your name, email, or payment ID to view and complete your payment securely.</p>
                 </div>
                 <div class="banner-buttons">
                     <a href="https://canucksimmigration.com/" class="banner-btn banner-btn-secondary">
@@ -737,14 +740,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                 </div>
 
                 <h2>Find Your Payment</h2>
-                <p class="subtitle">Enter your full name or the payment ID provided to you.</p>
+                <p class="subtitle">Enter your full name, email address, or the payment ID provided to you.</p>
 
                 <form method="POST" class="search-form" id="paymentForm">
                     <div class="input-group">
                         <input type="text"
                             name="search_term"
                             id="search_term"
-                            placeholder="Enter your name or payment ID..."
+                            placeholder="Enter your name, email, or payment ID..."
                             value="<?php echo htmlspecialchars($search_term_value); ?>"
                             required>
                         <button type="submit" name="lookup" class="btn-search">
@@ -752,7 +755,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                         </button>
                     </div>
                     <div class="search-hint">
-                        <i class="fas fa-info-circle"></i> Example: "John Doe" or "1" (for payment ID)
+                        <i class="fas fa-info-circle"></i> Example: "John Doe", "john@email.com", or "1" (payment ID)
                     </div>
                 </form>
 
@@ -994,7 +997,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
             }
         });
 
-        // Ensure input retains value (additional safeguard)
+        // Ensure input retains value
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('search_term');
             if (searchInput && searchInput.value === '') {
