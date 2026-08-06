@@ -493,8 +493,8 @@ if ($result === false) {
                     <div class="header-main">
                         <div class="header-left">
                             <div class="logo">
-                                <a href="https://canucksimmigration.com/" class="header-logo">
-                                    <img src="https://canucksimmigration.com/assets/img/logo/logo.png" alt="logo-img"
+                                <a href="https://www.canucksimmigration.com/" class="header-logo">
+                                    <img src="https://www.canucksimmigration.com/assets/img/logo/logo.png" alt="logo-img"
                                         style="width: 100px; height: 90px;">
                                 </a>
                             </div>
@@ -503,38 +503,38 @@ if ($result === false) {
                                     <nav id="mobile-menu">
                                         <ul>
                                             <li class="has-dropdown active menu-thumb">
-                                                <a href="https://canucksimmigration.com/">
+                                                <a href="https://www.canucksimmigration.com/">
                                                     Home
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="https://canucksimmigration.com/about.html">About</a>
+                                                <a href="https://www.canucksimmigration.com/about.html">About</a>
                                             </li>
                                             <li>
                                                 <a href="javascript:void(0)">Services <i class="fas fa-angle-down"></i>
                                                 </a>
                                                 <ul class="submenu">
-                                                    <li><a href="https://canucksimmigration.com/business-investment-visa-for-canada.html">Business
+                                                    <li><a href="https://www.canucksimmigration.com/business-investment-visa-for-canada.html">Business
                                                             Investment Visa for Canada</a>
                                                     </li>
-                                                    <li><a href="https://canucksimmigration.com/canada-express-entry.html">Canada Express Entry</a>
+                                                    <li><a href="https://www.canucksimmigration.com/canada-express-entry.html">Canada Express Entry</a>
                                                     </li>
-                                                    <li><a href="https://canucksimmigration.com/judicial-review.html">Judicial Review</a></li>
-                                                    <li><a href="https://canucksimmigration.com/provincial-nominee-program.html">PNP</a></li>
-                                                    <li><a href="https://canucksimmigration.com/canadian-immigration-services.html">Immigration
+                                                    <li><a href="https://www.canucksimmigration.com/judicial-review.html">Judicial Review</a></li>
+                                                    <li><a href="https://www.canucksimmigration.com/provincial-nominee-program.html">PNP</a></li>
+                                                    <li><a href="https://www.canucksimmigration.com/canadian-immigration-services.html">Immigration
                                                             Consulting Services</a></li>
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="https://canucksimmigration.com/blogs.php">
+                                                <a href="https://www.canucksimmigration.com/blogs.php">
                                                     Blog
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="https://canucksimmigration.com/payments.php">Payment</a>
+                                                <a href="https://www.canucksimmigration.com/payments.php">Payment</a>
                                             </li>
                                             <li>
-                                                <a href="https://canucksimmigration.com/contact.html">Contact</a>
+                                                <a href="https://www.canucksimmigration.com/contact.html">Contact</a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -577,7 +577,7 @@ if ($result === false) {
                     <a href="#latest-blogs" class="banner-btn banner-btn-primary">
                         <i class="fas fa-arrow-down"></i> Explore Blogs
                     </a>
-                    <a href="https://canucksimmigration.com/contact.html" class="banner-btn banner-btn-secondary">
+                    <a href="https://www.canucksimmigration.com/contact.html" class="banner-btn banner-btn-secondary">
                         <i class="fas fa-paper-plane"></i> Get Started
                     </a>
                 </div>
@@ -657,7 +657,7 @@ if ($result === false) {
                 <h2>Ready to Begin Your Canadian Immigration Journey?</h2>
                 <p>Get expert guidance and personalized support to explore the right immigration pathway for your goals.</p>
                 <div class="hero-buttons">
-                    <a href="https://canucksimmigration.com/contact.html" class="btn-primary">Lets Get Started<i class="fas fa-paper-plane"></i></a>
+                    <a href="https://www.canucksimmigration.com/contact.html" class="btn-primary">Lets Get Started<i class="fas fa-paper-plane"></i></a>
                 </div>
             </div>
         </div>
@@ -671,8 +671,8 @@ if ($result === false) {
                     <div class="col-xl-3 col-sm-6 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".2s">
                         <div class="single-footer-widget">
                             <div class="widget-head">
-                                <a href="https://canucksimmigration.com/">
-                                    <img src="https://canucksimmigration.com/assets/img/logo/footer-logo.png" alt="logo-img">
+                                <a href="https://www.canucksimmigration.com/">
+                                    <img src="https://www.canucksimmigration.com/assets/img/logo/footer-logo.png" alt="logo-img">
                                 </a>
                             </div>
                             <div class="footer-content">
@@ -695,22 +695,22 @@ if ($result === false) {
                             </div>
                             <ul class="list-items">
                                 <li>
-                                    <a href="https://canucksimmigration.com/">
+                                    <a href="https://www.canucksimmigration.com/">
                                         Home
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://canucksimmigration.com/about.html">
+                                    <a href="https://www.canucksimmigration.com/about.html">
                                         About
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://canucksimmigration.com/contact.html">
+                                    <a href="https://www.canucksimmigration.com/contact.html">
                                         Contact
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://canucksimmigration.com/blogs.php">
+                                    <a href="https://www.canucksimmigration.com/blogs.php">
                                         Blogs
                                     </a>
                                 </li>
@@ -724,27 +724,27 @@ if ($result === false) {
                             </div>
                             <ul class="list-items">
                                 <li>
-                                    <a href="https://canucksimmigration.com/business-investment-visa-for-canada.html">
+                                    <a href="https://www.canucksimmigration.com/business-investment-visa-for-canada.html">
                                         Business Investment Visa for Canada
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://canucksimmigration.com/canada-express-entry.html">
+                                    <a href="https://www.canucksimmigration.com/canada-express-entry.html">
                                         Canada Express Entry
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://canucksimmigration.com/judicial-review.html">
+                                    <a href="https://www.canucksimmigration.com/judicial-review.html">
                                         Judicial Review
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://canucksimmigration.com/provincial-nominee-program.html">
+                                    <a href="https://www.canucksimmigration.com/provincial-nominee-program.html">
                                         PNP
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://canucksimmigration.com/canadian-immigration-services.html">
+                                    <a href="https://www.canucksimmigration.com/canadian-immigration-services.html">
                                         Immigration Consulting Services
                                     </a>
                                 </li>
@@ -777,18 +777,18 @@ if ($result === false) {
             <div class="container">
                 <div class="footer-wrapper d-flex align-items-center justify-content-between">
                     <p class="wow fadeInLeft color-2" data-wow-delay=".3s">
-                        Copyright © 2026 <a href="https://canucksimmigration.com/">Canucks Immigration</a>. All Rights Reserved. | Developed by
-                        <a href="https://canucksimmigration.com">Canucks Immigration</a>
+                        Copyright © 2026 <a href="https://www.canucksimmigration.com/">Canucks Immigration</a>. All Rights Reserved. | Developed by
+                        <a href="https://www.canucksimmigration.com">Canucks Immigration</a>
                     </p>
                     <ul class="footer-menu wow fadeInRight" data-wow-delay=".5s">
 
                         <li>
-                            <a href="https://canucksimmigration.com/terms-and-conditions.html">
+                            <a href="https://www.canucksimmigration.com/terms-and-conditions.html">
                                 Terms & Conditions
                             </a>
                         </li>
                         <li>
-                            <a href="https://canucksimmigration.com/privacy-policy.html">
+                            <a href="https://www.canucksimmigration.com/privacy-policy.html">
                                 Privacy
                             </a>
                         </li>
