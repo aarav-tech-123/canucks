@@ -33,8 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Save to Database
-    $stmt = $conn->prepare("INSERT INTO contact_enquiries (name, email, phone, message) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $email, $phone, $message);
+    $stmt = $conn->prepare("INSERT INTO contact_enquiries (name, email, phone, message) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $name, $email, $phone, $message);
 
     if (!$stmt->execute()) {
         die("Failed to save data.");
