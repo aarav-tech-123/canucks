@@ -1,5 +1,10 @@
 <?php
 // --------------------
+// Start output buffering to prevent header errors
+// --------------------
+ob_start();
+
+// --------------------
 // Database connection
 // --------------------
 $servername = "localhost";
@@ -34,7 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
             $payment_data = $result->fetch_assoc();
 
             if (!empty($payment_data['payment_link'])) {
-                // Direct redirect to Stripe payment link
+                // Clear the output buffer and redirect to Stripe
+                ob_end_clean();
                 header("Location: " . $payment_data['payment_link']);
                 exit();
             } else {
@@ -692,7 +698,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                 </div>
 
                 <div class="payment-form">
-                    <form method="POST" id="paymentForm">
+                    <form method="POST" id="paymentForm" action="">
                         <div class="input-group">
                             <input type="email"
                                 name="search_term"
@@ -923,7 +929,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
         });
 
         // Show loading state on form submit
-        document.getElementById('paymentForm').addEventListener('submit', function() {
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            const email = document.getElementById('search_term').value.trim();
+            if (!email) {
+                e.preventDefault();
+                alert('Please enter your email address.');
+                return false;
+            }
+
             const button = document.getElementById('payNowBtn');
             button.classList.add('loading');
             button.disabled = true;
@@ -932,4 +945,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
 </body>
 
 </html>
-<?php $conn->close(); ?>
+<?php
+// Close the database connection
+$conn->close();
+
+// End output buffering and flush
+ob_end_flush();
+?>
