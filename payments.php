@@ -19,39 +19,91 @@ if ($conn->connect_error) {
 }
 
 // --------------------
+// Error logging
+// --------------------
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Create a log file in the same directory
+$log_file = 'payment_debug.log';
+
+function log_message($message)
+{
+    global $log_file;
+    $timestamp = date('Y-m-d H:i:s');
+    file_put_contents($log_file, "[$timestamp] $message\n", FILE_APPEND);
+}
+
+log_message("=== Payment Page Loaded ===");
+
+// --------------------
 // Handle payment - Direct redirect to Stripe
 // --------------------
 $error_message = '';
 $search_term_value = '';
+$debug_info = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
+    log_message("=== Form Submitted ===");
     $search_term_value = trim($_POST['search_term']);
+    log_message("Email entered: " . $search_term_value);
 
     if (!empty($search_term_value)) {
         // Search for the payment by email
         $sql = "SELECT * FROM payments WHERE customer_email = ?";
+        log_message("SQL Query: " . $sql);
+
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $search_term_value);
         $stmt->execute();
         $result = $stmt->get_result();
 
+        log_message("Number of rows found: " . $result->num_rows);
+
         if ($result->num_rows > 0) {
             $payment_data = $result->fetch_assoc();
+            log_message("Payment data found: " . print_r($payment_data, true));
 
             if (!empty($payment_data['payment_link'])) {
+                $redirect_url = $payment_data['payment_link'];
+                log_message("Redirect URL: " . $redirect_url);
+
+                // Store in session or variable for debugging
+                $debug_info = "Redirecting to: " . $redirect_url;
+
                 // Clear the output buffer and redirect to Stripe
                 ob_end_clean();
-                header("Location: " . $payment_data['payment_link']);
+                header("Location: " . $redirect_url);
                 exit();
             } else {
                 $error_message = "No payment link found for this email. Please contact support.";
+                log_message("ERROR: payment_link is empty for email: " . $search_term_value);
             }
         } else {
             $error_message = "No payment record found for this email address.";
+            log_message("ERROR: No record found for email: " . $search_term_value);
         }
         $stmt->close();
     } else {
         $error_message = "Please enter your email address.";
+        log_message("ERROR: Empty email submitted");
+    }
+}
+
+// Check if we have payment data from a previous successful lookup
+$payment_data = null;
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
+    $search_term_value = trim($_POST['search_term']);
+    if (!empty($search_term_value)) {
+        $sql = "SELECT * FROM payments WHERE customer_email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $search_term_value);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $payment_data = $result->fetch_assoc();
+        }
+        $stmt->close();
     }
 }
 ?>
@@ -381,6 +433,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
         }
 
         .error-message i {
+            margin-right: 8px;
+        }
+
+        .debug-info {
+            background: #e7f3ff;
+            color: #004085;
+            padding: 14px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: 500;
+            text-align: center;
+            border: 1px solid #b8daff;
+            word-break: break-all;
+        }
+
+        .debug-info i {
             margin-right: 8px;
         }
 
@@ -722,6 +790,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                             <i class="fas fa-exclamation-circle"></i> <?php echo htmlspecialchars($error_message); ?>
                         </div>
                     <?php endif; ?>
+
+                    <?php if ($debug_info): ?>
+                        <div class="debug-info">
+                            <i class="fas fa-info-circle"></i> <?php echo htmlspecialchars($debug_info); ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Payment Features -->
@@ -742,6 +816,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                         <p>Real-time payment confirmation</p>
                     </div>
                 </div>
+
+                <!-- Debug: Show current payment data if available -->
+                <?php if ($payment_data): ?>
+                    <div style="margin-top: 30px; padding: 15px; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6; text-align: left; font-size: 12px;">
+                        <strong>Debug: Payment Record Found</strong><br>
+                        <strong>Email:</strong> <?php echo htmlspecialchars($payment_data['customer_email']); ?><br>
+                        <strong>Payment Link:</strong> <?php echo htmlspecialchars($payment_data['payment_link']); ?><br>
+                        <strong>ID:</strong> <?php echo htmlspecialchars($payment_data['id']); ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -940,7 +1024,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
             const button = document.getElementById('payNowBtn');
             button.classList.add('loading');
             button.disabled = true;
+
+            // Log the submission
+            console.log('Submitting email:', email);
         });
+
+        // Check if there's a debug message to log
+        <?php if ($debug_info): ?>
+            console.log('Debug Info:', '<?php echo addslashes($debug_info); ?>');
+        <?php endif; ?>
     </script>
 </body>
 
