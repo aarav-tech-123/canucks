@@ -35,75 +35,90 @@ function log_message($message)
 }
 
 log_message("=== Payment Page Loaded ===");
+log_message("REQUEST_METHOD: " . $_SERVER['REQUEST_METHOD']);
+log_message("POST data: " . print_r($_POST, true));
 
 // --------------------
-// Handle payment - Direct redirect to Stripe
+// Handle AJAX request for payment lookup
+// --------------------
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'get_payment_link') {
+    header('Content-Type: application/json');
+
+    $email = trim($_POST['email'] ?? '');
+    log_message("AJAX Request - Email: " . $email);
+
+    if (empty($email)) {
+        echo json_encode(['success' => false, 'error' => 'Please enter your email address.']);
+        exit();
+    }
+
+    // Search for the payment by email
+    $sql = "SELECT * FROM payments WHERE customer_email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    log_message("AJAX - Number of rows found: " . $result->num_rows);
+
+    if ($result->num_rows > 0) {
+        $payment_data = $result->fetch_assoc();
+        log_message("AJAX - Payment data: " . print_r($payment_data, true));
+
+        if (!empty($payment_data['payment_link'])) {
+            log_message("AJAX - Found payment link: " . $payment_data['payment_link']);
+            echo json_encode([
+                'success' => true,
+                'payment_link' => $payment_data['payment_link'],
+                'email' => $payment_data['customer_email']
+            ]);
+        } else {
+            log_message("AJAX - No payment link found for email: " . $email);
+            echo json_encode(['success' => false, 'error' => 'No payment link found for this email. Please contact support.']);
+        }
+    } else {
+        log_message("AJAX - No record found for email: " . $email);
+        echo json_encode(['success' => false, 'error' => 'No payment record found for this email address.']);
+    }
+    $stmt->close();
+    exit();
+}
+
+// --------------------
+// Handle regular form submission (fallback)
 // --------------------
 $error_message = '';
 $search_term_value = '';
-$debug_info = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
-    log_message("=== Form Submitted ===");
+    log_message("=== Regular Form Submit Detected ===");
     $search_term_value = trim($_POST['search_term']);
-    log_message("Email entered: " . $search_term_value);
+    log_message("Email: " . $search_term_value);
 
     if (!empty($search_term_value)) {
-        // Search for the payment by email
         $sql = "SELECT * FROM payments WHERE customer_email = ?";
-        log_message("SQL Query: " . $sql);
-
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $search_term_value);
         $stmt->execute();
         $result = $stmt->get_result();
 
-        log_message("Number of rows found: " . $result->num_rows);
-
         if ($result->num_rows > 0) {
             $payment_data = $result->fetch_assoc();
-            log_message("Payment data found: " . print_r($payment_data, true));
-
             if (!empty($payment_data['payment_link'])) {
                 $redirect_url = $payment_data['payment_link'];
-                log_message("Redirect URL: " . $redirect_url);
-
-                // Store in session or variable for debugging
-                $debug_info = "Redirecting to: " . $redirect_url;
-
-                // Clear the output buffer and redirect to Stripe
+                log_message("Regular form - Redirecting to: " . $redirect_url);
                 ob_end_clean();
                 header("Location: " . $redirect_url);
                 exit();
             } else {
                 $error_message = "No payment link found for this email. Please contact support.";
-                log_message("ERROR: payment_link is empty for email: " . $search_term_value);
             }
         } else {
             $error_message = "No payment record found for this email address.";
-            log_message("ERROR: No record found for email: " . $search_term_value);
         }
         $stmt->close();
     } else {
         $error_message = "Please enter your email address.";
-        log_message("ERROR: Empty email submitted");
-    }
-}
-
-// Check if we have payment data from a previous successful lookup
-$payment_data = null;
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
-    $search_term_value = trim($_POST['search_term']);
-    if (!empty($search_term_value)) {
-        $sql = "SELECT * FROM payments WHERE customer_email = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $search_term_value);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            $payment_data = $result->fetch_assoc();
-        }
-        $stmt->close();
     }
 }
 ?>
@@ -430,25 +445,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
             font-weight: 500;
             text-align: center;
             animation: fadeInUp 0.5s ease;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
         }
 
         .error-message i {
             margin-right: 8px;
         }
 
-        .debug-info {
-            background: #e7f3ff;
-            color: #004085;
+        .success-message {
+            background: #d4edda;
+            color: #155724;
             padding: 14px 20px;
             border-radius: 10px;
             margin-top: 20px;
             font-weight: 500;
             text-align: center;
-            border: 1px solid #b8daff;
-            word-break: break-all;
+            animation: fadeInUp 0.5s ease;
+            display: none;
         }
 
-        .debug-info i {
+        .success-message.show {
+            display: block;
+        }
+
+        .success-message i {
             margin-right: 8px;
         }
 
@@ -766,7 +790,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                 </div>
 
                 <div class="payment-form">
-                    <form method="POST" id="paymentForm" action="">
+                    <form method="POST" id="paymentForm">
                         <div class="input-group">
                             <input type="email"
                                 name="search_term"
@@ -775,7 +799,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                                 value="<?php echo htmlspecialchars($search_term_value); ?>"
                                 required
                                 autofocus>
-                            <button type="submit" name="pay_now" class="btn-pay-now" id="payNowBtn">
+                            <button type="button" class="btn-pay-now" id="payNowBtn">
                                 <span class="btn-text"><i class="fas fa-lock"></i> Pay Now</span>
                                 <span class="spinner"></span>
                             </button>
@@ -785,17 +809,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                         </div>
                     </form>
 
-                    <?php if ($error_message): ?>
-                        <div class="error-message">
-                            <i class="fas fa-exclamation-circle"></i> <?php echo htmlspecialchars($error_message); ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if ($debug_info): ?>
-                        <div class="debug-info">
-                            <i class="fas fa-info-circle"></i> <?php echo htmlspecialchars($debug_info); ?>
-                        </div>
-                    <?php endif; ?>
+                    <div id="errorMessage" class="error-message">
+                        <i class="fas fa-exclamation-circle"></i> <span id="errorText"></span>
+                    </div>
+                    <div id="successMessage" class="success-message">
+                        <i class="fas fa-check-circle"></i> <span id="successText"></span>
+                    </div>
                 </div>
 
                 <!-- Payment Features -->
@@ -816,16 +835,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                         <p>Real-time payment confirmation</p>
                     </div>
                 </div>
-
-                <!-- Debug: Show current payment data if available -->
-                <?php if ($payment_data): ?>
-                    <div style="margin-top: 30px; padding: 15px; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6; text-align: left; font-size: 12px;">
-                        <strong>Debug: Payment Record Found</strong><br>
-                        <strong>Email:</strong> <?php echo htmlspecialchars($payment_data['customer_email']); ?><br>
-                        <strong>Payment Link:</strong> <?php echo htmlspecialchars($payment_data['payment_link']); ?><br>
-                        <strong>ID:</strong> <?php echo htmlspecialchars($payment_data['id']); ?>
-                    </div>
-                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -1012,27 +1021,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
             });
         });
 
-        // Show loading state on form submit
-        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+        // Handle Pay Now button click with AJAX
+        document.getElementById('payNowBtn').addEventListener('click', function() {
             const email = document.getElementById('search_term').value.trim();
+            const errorDiv = document.getElementById('errorMessage');
+            const successDiv = document.getElementById('successMessage');
+            const button = this;
+
+            // Hide previous messages
+            errorDiv.classList.remove('show');
+            successDiv.classList.remove('show');
+
+            // Validate email
             if (!email) {
-                e.preventDefault();
-                alert('Please enter your email address.');
-                return false;
+                document.getElementById('errorText').textContent = 'Please enter your email address.';
+                errorDiv.classList.add('show');
+                return;
             }
 
-            const button = document.getElementById('payNowBtn');
+            // Show loading state
             button.classList.add('loading');
             button.disabled = true;
 
-            // Log the submission
-            console.log('Submitting email:', email);
+            // Send AJAX request
+            fetch(window.location.href, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'action=get_payment_link&email=' + encodeURIComponent(email)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    button.classList.remove('loading');
+                    button.disabled = false;
+
+                    if (data.success) {
+                        // Success - redirect to payment link
+                        document.getElementById('successText').textContent = 'Redirecting to payment page...';
+                        successDiv.classList.add('show');
+
+                        // Redirect after a small delay
+                        setTimeout(function() {
+                            window.location.href = data.payment_link;
+                        }, 1000);
+                    } else {
+                        // Show error
+                        document.getElementById('errorText').textContent = data.error;
+                        errorDiv.classList.add('show');
+                    }
+                })
+                .catch(error => {
+                    button.classList.remove('loading');
+                    button.disabled = false;
+                    document.getElementById('errorText').textContent = 'An error occurred. Please try again.';
+                    errorDiv.classList.add('show');
+                    console.error('Error:', error);
+                });
         });
 
-        // Check if there's a debug message to log
-        <?php if ($debug_info): ?>
-            console.log('Debug Info:', '<?php echo addslashes($debug_info); ?>');
-        <?php endif; ?>
+        // Allow Enter key to submit
+        document.getElementById('search_term').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('payNowBtn').click();
+            }
+        });
+
+        // Auto-focus on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('search_term').focus();
+        });
     </script>
 </body>
 
