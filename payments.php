@@ -14,18 +14,16 @@ if ($conn->connect_error) {
 }
 
 // --------------------
-// Handle payment lookup and redirect
+// Handle payment - Direct redirect to Stripe
 // --------------------
 $error_message = '';
 $search_term_value = '';
-$payment_found = false;
-$redirect_url = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
     $search_term_value = trim($_POST['search_term']);
 
     if (!empty($search_term_value)) {
-        // Search by email only
+        // Search for the payment by email
         $sql = "SELECT * FROM payments WHERE customer_email = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $search_term_value);
@@ -249,7 +247,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
         }
 
         .payment-wrapper {
-            max-width: 700px;
+            max-width: 650px;
             margin: 0 auto;
             background: var(--white);
             border-radius: 20px;
@@ -258,24 +256,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
             border: 1px solid var(--border);
         }
 
-        .payment-wrapper h2 {
+        .payment-wrapper .payment-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .payment-wrapper .payment-header h2 {
             font-size: 28px;
             font-weight: 700;
             color: var(--header);
             margin-bottom: 10px;
-            text-align: center;
         }
 
-        .payment-wrapper .subtitle {
+        .payment-wrapper .payment-header .subtitle {
             color: var(--text2);
-            margin-bottom: 30px;
             font-size: 16px;
-            text-align: center;
-        }
-
-        .payment-form {
-            max-width: 500px;
-            margin: 0 auto;
         }
 
         .payment-form .input-group {
@@ -376,25 +371,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
             margin-top: 20px;
             font-weight: 500;
             text-align: center;
+            animation: fadeInUp 0.5s ease;
         }
 
         .error-message i {
             margin-right: 8px;
         }
 
-        .success-message {
-            background: #d4edda;
-            color: #155724;
-            padding: 14px 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            font-weight: 500;
-            text-align: center;
-            animation: fadeInUp 0.5s ease;
-        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
 
-        .success-message i {
-            margin-right: 8px;
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .payment-features {
@@ -426,18 +419,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
             font-size: 13px;
             color: var(--text2);
             margin-bottom: 0;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .terms-section {
@@ -705,11 +686,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
     <section class="payment-section">
         <div class="container">
             <div class="payment-wrapper">
-                <h2>Pay Your Invoice</h2>
-                <p class="subtitle">Enter your email address to find and complete your payment.</p>
+                <div class="payment-header">
+                    <h2>Pay Your Invoice</h2>
+                    <p class="subtitle">Enter your email address to find and complete your payment.</p>
+                </div>
 
                 <div class="payment-form">
-                    <form method="POST" id="paymentForm" onsubmit="return handleFormSubmit(event)">
+                    <form method="POST" id="paymentForm">
                         <div class="input-group">
                             <input type="email"
                                 name="search_term"
@@ -939,27 +922,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
             });
         });
 
-        // Handle form submission with loading state
-        function handleFormSubmit(e) {
-            const email = document.getElementById('search_term').value.trim();
-
-            if (!email) {
-                e.preventDefault();
-                alert('Please enter your email address.');
-                return false;
-            }
-
+        // Show loading state on form submit
+        document.getElementById('paymentForm').addEventListener('submit', function() {
             const button = document.getElementById('payNowBtn');
             button.classList.add('loading');
             button.disabled = true;
-
-            // Form will submit normally and PHP will handle redirect
-            return true;
-        }
-
-        // Auto-focus on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('search_term').focus();
         });
     </script>
 </body>
