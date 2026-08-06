@@ -14,13 +14,14 @@ if ($conn->connect_error) {
 }
 
 // --------------------
-// Handle payment lookup
+// Handle payment lookup and redirect
 // --------------------
-$payment_data = null;
 $error_message = '';
 $search_term_value = '';
+$payment_found = false;
+$redirect_url = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
     $search_term_value = trim($_POST['search_term']);
 
     if (!empty($search_term_value)) {
@@ -33,6 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
 
         if ($result->num_rows > 0) {
             $payment_data = $result->fetch_assoc();
+
+            if (!empty($payment_data['payment_link'])) {
+                // Direct redirect to Stripe payment link
+                header("Location: " . $payment_data['payment_link']);
+                exit();
+            } else {
+                $error_message = "No payment link found for this email. Please contact support.";
+            }
         } else {
             $error_message = "No payment record found for this email address.";
         }
@@ -240,7 +249,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
         }
 
         .payment-wrapper {
-            max-width: 900px;
+            max-width: 700px;
             margin: 0 auto;
             background: var(--white);
             border-radius: 20px;
@@ -254,218 +263,169 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
             font-weight: 700;
             color: var(--header);
             margin-bottom: 10px;
+            text-align: center;
         }
 
         .payment-wrapper .subtitle {
             color: var(--text2);
             margin-bottom: 30px;
             font-size: 16px;
-        }
-
-        .payment-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .search-column {
-            background: var(--bg);
-            padding: 30px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-        }
-
-        .result-column {
-            background: var(--bg);
-            padding: 30px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .result-column .empty-state {
             text-align: center;
-            padding: 30px 20px;
         }
 
-        .result-column .empty-state i {
-            font-size: 48px;
-            color: var(--text2);
-            margin-bottom: 15px;
+        .payment-form {
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .result-column .empty-state p {
-            color: var(--text2);
-            margin-bottom: 5px;
-        }
-
-        .result-column .empty-state .sub-text {
-            font-size: 14px;
-            color: var(--text2);
-        }
-
-        .search-form .input-group {
+        .payment-form .input-group {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
         }
 
-        .search-form .input-group input {
+        .payment-form .input-group input {
             width: 100%;
-            padding: 14px 20px;
+            padding: 16px 20px;
             border: 2px solid var(--border);
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 16px;
             transition: all 0.3s;
             background: var(--white);
             color: var(--header);
         }
 
-        .search-form .input-group input:focus {
+        .payment-form .input-group input:focus {
             outline: none;
             border-color: var(--theme);
             box-shadow: 0 0 0 4px rgba(226, 9, 53, 0.1);
         }
 
-        .search-form .input-group input::placeholder {
+        .payment-form .input-group input::placeholder {
             color: var(--text2);
         }
 
-        .search-form .input-group .btn-search {
+        .payment-form .input-group .btn-pay-now {
             width: 100%;
-            padding: 14px 32px;
+            padding: 16px 32px;
             background: var(--gradient-primary);
             color: #fff;
             border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 18px;
             cursor: pointer;
             transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
         }
 
-        .search-form .input-group .btn-search:hover {
+        .payment-form .input-group .btn-pay-now:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
 
-        .search-hint {
+        .payment-form .input-group .btn-pay-now:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .payment-form .input-group .btn-pay-now .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s ease-in-out infinite;
+        }
+
+        .payment-form .input-group .btn-pay-now.loading .spinner {
+            display: inline-block;
+        }
+
+        .payment-form .input-group .btn-pay-now.loading .btn-text {
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .payment-hint {
             font-size: 13px;
             color: var(--text2);
             margin-top: 12px;
+            text-align: center;
         }
 
-        .search-hint i {
+        .payment-hint i {
             margin-right: 4px;
         }
 
         .error-message {
             background: #fde8ec;
             color: var(--theme);
-            padding: 12px 20px;
+            padding: 14px 20px;
             border-radius: 10px;
             margin-top: 20px;
             font-weight: 500;
+            text-align: center;
         }
 
-        .payment-success {
+        .error-message i {
+            margin-right: 8px;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 14px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: 500;
             text-align: center;
-            width: 100%;
             animation: fadeInUp 0.5s ease;
         }
 
-        .payment-success .icon {
-            font-size: 60px;
-            color: #28a745;
-            margin-bottom: 15px;
+        .success-message i {
+            margin-right: 8px;
         }
 
-        .payment-success h3 {
-            color: #155724;
-            font-weight: 700;
-            margin-bottom: 10px;
+        .payment-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
         }
 
-        .payment-success p {
-            color: #155724;
-            margin-bottom: 25px;
-        }
-
-        .payment-success .btn-pay {
-            display: inline-flex;
-            padding: 16px 48px;
-            background: var(--gradient-primary);
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .payment-success .btn-pay:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            color: #fff;
-        }
-
-        .payment-success .btn-pay:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .payment-warning {
+        .payment-features .feature {
             text-align: center;
-            width: 100%;
-            animation: fadeInUp 0.5s ease;
         }
 
-        .payment-warning .icon {
-            font-size: 60px;
-            color: #856404;
-            margin-bottom: 15px;
-        }
-
-        .payment-warning h3 {
-            color: #856404;
-            font-weight: 700;
+        .payment-features .feature i {
+            font-size: 28px;
+            color: var(--theme);
             margin-bottom: 10px;
         }
 
-        .payment-warning p {
-            color: #856404;
-            margin-bottom: 25px;
+        .payment-features .feature h6 {
+            font-weight: 600;
+            color: var(--header);
+            margin-bottom: 4px;
         }
 
-        .payment-warning .btn-pay {
-            display: inline-flex;
-            padding: 16px 48px;
-            background: #856404;
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .payment-warning .btn-pay:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            color: #fff;
+        .payment-features .feature p {
+            font-size: 13px;
+            color: var(--text2);
+            margin-bottom: 0;
         }
 
         @keyframes fadeInUp {
@@ -603,31 +563,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
         }
 
         @media (max-width: 768px) {
-            .payment-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
             .payment-wrapper {
                 padding: 30px 20px;
+            }
+
+            .payment-features {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
 
             .terms-wrapper .terms-content {
                 padding: 20px;
             }
 
-            .payment-success .btn-pay {
-                padding: 14px 32px;
+            .payment-form .input-group .btn-pay-now {
+                padding: 14px 24px;
                 font-size: 16px;
-                width: 100%;
-                justify-content: center;
-            }
-
-            .payment-warning .btn-pay {
-                padding: 14px 32px;
-                font-size: 16px;
-                width: 100%;
-                justify-content: center;
             }
         }
     </style>
@@ -736,7 +687,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                 <div class="banner-badge"><i class="fas fa-credit-card"></i> Secure Payment</div>
                 <div class="banner-text">
                     <h1>Make a Payment</h1>
-                    <p>Enter your email address to find and complete your payment securely.</p>
+                    <p>Enter your email address and click Pay Now to complete your payment securely.</p>
                 </div>
                 <div class="banner-buttons">
                     <a href="https://canucksimmigration.com/" class="banner-btn banner-btn-secondary">
@@ -754,70 +705,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
     <section class="payment-section">
         <div class="container">
             <div class="payment-wrapper">
-                <h2>Find Your Payment</h2>
-                <p class="subtitle">Enter your email address to view and complete your payment.</p>
+                <h2>Pay Your Invoice</h2>
+                <p class="subtitle">Enter your email address to find and complete your payment.</p>
 
-                <div class="payment-grid">
-                    <!-- Left Column: Search -->
-                    <div class="search-column">
-                        <form method="POST" class="search-form" id="paymentForm">
-                            <div class="input-group">
-                                <input type="email"
-                                    name="search_term"
-                                    id="search_term"
-                                    placeholder="Enter your email address..."
-                                    value="<?php echo htmlspecialchars($search_term_value); ?>"
-                                    required>
-                                <button type="submit" name="lookup" class="btn-search">
-                                    <i class="fas fa-search"></i> Find Payment
-                                </button>
-                            </div>
-                            <div class="search-hint">
-                                <i class="fas fa-info-circle"></i> Enter the email address used for your payment.
-                            </div>
-                        </form>
+                <div class="payment-form">
+                    <form method="POST" id="paymentForm" onsubmit="return handleFormSubmit(event)">
+                        <div class="input-group">
+                            <input type="email"
+                                name="search_term"
+                                id="search_term"
+                                placeholder="Enter your email address..."
+                                value="<?php echo htmlspecialchars($search_term_value); ?>"
+                                required
+                                autofocus>
+                            <button type="submit" name="pay_now" class="btn-pay-now" id="payNowBtn">
+                                <span class="btn-text"><i class="fas fa-lock"></i> Pay Now</span>
+                                <span class="spinner"></span>
+                            </button>
+                        </div>
+                        <div class="payment-hint">
+                            <i class="fas fa-info-circle"></i> Enter the email address used for your payment. You'll be redirected to Stripe's secure payment page.
+                        </div>
+                    </form>
 
-                        <?php if ($error_message): ?>
-                            <div class="error-message">
-                                <i class="fas fa-exclamation-circle"></i> <?php echo htmlspecialchars($error_message); ?>
-                            </div>
-                        <?php endif; ?>
+                    <?php if ($error_message): ?>
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-circle"></i> <?php echo htmlspecialchars($error_message); ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+
+                <!-- Payment Features -->
+                <div class="payment-features">
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h6>Secure Payment</h6>
+                        <p>128-bit SSL encryption</p>
                     </div>
-
-                    <!-- Right Column: Result -->
-                    <div class="result-column">
-                        <?php if ($payment_data && isset($payment_data['payment_link']) && !empty($payment_data['payment_link'])): ?>
-                            <div class="payment-success">
-                                <div class="icon">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                                <h3>Payment Ready!</h3>
-                                <p>Click the button below to complete your payment securely.</p>
-                                <a href="<?php echo htmlspecialchars($payment_data['payment_link']); ?>" target="_blank" class="btn-pay">
-                                    <i class="fas fa-lock"></i> Pay Now
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-
-                        <?php elseif ($payment_data && empty($payment_data['payment_link'])): ?>
-                            <div class="payment-warning">
-                                <div class="icon">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </div>
-                                <h3>Payment Link Not Available</h3>
-                                <p>Please contact our support team to complete your payment.</p>
-                                <a href="https://canucksimmigration.com/contact.html" class="btn-pay">
-                                    <i class="fas fa-headset"></i> Contact Support
-                                </a>
-                            </div>
-
-                        <?php else: ?>
-                            <div class="empty-state">
-                                <i class="fas fa-search"></i>
-                                <p><strong>No payment found</strong></p>
-                                <p class="sub-text">Enter your email address to find your payment.</p>
-                            </div>
-                        <?php endif; ?>
+                    <div class="feature">
+                        <i class="fas fa-credit-card"></i>
+                        <h6>Multiple Cards</h6>
+                        <p>Visa, Mastercard, Amex</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-clock"></i>
+                        <h6>Instant Processing</h6>
+                        <p>Real-time payment confirmation</p>
                     </div>
                 </div>
             </div>
@@ -1004,6 +937,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lookup'])) {
                 top: 0,
                 behavior: 'smooth'
             });
+        });
+
+        // Handle form submission with loading state
+        function handleFormSubmit(e) {
+            const email = document.getElementById('search_term').value.trim();
+
+            if (!email) {
+                e.preventDefault();
+                alert('Please enter your email address.');
+                return false;
+            }
+
+            const button = document.getElementById('payNowBtn');
+            button.classList.add('loading');
+            button.disabled = true;
+
+            // Form will submit normally and PHP will handle redirect
+            return true;
+        }
+
+        // Auto-focus on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('search_term').focus();
         });
     </script>
 </body>
