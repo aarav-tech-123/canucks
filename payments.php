@@ -674,6 +674,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                         <i class="far fa-envelope"></i>
                         <a href="mailto:info@canucksimmigration.com" class="link">info@canucksimmigration.com</a>
                     </li>
+                    <li class="d-flex align-items-center">
+                        <i class="far fa-phone"></i>
+                        <a href="tel:+18075007906" class="link">+1-8075007906</a>
+                    </li>
                     <li>
                         <i class="fas fa-map-marker-alt"></i>
                         6060 Silver Drive, Burnaby BC V5H 2Y3
@@ -737,13 +741,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                         </div>
                         <div class="header-right d-flex justify-content-end align-items-center">
                             <div class="contact-info">
-                                <div class="icon">
-                                    <img src="https://canucksimmigration.com/assets/img/call.png" alt="img">
-                                </div>
                                 <div class="content">
-                                    <p>Phone:</p>
+                                    <p>Mr. Sushil Nagar, RCIC</p>
                                     <h6>
-                                        <a href="tel:+18075007906">+1-8075007906</a>
+                                        License No. R534903
                                     </h6>
                                 </div>
                             </div>
