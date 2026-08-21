@@ -1731,11 +1731,11 @@ input.main-search-input::placeholder {
   align-items: center;
   gap: 20px;
 }
-@media (max-width: 1399px) {
+/* @media (max-width: 1399px) {
   .header-1 .mega-menu-wrapper .header-main .header-right .contact-info {
     display: none !important;
   }
-}
+} */
 .header-1 .mega-menu-wrapper .header-main .header-right .contact-info .content p {
   text-transform: uppercase;
 }
@@ -1909,8 +1909,15 @@ input.main-search-input::placeholder {
 .header-4 .mega-menu-wrapper .header-main .header-right .cart-icon {
   color: var(--white);
 }
-@media (max-width: 1199px) {
+/* @media (max-width: 1199px) {
   .header-4 .mega-menu-wrapper .header-main .header-right .cart-icon {
+    display: none;
+  }
+} */
+
+
+@media (max-width: 768px) {
+ .header-1 .mega-menu-wrapper .header-main .header-right .contact-info {
     display: none;
   }
 }
