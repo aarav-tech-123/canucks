@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
-Sitemap: https://canucksimmigration.com/sitemap.xml
+Sitemap: https://www.canucksimmigration.com/sitemap.xml

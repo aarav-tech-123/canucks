@@ -168,10 +168,6 @@ if ($result === false) {
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
         }
 
         .container {
