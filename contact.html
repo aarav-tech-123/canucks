@@ -53,6 +53,71 @@
     <!-- End Google Tag Manager -->
     <script
         type="text/javascript">     (function (c, l, a, r, i, t, y) { c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) }; t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i; y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y); })(window, document, "clarity", "script", "xn0syd8kij"); </script>
+    <style>
+        /* Fix for select fields to match form style */
+        .form-clt select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #e5eaf0;
+            border-radius: 10px;
+            background: #f8fafc;
+            color: #1a2e44;
+            font-size: 14px;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23345a7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            background-size: 14px;
+            cursor: pointer;
+        }
+        .form-clt select:focus {
+            outline: none;
+            border-color: #0b2b4a;
+            box-shadow: 0 0 0 3px rgba(11, 43, 74, 0.1);
+        }
+        .form-clt select option {
+            padding: 8px 12px;
+        }
+        /* Phone input fix */
+        .phone-wrapper {
+            display: flex;
+            align-items: center;
+            border: 1px solid #e5eaf0;
+            border-radius: 10px;
+            background: #f8fafc;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .phone-wrapper:focus-within {
+            border-color: #0b2b4a;
+            box-shadow: 0 0 0 3px rgba(11, 43, 74, 0.1);
+        }
+        .phone-wrapper .phone-code {
+            padding: 14px 16px;
+            background: #eef3fa;
+            font-weight: 600;
+            color: #1a3b56;
+            border-right: 1px solid #e5eaf0;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+        .phone-wrapper .phone-code i {
+            margin-right: 6px;
+        }
+        .phone-wrapper input {
+            width: 100%;
+            padding: 14px 18px;
+            border: none;
+            background: transparent;
+            outline: none;
+            color: #1a2e44;
+            font-size: 14px;
+        }
+        .phone-wrapper input::placeholder {
+            color: #999;
+        }
+    </style>
 </head>
 
 <body>
@@ -360,7 +425,6 @@
                                         <div class="content">
                                             <h5>Phone</h5>
                                             <a href="tel:+18075007906">+1-8075007906 </a> <br>
-                                            <!-- <a href="tel:+01368567894">+01 368 567 894</a> -->
                                         </div>
                                     </div>
                                 </div>
@@ -394,9 +458,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="contact-image wow fadeInUp" data-wow-delay=".4s">
-                                <img src="assets/img/contact.png" alt="img">
-                            </div> -->
                         </div>
                     </div>
                     <div class="col-lg-6 mt-5 mt-lg-0">
@@ -406,44 +467,154 @@
                                 <p class="wow fadeInUp" data-wow-delay=".5s">Your email address will not be published.
                                     Required fields are marked *</p>
                             </div>
+                            <!-- Complete form with all fields -->
                             <form action="contact.php" method="POST">
                                 <div class="row g-4">
-                                    <div class="col-lg-12 wow fadeInUp" data-wow-delay=".3s">
+                                    <!-- First Name -->
+                                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
                                         <div class="form-clt">
-                                            <input type="text" name="name" id="name" placeholder="Your Name*">
+                                            <input type="text" name="first_name" id="first_name" placeholder="First Name *" required>
                                             <div class="icon">
                                                 <i class="fal fa-user"></i>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Last Name -->
+                                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                                        <div class="form-clt">
+                                            <input type="text" name="last_name" id="last_name" placeholder="Last Name *" required>
+                                            <div class="icon">
+                                                <i class="fal fa-user"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Current Age -->
+                                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                                        <div class="form-clt">
+                                            <input type="number" name="age" id="age" placeholder="Current Age *" required>
+                                            <div class="icon">
+                                                <i class="fal fa-calendar-alt"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- English Proficiency Level -->
+                                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                                        <div class="form-clt">
+                                            <select name="english_proficiency" id="english_proficiency" required>
+                                                <option value="" disabled selected>English Proficiency *</option>
+                                                <option value="Native">Native</option>
+                                                <option value="Fluent">Fluent</option>
+                                                <option value="Advanced">Advanced</option>
+                                                <option value="Intermediate">Intermediate</option>
+                                                <option value="Basic">Basic</option>
+                                            </select>
+                                            <div class="icon">
+                                                <i class="fal fa-language"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Education -->
+                                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                                        <div class="form-clt">
+                                            <select name="education" id="education" required>
+                                                <option value="" disabled selected>Education *</option>
+                                                <option value="PHD">PHD</option>
+                                                <option value="Master's Degree">Master's Degree</option>
+                                                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                                <option value="Diploma">Diploma</option>
+                                                <option value="High School">High School</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                            <div class="icon">
+                                                <i class="fal fa-graduation-cap"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Occupation -->
+                                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                                        <div class="form-clt">
+                                            <input type="text" name="occupation" id="occupation" placeholder="Occupation *" required>
+                                            <div class="icon">
+                                                <i class="fal fa-briefcase"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Work Experience (Years) -->
+                                    <div class="col-lg-12 wow fadeInUp" data-wow-delay=".3s">
+                                        <div class="form-clt">
+                                            <input type="number" name="work_experience" id="work_experience" placeholder="Work Experience (Years) *" required>
+                                            <div class="icon">
+                                                <i class="fal fa-clock"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Email -->
                                     <div class="col-lg-12 wow fadeInUp" data-wow-delay=".5s">
                                         <div class="form-clt">
-                                            <input type="text" name="email" id="email" placeholder="Email Address*">
+                                            <input type="email" name="email" id="email" placeholder="Email *" required>
                                             <div class="icon">
                                                 <i class="fal fa-envelope"></i>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Country of Residence -->
                                     <div class="col-lg-12 wow fadeInUp" data-wow-delay=".5s">
                                         <div class="form-clt">
-                                            <input type="text" name="phone" id="phone" placeholder="Phone Number">
+                                            <select name="country" id="country" required>
+                                                <option value="" disabled selected>Country of Residence *</option>
+                                                <option value="Canada">Canada</option>
+                                                <option value="USA">USA</option>
+                                                <option value="United Kingdom">United Kingdom</option>
+                                                <option value="India">India</option>
+                                                <option value="Australia">Australia</option>
+                                                <option value="France">France</option>
+                                                <option value="Germany">Germany</option>
+                                                <option value="United Arab Emirates">United Arab Emirates</option>
+                                                <option value="Singapore">Singapore</option>
+                                                <option value="New Zealand">New Zealand</option>
+                                                <option value="Other">Other</option>
+                                            </select>
                                             <div class="icon">
-                                                <i class="fal fa-phone"></i>
+                                                <i class="fal fa-globe"></i>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 wow fadeInUp" data-wow-delay=".7s">
+                                    <!-- Income Band (per month) -->
+                                    <div class="col-lg-12 wow fadeInUp" data-wow-delay=".5s">
                                         <div class="form-clt">
-                                            <textarea name="message" id="message"
-                                                placeholder="Enter Your Messege here"></textarea>
+                                            <select name="income_band" id="income_band" required>
+                                                <option value="" disabled selected>Income Band (per month) *</option>
+                                                <option value="Less than $1,000">Less than $1,000</option>
+                                                <option value="$1,000 - $3,000">$1,000 - $3,000</option>
+                                                <option value="$3,001 - $5,000">$3,001 - $5,000</option>
+                                                <option value="$5,001 - $8,000">$5,001 - $8,000</option>
+                                                <option value="$8,001 - $12,000">$8,001 - $12,000</option>
+                                                <option value="$12,001 - $20,000">$12,001 - $20,000</option>
+                                                <option value="Over $20,000">Over $20,000</option>
+                                            </select>
                                             <div class="icon">
-                                                <i class="fal fa-edit"></i>
+                                                <i class="fal fa-money-bill-wave"></i>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Phone Number -->
+                                    <div class="col-lg-12 wow fadeInUp" data-wow-delay=".5s">
+                                        <div class="form-clt">
+                                            <div class="phone-wrapper">
+                                                <span class="phone-code">
+                                                    <i class="fas fa-phone-alt"></i>+1
+                                                </span>
+                                                <input type="tel" name="phone" id="phone" placeholder="Phone Number *" required>
+                                            </div>
+                                            <!-- <div class="icon" style="top:50%; transform:translateY(-50%);">
+                                                <i class="fal fa-phone"></i>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- Submit -->
                                     <div class="col-lg-6 wow fadeInUp" data-wow-delay=".8s">
                                         <button type="submit" class="theme-btn">
-                                            <span><i class="fal fa-paper-plane"></i>Get In Touch</span>
+                                            <span><i class="fal fa-paper-plane"></i>Submit</span>
                                         </button>
                                     </div>
                                 </div>

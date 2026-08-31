@@ -115,6 +115,93 @@
             </div>
         </div>
     </div>
+        <!-- ========== POPUP HTML ========== -->
+    <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-card" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+        <!-- close button -->
+        <button class="popup-close" id="popupCloseBtn" aria-label="Close popup">
+        <i class="fas fa-times"></i>
+        </button>
+
+        <!-- header -->
+        <!-- <div class="popup-header"> -->
+        <!-- <div class="popup-brand">
+            <i class="fas fa-passport"></i>
+            <span>Paul Abraham <small>Immigration</small></span>
+        </div> -->
+        <!-- <div class="popup-tag"><i class="fas fa-flag"></i> Canada · Europe · USA</div> -->
+        <!-- </div> -->
+
+        <!-- title -->
+        <h2 class="popup-title" id="popupTitle"><i class="fas fa-handshake" style="color:#1f6390; margin-right: 8px;"></i>Get In Touch</h2>
+        <div class="popup-sub">We’ll respond within 24 hours · <i class="fas fa-lock" style="opacity:0.5;"></i> your data is safe</div>
+
+        <!-- form -->
+        <form id="popupContactForm" action="popup.php" method="POST" >
+        <div class="form-grid">
+            <!-- First Name -->
+            <div class="form-group">
+            <label>First Name <span class="required">*</span></label>
+            <input type="text" name="first_name" id="first_name" placeholder="Enter First Name" required>
+            </div>
+            <!-- Last Name -->
+            <div class="form-group">
+            <label>Last Name <span class="required">*</span></label>
+            <input type="text" name="last_name" id="last_name" placeholder="Enter Last Name" required>
+            </div>
+            <!-- Email -->
+            <div class="form-group field-full">
+            <label>Email <span class="required">*</span></label>
+            <input type="email" name="email" id="email" placeholder="Enter Email" required>
+            </div>
+            <!-- Country -->
+            <div class="form-group field-full">
+            <label>Country of Residence <span class="required">*</span></label>
+            <select name="country" id="country" required>
+                <option value="" disabled selected>Select your country</option>
+                <option value="CA">Canada</option>
+                <option value="US">United States</option>
+                <option value="UK">United Kingdom</option>
+                <option value="IN">India</option>
+                <option value="AU">Australia</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+                <option value="AE">United Arab Emirates</option>
+                <option value="SG">Singapore</option>
+                <option value="NZ">New Zealand</option>
+                <option value="other">Other</option>
+            </select>
+            </div>
+            <!-- Phone -->
+            <div class="form-group field-full">
+            <label>Phone Number <span class="required">*</span></label>
+            <div class="phone-group">
+                <span class="code"><i class="fas fa-phone-alt"></i> +1</span>
+                <input type="tel" name="phone" id="phone" placeholder="Enter Phone Number" required>
+            </div>
+            </div>
+
+            <!-- small PAIC note
+            <div class="field-full" style="margin-top: 0.1rem; font-size: 0.75rem; color: #4d6a89; background: #f0f5fc; padding: 0.4rem 1rem; border-radius: 40px; display: inline-flex; align-items: center; gap: 6px; width: fit-content;">
+            <i class="fas fa-info-circle" style="color: #1f6390;"></i> Paul Abraham Immigration Consulting (PAIC)
+            </div> -->
+        </div>
+
+        <div class="submit-wrap">
+            <button type="submit" class="btn-submit">
+            <span>Submit</span> <i class="fas fa-chevron-right"></i>
+            </button>
+            <span class="footnote"><i class="fas fa-shield-alt"></i> No spam, we promise.</span>
+        </div>
+        </form>
+<!-- 
+        <div class="popup-footer">
+        <span><i class="fas fa-check-circle" style="color: #1b7a3d;"></i> RCIC · Regulated</span>
+        <span><i class="fas fa-globe-americas"></i> Canada · Europe · USA</span>
+        <span><i class="far fa-clock"></i> response in 24h</span>
+        </div> -->
+    </div>
+    </div>
 
     <!--<< Mouse Cursor Start >>-->
     <div class="mouse-cursor cursor-outer"></div>

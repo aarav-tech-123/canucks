@@ -632,3 +632,51 @@
 
 })(jQuery); // End jQuery
 
+ (function() {
+    'use strict';
+
+    // ----- elements -----
+    const overlay = document.getElementById('popupOverlay');
+    const closeBtn = document.getElementById('popupCloseBtn');
+
+    // ----- functions -----
+    function openPopup() {
+      overlay.classList.add('active');
+      document.body.classList.add('popup-open');
+    }
+
+    function closePopup() {
+      overlay.classList.remove('active');
+      document.body.classList.remove('popup-open');
+    }
+
+    // ----- event listeners -----
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closePopup);
+    }
+
+    // close on overlay click (background)
+    if (overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+          closePopup();
+        }
+      });
+    }
+
+    // close with ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        closePopup();
+      }
+    });
+
+    // ----- auto-open on page load (with small delay) -----
+    window.addEventListener('load', function() {
+      // delay 600ms so the page feels settled
+      setTimeout(openPopup, 600);
+    });
+
+    // (optional) prevent body scroll when popup active – already handled by class
+
+  })();

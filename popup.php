@@ -27,29 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 // ===============================
 // Get and sanitize form data
 // ===============================
-$first_name = trim(strip_tags($_POST['first_name'] ?? ''));
-$last_name = trim(strip_tags($_POST['last_name'] ?? ''));
-
-$age = filter_var(
-    $_POST['age'] ?? '',
-    FILTER_VALIDATE_INT
+$first_name = trim(
+    strip_tags($_POST['first_name'] ?? '')
 );
 
-$english_proficiency = trim(
-    strip_tags($_POST['english_proficiency'] ?? '')
-);
-
-$education = trim(
-    strip_tags($_POST['education'] ?? '')
-);
-
-$occupation = trim(
-    strip_tags($_POST['occupation'] ?? '')
-);
-
-$work_experience = filter_var(
-    $_POST['work_experience'] ?? '',
-    FILTER_VALIDATE_INT
+$last_name = trim(
+    strip_tags($_POST['last_name'] ?? '')
 );
 
 $email = filter_var(
@@ -59,10 +42,6 @@ $email = filter_var(
 
 $country = trim(
     strip_tags($_POST['country'] ?? '')
-);
-
-$income_band = trim(
-    strip_tags($_POST['income_band'] ?? '')
 );
 
 $phone = trim(
@@ -76,17 +55,11 @@ $phone = trim(
 if (
     empty($first_name) ||
     empty($last_name) ||
-    $age === false ||
-    empty($english_proficiency) ||
-    empty($education) ||
-    empty($occupation) ||
-    $work_experience === false ||
     empty($email) ||
     empty($country) ||
-    empty($income_band) ||
     empty($phone)
 ) {
-    die("All required fields are required.");
+    die("All fields are required.");
 }
 
 
@@ -95,35 +68,19 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 
-if ($age < 1 || $age > 120) {
-    die("Invalid age.");
-}
-
-
-if ($work_experience < 0 || $work_experience > 100) {
-    die("Invalid work experience.");
-}
-
-
 // ===============================
 // Save to Database
 // ===============================
 $stmt = $conn->prepare("
-    INSERT INTO contact_enquiries
+    INSERT INTO popup_enquiries
     (
         first_name,
         last_name,
-        age,
-        english_proficiency,
-        education,
-        occupation,
-        work_experience,
         email,
         country,
-        income_band,
         phone
     )
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    VALUES (?, ?, ?, ?, ?)
 ");
 
 if (!$stmt) {
@@ -131,17 +88,11 @@ if (!$stmt) {
 }
 
 $stmt->bind_param(
-    "ssisssissss",
+    "sssss",
     $first_name,
     $last_name,
-    $age,
-    $english_proficiency,
-    $education,
-    $occupation,
-    $work_experience,
     $email,
     $country,
-    $income_band,
     $phone
 );
 
@@ -161,24 +112,17 @@ $stmt->close();
 // ===============================
 $recipient = "info@canucksimmigration.com";
 
-$subject = "New Immigration Enquiry";
+$subject = "New Popup Form Enquiry";
 
-$email_content = "You have received a new immigration enquiry.\n\n";
+$email_content = "You have received a new enquiry from the website popup form.\n\n";
 
 $email_content .= "First Name: " . $first_name . "\n";
 $email_content .= "Last Name: " . $last_name . "\n";
-$email_content .= "Age: " . $age . "\n";
-$email_content .= "English Proficiency: " . $english_proficiency . "\n";
-$email_content .= "Education: " . $education . "\n";
-$email_content .= "Occupation: " . $occupation . "\n";
-$email_content .= "Work Experience: " . $work_experience . " years\n";
 $email_content .= "Email: " . $email . "\n";
 $email_content .= "Country of Residence: " . $country . "\n";
-$email_content .= "Income Band: " . $income_band . "\n";
 $email_content .= "Phone: " . $phone . "\n";
 
 
-// Use your own domain email as From
 $headers = "From: Canucks Immigration <info@canucksimmigration.com>\r\n";
 $headers .= "Reply-To: " . $email . "\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
