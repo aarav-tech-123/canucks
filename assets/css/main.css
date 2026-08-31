@@ -11316,7 +11316,7 @@ p.sticky-label {
       align-items: center;
       border: 1.5px solid #dce3ed;
       border-radius: 16px;
-      overflow: hidden;
+      overflow: visible;
       background: #fafcff;
       transition: 0.2s;
     }
