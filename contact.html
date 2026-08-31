@@ -86,7 +86,7 @@
             border: 1px solid #e5eaf0;
             border-radius: 10px;
             background: #f8fafc;
-            overflow: hidden;
+            /* overflow: hidden; */
             transition: 0.3s;
         }
         .phone-wrapper:focus-within {
@@ -562,18 +562,87 @@
                                         <div class="form-clt">
                                             <select name="country" id="country" required>
                                                 <option value="" disabled selected>Country of Residence *</option>
-                                                <option value="Canada">Canada</option>
-                                                <option value="USA">USA</option>
-                                                <option value="United Kingdom">United Kingdom</option>
-                                                <option value="India">India</option>
-                                                <option value="Australia">Australia</option>
-                                                <option value="France">France</option>
-                                                <option value="Germany">Germany</option>
-                                                <option value="United Arab Emirates">United Arab Emirates</option>
-                                                <option value="Singapore">Singapore</option>
-                                                <option value="New Zealand">New Zealand</option>
-                                                <option value="Other">Other</option>
+
+                                                <option value="AF" data-code="+93">Afghanistan</option>
+                                                <option value="AL" data-code="+355">Albania</option>
+                                                <option value="DZ" data-code="+213">Algeria</option>
+                                                <option value="AD" data-code="+376">Andorra</option>
+                                                <option value="AO" data-code="+244">Angola</option>
+                                                <option value="AR" data-code="+54">Argentina</option>
+                                                <option value="AM" data-code="+374">Armenia</option>
+                                                <option value="AU" data-code="+61">Australia</option>
+                                                <option value="AT" data-code="+43">Austria</option>
+                                                <option value="AZ" data-code="+994">Azerbaijan</option>
+
+                                                <option value="BD" data-code="+880">Bangladesh</option>
+                                                <option value="BE" data-code="+32">Belgium</option>
+                                                <option value="BR" data-code="+55">Brazil</option>
+                                                <option value="CA" data-code="+1">Canada</option>
+                                                <option value="CN" data-code="+86">China</option>
+
+                                                <option value="DK" data-code="+45">Denmark</option>
+                                                <option value="EG" data-code="+20">Egypt</option>
+                                                <option value="FI" data-code="+358">Finland</option>
+                                                <option value="FR" data-code="+33">France</option>
+                                                <option value="DE" data-code="+49">Germany</option>
+                                                <option value="GR" data-code="+30">Greece</option>
+
+                                                <option value="HU" data-code="+36">Hungary</option>
+                                                <option value="IS" data-code="+354">Iceland</option>
+                                                <option value="IN" data-code="+91">India</option>
+                                                <option value="ID" data-code="+62">Indonesia</option>
+                                                <option value="IR" data-code="+98">Iran</option>
+                                                <option value="IQ" data-code="+964">Iraq</option>
+                                                <option value="IE" data-code="+353">Ireland</option>
+                                                <option value="IL" data-code="+972">Israel</option>
+                                                <option value="IT" data-code="+39">Italy</option>
+
+                                                <option value="JP" data-code="+81">Japan</option>
+                                                <option value="JO" data-code="+962">Jordan</option>
+                                                <option value="KE" data-code="+254">Kenya</option>
+                                                <option value="KW" data-code="+965">Kuwait</option>
+
+                                                <option value="MY" data-code="+60">Malaysia</option>
+                                                <option value="MV" data-code="+960">Maldives</option>
+                                                <option value="MX" data-code="+52">Mexico</option>
+                                                <option value="NP" data-code="+977">Nepal</option>
+                                                <option value="NL" data-code="+31">Netherlands</option>
+                                                <option value="NZ" data-code="+64">New Zealand</option>
+                                                <option value="NO" data-code="+47">Norway</option>
+
+                                                <option value="PK" data-code="+92">Pakistan</option>
+                                                <option value="PH" data-code="+63">Philippines</option>
+                                                <option value="PL" data-code="+48">Poland</option>
+                                                <option value="PT" data-code="+351">Portugal</option>
+                                                <option value="QA" data-code="+974">Qatar</option>
+
+                                                <option value="RU" data-code="+7">Russia</option>
+                                                <option value="SA" data-code="+966">Saudi Arabia</option>
+                                                <option value="SG" data-code="+65">Singapore</option>
+                                                <option value="ZA" data-code="+27">South Africa</option>
+                                                <option value="KR" data-code="+82">South Korea</option>
+                                                <option value="ES" data-code="+34">Spain</option>
+                                                <option value="LK" data-code="+94">Sri Lanka</option>
+                                                <option value="SE" data-code="+46">Sweden</option>
+                                                <option value="CH" data-code="+41">Switzerland</option>
+
+                                                <option value="TW" data-code="+886">Taiwan</option>
+                                                <option value="TH" data-code="+66">Thailand</option>
+                                                <option value="TR" data-code="+90">Turkey</option>
+
+                                                <option value="AE" data-code="+971">United Arab Emirates</option>
+                                                <option value="GB" data-code="+44">United Kingdom</option>
+                                                <option value="US" data-code="+1">United States</option>
+
+                                                <option value="UY" data-code="+598">Uruguay</option>
+                                                <option value="UZ" data-code="+998">Uzbekistan</option>
+                                                <option value="VE" data-code="+58">Venezuela</option>
+                                                <option value="VN" data-code="+84">Vietnam</option>
+                                                <option value="YE" data-code="+967">Yemen</option>
+                                                <option value="ZM" data-code="+260">Zambia</option>
+                                                <option value="ZW" data-code="+263">Zimbabwe</option>
                                             </select>
+
                                             <div class="icon">
                                                 <i class="fal fa-globe"></i>
                                             </div>
@@ -601,14 +670,213 @@
                                     <div class="col-lg-12 wow fadeInUp" data-wow-delay=".5s">
                                         <div class="form-clt">
                                             <div class="phone-wrapper">
-                                                <span class="phone-code">
-                                                    <i class="fas fa-phone-alt"></i>+1
-                                                </span>
-                                                <input type="tel" name="phone" id="phone" placeholder="Phone Number *" required>
+                                                <select name="country_code" id="country_code" class="phone-code-select" required>
+                                                    <option value="" disabled selected>Select Code</option>
+
+                                                    <option value="Afghanistan" data-code="+93">🇦🇫 +93</option>
+                                                    <option value="Albania" data-code="+355">🇦🇱 +355</option>
+                                                    <option value="Algeria" data-code="+213">🇩🇿 +213</option>
+                                                    <option value="Andorra" data-code="+376">🇦🇩 +376</option>
+                                                    <option value="Angola" data-code="+244">🇦🇴 +244</option>
+                                                    <option value="Antigua and Barbuda" data-code="+1-268">🇦🇬 +1-268</option>
+                                                    <option value="Argentina" data-code="+54">🇦🇷 +54</option>
+                                                    <option value="Armenia" data-code="+374">🇦🇲 +374</option>
+                                                    <option value="Australia" data-code="+61">🇦🇺 +61</option>
+                                                    <option value="Austria" data-code="+43">🇦🇹 +43</option>
+                                                    <option value="Azerbaijan" data-code="+994">🇦🇿 +994</option>
+
+                                                    <option value="Bahamas" data-code="+1-242">🇧🇸 +1-242</option>
+                                                    <option value="Bahrain" data-code="+973">🇧🇭 +973</option>
+                                                    <option value="Bangladesh" data-code="+880">🇧🇩 +880</option>
+                                                    <option value="Barbados" data-code="+1-246">🇧🇧 +1-246</option>
+                                                    <option value="Belarus" data-code="+375">🇧🇾 +375</option>
+                                                    <option value="Belgium" data-code="+32">🇧🇪 +32</option>
+                                                    <option value="Belize" data-code="+501">🇧🇿 +501</option>
+                                                    <option value="Benin" data-code="+229">🇧🇯 +229</option>
+                                                    <option value="Bhutan" data-code="+975">🇧🇹 +975</option>
+                                                    <option value="Bolivia" data-code="+591">🇧🇴 +591</option>
+                                                    <option value="Bosnia and Herzegovina" data-code="+387">🇧🇦 +387</option>
+                                                    <option value="Botswana" data-code="+267">🇧🇼 +267</option>
+                                                    <option value="Brazil" data-code="+55">🇧🇷 +55</option>
+                                                    <option value="Brunei" data-code="+673">🇧🇳 +673</option>
+                                                    <option value="Bulgaria" data-code="+359">🇧🇬 +359</option>
+                                                    <option value="Burkina Faso" data-code="+226">🇧🇫 +226</option>
+                                                    <option value="Burundi" data-code="+257">🇧🇮 +257</option>
+
+                                                    <option value="Cambodia" data-code="+855">🇰🇭 +855</option>
+                                                    <option value="Cameroon" data-code="+237">🇨🇲 +237</option>
+                                                    <option value="Canada" data-code="+1">🇨🇦 +1</option>
+                                                    <option value="Cape Verde" data-code="+238">🇨🇻 +238</option>
+                                                    <option value="Central African Republic" data-code="+236">🇨🇫 +236</option>
+                                                    <option value="Chad" data-code="+235">🇹🇩 +235</option>
+                                                    <option value="Chile" data-code="+56">🇨🇱 +56</option>
+                                                    <option value="China" data-code="+86">🇨🇳 +86</option>
+                                                    <option value="Colombia" data-code="+57">🇨🇴 +57</option>
+                                                    <option value="Comoros" data-code="+269">🇰🇲 +269</option>
+                                                    <option value="Congo" data-code="+242">🇨🇬 +242</option>
+                                                    <option value="Costa Rica" data-code="+506">🇨🇷 +506</option>
+                                                    <option value="Croatia" data-code="+385">🇭🇷 +385</option>
+                                                    <option value="Cuba" data-code="+53">🇨🇺 +53</option>
+                                                    <option value="Cyprus" data-code="+357">🇨🇾 +357</option>
+                                                    <option value="Czech Republic" data-code="+420">🇨🇿 +420</option>
+
+                                                    <option value="Denmark" data-code="+45">🇩🇰 +45</option>
+                                                    <option value="Djibouti" data-code="+253">🇩🇯 +253</option>
+                                                    <option value="Dominica" data-code="+1-767">🇩🇲 +1-767</option>
+                                                    <option value="Dominican Republic" data-code="+1-809">🇩🇴 +1-809</option>
+
+                                                    <option value="Ecuador" data-code="+593">🇪🇨 +593</option>
+                                                    <option value="Egypt" data-code="+20">🇪🇬 +20</option>
+                                                    <option value="El Salvador" data-code="+503">🇸🇻 +503</option>
+                                                    <option value="Estonia" data-code="+372">🇪🇪 +372</option>
+                                                    <option value="Eswatini" data-code="+268">🇸🇿 +268</option>
+                                                    <option value="Ethiopia" data-code="+251">🇪🇹 +251</option>
+
+                                                    <option value="Fiji" data-code="+679">🇫🇯 +679</option>
+                                                    <option value="Finland" data-code="+358">🇫🇮 +358</option>
+                                                    <option value="France" data-code="+33">🇫🇷 +33</option>
+
+                                                    <option value="Gabon" data-code="+241">🇬🇦 +241</option>
+                                                    <option value="Gambia" data-code="+220">🇬🇲 +220</option>
+                                                    <option value="Georgia" data-code="+995">🇬🇪 +995</option>
+                                                    <option value="Germany" data-code="+49">🇩🇪 +49</option>
+                                                    <option value="Ghana" data-code="+233">🇬🇭 +233</option>
+                                                    <option value="Greece" data-code="+30">🇬🇷 +30</option>
+                                                    <option value="Grenada" data-code="+1-473">🇬🇩 +1-473</option>
+                                                    <option value="Guatemala" data-code="+502">🇬🇹 +502</option>
+                                                    <option value="Guinea" data-code="+224">🇬🇳 +224</option>
+                                                    <option value="Guyana" data-code="+592">🇬🇾 +592</option>
+
+                                                    <option value="Haiti" data-code="+509">🇭🇹 +509</option>
+                                                    <option value="Honduras" data-code="+504">🇭🇳 +504</option>
+                                                    <option value="Hungary" data-code="+36">🇭🇺 +36</option>
+
+                                                    <option value="Iceland" data-code="+354">🇮🇸 +354</option>
+                                                    <option value="India" data-code="+91">🇮🇳 +91</option>
+                                                    <option value="Indonesia" data-code="+62">🇮🇩 +62</option>
+                                                    <option value="Iran" data-code="+98">🇮🇷 +98</option>
+                                                    <option value="Iraq" data-code="+964">🇮🇶 +964</option>
+                                                    <option value="Ireland" data-code="+353">🇮🇪 +353</option>
+                                                    <option value="Israel" data-code="+972">🇮🇱 +972</option>
+                                                    <option value="Italy" data-code="+39">🇮🇹 +39</option>
+
+                                                    <option value="Jamaica" data-code="+1-876">🇯🇲 +1-876</option>
+                                                    <option value="Japan" data-code="+81">🇯🇵 +81</option>
+                                                    <option value="Jordan" data-code="+962">🇯🇴 +962</option>
+
+                                                    <option value="Kazakhstan" data-code="+7">🇰🇿 +7</option>
+                                                    <option value="Kenya" data-code="+254">🇰🇪 +254</option>
+                                                    <option value="Kuwait" data-code="+965">🇰🇼 +965</option>
+                                                    <option value="Kyrgyzstan" data-code="+996">🇰🇬 +996</option>
+
+                                                    <option value="Laos" data-code="+856">🇱🇦 +856</option>
+                                                    <option value="Latvia" data-code="+371">🇱🇻 +371</option>
+                                                    <option value="Lebanon" data-code="+961">🇱🇧 +961</option>
+                                                    <option value="Lesotho" data-code="+266">🇱🇸 +266</option>
+                                                    <option value="Liberia" data-code="+231">🇱🇷 +231</option>
+                                                    <option value="Libya" data-code="+218">🇱🇾 +218</option>
+                                                    <option value="Liechtenstein" data-code="+423">🇱🇮 +423</option>
+                                                    <option value="Lithuania" data-code="+370">🇱🇹 +370</option>
+                                                    <option value="Luxembourg" data-code="+352">🇱🇺 +352</option>
+
+                                                    <option value="Madagascar" data-code="+261">🇲🇬 +261</option>
+                                                    <option value="Malawi" data-code="+265">🇲🇼 +265</option>
+                                                    <option value="Malaysia" data-code="+60">🇲🇾 +60</option>
+                                                    <option value="Maldives" data-code="+960">🇲🇻 +960</option>
+                                                    <option value="Mali" data-code="+223">🇲🇱 +223</option>
+                                                    <option value="Malta" data-code="+356">🇲🇹 +356</option>
+                                                    <option value="Mauritius" data-code="+230">🇲🇺 +230</option>
+                                                    <option value="Mexico" data-code="+52">🇲🇽 +52</option>
+                                                    <option value="Moldova" data-code="+373">🇲🇩 +373</option>
+                                                    <option value="Monaco" data-code="+377">🇲🇨 +377</option>
+                                                    <option value="Mongolia" data-code="+976">🇲🇳 +976</option>
+                                                    <option value="Montenegro" data-code="+382">🇲🇪 +382</option>
+                                                    <option value="Morocco" data-code="+212">🇲🇦 +212</option>
+                                                    <option value="Mozambique" data-code="+258">🇲🇿 +258</option>
+                                                    <option value="Myanmar" data-code="+95">🇲🇲 +95</option>
+
+                                                    <option value="Namibia" data-code="+264">🇳🇦 +264</option>
+                                                    <option value="Nepal" data-code="+977">🇳🇵 +977</option>
+                                                    <option value="Netherlands" data-code="+31">🇳🇱 +31</option>
+                                                    <option value="New Zealand" data-code="+64">🇳🇿 +64</option>
+                                                    <option value="Nicaragua" data-code="+505">🇳🇮 +505</option>
+                                                    <option value="Niger" data-code="+227">🇳🇪 +227</option>
+                                                    <option value="Nigeria" data-code="+234">🇳🇬 +234</option>
+                                                    <option value="North Korea" data-code="+850">🇰🇵 +850</option>
+                                                    <option value="North Macedonia" data-code="+389">🇲🇰 +389</option>
+                                                    <option value="Norway" data-code="+47">🇳🇴 +47</option>
+
+                                                    <option value="Oman" data-code="+968">🇴🇲 +968</option>
+
+                                                    <option value="Pakistan" data-code="+92">🇵🇰 +92</option>
+                                                    <option value="Panama" data-code="+507">🇵🇦 +507</option>
+                                                    <option value="Papua New Guinea" data-code="+675">🇵🇬 +675</option>
+                                                    <option value="Paraguay" data-code="+595">🇵🇾 +595</option>
+                                                    <option value="Peru" data-code="+51">🇵🇪 +51</option>
+                                                    <option value="Philippines" data-code="+63">🇵🇭 +63</option>
+                                                    <option value="Poland" data-code="+48">🇵🇱 +48</option>
+                                                    <option value="Portugal" data-code="+351">🇵🇹 +351</option>
+
+                                                    <option value="Qatar" data-code="+974">🇶🇦 +974</option>
+
+                                                    <option value="Romania" data-code="+40">🇷🇴 +40</option>
+                                                    <option value="Russia" data-code="+7">🇷🇺 +7</option>
+                                                    <option value="Rwanda" data-code="+250">🇷🇼 +250</option>
+
+                                                    <option value="Saudi Arabia" data-code="+966">🇸🇦 +966</option>
+                                                    <option value="Senegal" data-code="+221">🇸🇳 +221</option>
+                                                    <option value="Serbia" data-code="+381">🇷🇸 +381</option>
+                                                    <option value="Seychelles" data-code="+248">🇸🇨 +248</option>
+                                                    <option value="Singapore" data-code="+65">🇸🇬 +65</option>
+                                                    <option value="Slovakia" data-code="+421">🇸🇰 +421</option>
+                                                    <option value="Slovenia" data-code="+386">🇸🇮 +386</option>
+                                                    <option value="South Africa" data-code="+27">🇿🇦 +27</option>
+                                                    <option value="South Korea" data-code="+82">🇰🇷 +82</option>
+                                                    <option value="Spain" data-code="+34">🇪🇸 +34</option>
+                                                    <option value="Sri Lanka" data-code="+94">🇱🇰 +94</option>
+                                                    <option value="Sudan" data-code="+249">🇸🇩 +249</option>
+                                                    <option value="Suriname" data-code="+597">🇸🇷 +597</option>
+                                                    <option value="Sweden" data-code="+46">🇸🇪 +46</option>
+                                                    <option value="Switzerland" data-code="+41">🇨🇭 +41</option>
+                                                    <option value="Syria" data-code="+963">🇸🇾 +963</option>
+
+                                                    <option value="Taiwan" data-code="+886">🇹🇼 +886</option>
+                                                    <option value="Tajikistan" data-code="+992">🇹🇯 +992</option>
+                                                    <option value="Tanzania" data-code="+255">🇹🇿 +255</option>
+                                                    <option value="Thailand" data-code="+66">🇹🇭 +66</option>
+                                                    <option value="Togo" data-code="+228">🇹🇬 +228</option>
+                                                    <option value="Trinidad and Tobago" data-code="+1-868">🇹🇹 +1-868</option>
+                                                    <option value="Tunisia" data-code="+216">🇹🇳 +216</option>
+                                                    <option value="Turkey" data-code="+90">🇹🇷 +90</option>
+                                                    <option value="Turkmenistan" data-code="+993">🇹🇲 +993</option>
+
+                                                    <option value="Uganda" data-code="+256">🇺🇬 +256</option>
+                                                    <option value="Ukraine" data-code="+380">🇺🇦 +380</option>
+                                                    <option value="United Arab Emirates" data-code="+971">🇦🇪 +971</option>
+                                                    <option value="United Kingdom" data-code="+44">🇬🇧 +44</option>
+                                                    <option value="United States" data-code="+1">🇺🇸 +1</option>
+                                                    <option value="Uruguay" data-code="+598">🇺🇾 +598</option>
+                                                    <option value="Uzbekistan" data-code="+998">🇺🇿 +998</option>
+
+                                                    <option value="Vanuatu" data-code="+678">🇻🇺 +678</option>
+                                                    <option value="Vatican City" data-code="+39">🇻🇦 +39</option>
+                                                    <option value="Venezuela" data-code="+58">🇻🇪 +58</option>
+                                                    <option value="Vietnam" data-code="+84">🇻🇳 +84</option>
+
+                                                    <option value="Yemen" data-code="+967">🇾🇪 +967</option>
+                                                    <option value="Zambia" data-code="+260">🇿🇲 +260</option>
+                                                    <option value="Zimbabwe" data-code="+263">🇿🇼 +263</option>
+                                                </select>
+                                                <input
+                                                    type="tel"
+                                                    name="phone"
+                                                    id="phone"
+                                                    placeholder="Phone Number *"
+                                                    required
+                                                >
+
                                             </div>
-                                            <!-- <div class="icon" style="top:50%; transform:translateY(-50%);">
-                                                <i class="fal fa-phone"></i>
-                                            </div> -->
+
                                         </div>
                                     </div>
                                     <!-- Submit -->
@@ -810,6 +1078,171 @@
     <script src="assets/js/ajax-mail.js"></script>
     <!--<< Main.js >>-->
     <script src="assets/js/main.js"></script>
+<script>
+$(document).ready(function () {
+
+    const $country = $('#country');
+    const $countryCode = $('#country_code');
+
+    if (!$country.length || !$countryCode.length) {
+        console.error('Country fields not found');
+        return;
+    }
+
+    /*
+    =====================================================
+    COUNTRY OF RESIDENCE → PHONE COUNTRY CODE
+    =====================================================
+    */
+
+    $(document).on('change', '#country', function () {
+
+        const countryValue = $(this).val();
+
+        if (!countryValue) {
+            return;
+        }
+
+        /*
+         * Get the visible country name from
+         * Country of Residence.
+         *
+         * Example:
+         * value="IN"
+         * text="India"
+         */
+        const countryName = $('#country option:selected')
+            .text()
+            .trim();
+
+        console.log('Residence:', countryValue);
+        console.log('Country name:', countryName);
+
+        /*
+         * Your phone dropdown currently uses
+         * the COUNTRY NAME as its value.
+         *
+         * Example:
+         * value="India"
+         * data-code="+91"
+         */
+        const $matchingPhoneOption =
+            $('#country_code option').filter(function () {
+
+                return $(this).val().trim() === countryName;
+
+            }).first();
+
+        if ($matchingPhoneOption.length) {
+
+            const phoneCountry =
+                $matchingPhoneOption.val();
+
+            const phoneCode =
+                $matchingPhoneOption.attr('data-code');
+
+            console.log(
+                'Matched:',
+                phoneCountry,
+                phoneCode
+            );
+
+            /*
+             * Set the actual phone select
+             */
+            $countryCode.val(phoneCountry);
+
+            /*
+             * Tell Nice Select to update its
+             * visible selected value.
+             */
+            $countryCode.niceSelect('update');
+
+        } else {
+
+            console.error(
+                'Phone country not found:',
+                countryName
+            );
+
+        }
+
+    });
+
+
+    /*
+    =====================================================
+    PHONE COUNTRY CODE → COUNTRY OF RESIDENCE
+    =====================================================
+    */
+
+    $(document).on('change', '#country_code', function () {
+
+        const countryName =
+            $(this).val();
+
+        if (!countryName) {
+            return;
+        }
+
+        console.log(
+            'Phone country selected:',
+            countryName
+        );
+
+        /*
+         * Find the residence option whose
+         * visible text matches the phone country.
+         *
+         * Example:
+         *
+         * Phone:
+         * value="India"
+         *
+         * Residence:
+         * value="IN"
+         * text="India"
+         */
+        const $matchingCountry =
+            $('#country option').filter(function () {
+
+                return $(this).text().trim() === countryName;
+
+            }).first();
+
+        if ($matchingCountry.length) {
+
+            const countryValue =
+                $matchingCountry.val();
+
+            console.log(
+                'Residence value:',
+                countryValue
+            );
+
+            /*
+             * Set Country of Residence
+             */
+            $country.val(countryValue);
+
+            /*
+             * Update Nice Select
+             */
+            $country.niceSelect('update');
+
+        } else {
+
+            console.error(
+                'Residence country not found:',
+                countryName
+            );
+
+        }
+
+    });
+
+});
+</script>
 </body>
 
 </html>

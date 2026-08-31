@@ -680,3 +680,87 @@
     // (optional) prevent body scroll when popup active – already handled by class
 
   })();
+$(document).ready(function () {
+
+    const $country = $('#popup_country');
+    const $countryCode = $('#popup_country_code');
+
+    if (!$country.length || !$countryCode.length) {
+        return;
+    }
+
+    /*
+    ============================================
+    COUNTRY OF RESIDENCE → COUNTRY CODE
+    ============================================
+    */
+
+    $country.on('change', function () {
+
+        const countryId = $(this).val();
+
+        if (!countryId || countryId === 'other') {
+            return;
+        }
+
+        // Find matching phone-code option
+        const $matchingCode = $countryCode.find(
+            'option[data-country="' + countryId + '"]'
+        );
+
+        if ($matchingCode.length) {
+
+            const code = $matchingCode.val();
+
+            // Set actual select
+            $countryCode.val(code);
+
+            // Update Nice Select if being used
+            if ($countryCode.next('.nice-select').length) {
+                $countryCode.niceSelect('update');
+            }
+
+            console.log(
+                'Popup country:',
+                countryId,
+                '→',
+                code
+            );
+        }
+    });
+
+
+    /*
+    ============================================
+    COUNTRY CODE → COUNTRY OF RESIDENCE
+    ============================================
+    */
+
+    $countryCode.on('change', function () {
+
+        const $selected = $(this).find('option:selected');
+
+        const countryId =
+            $selected.attr('data-country');
+
+        if (!countryId) {
+            return;
+        }
+
+        // Set residence country
+        $country.val(countryId);
+
+        // Update Nice Select if being used
+        if ($country.next('.nice-select').length) {
+            $country.niceSelect('update');
+        }
+
+        console.log(
+            'Popup country code:',
+            $(this).val(),
+            '→',
+            countryId
+        );
+    });
+
+});
