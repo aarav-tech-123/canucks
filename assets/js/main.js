@@ -126,7 +126,7 @@
       //>> Hero-4 Slider Start <<//
       const sliderActive1 = ".hero-slider-4";
       const sliderInit1 = new Swiper(sliderActive1, {
-          loop: true,
+          loop: false,
           slidesPerView: 1,
           effect: "fade",
           speed: 2000,
