@@ -1496,7 +1496,7 @@ input.main-search-input::placeholder {
   font-size: 16px;
   font-weight: 600;
   color: var(--header);
-  padding: 35px 0;
+  padding: 5px 0;
   text-align: left;
   position: relative;
   text-transform: capitalize;
@@ -1782,7 +1782,8 @@ input.main-search-input::placeholder {
     padding: 12px 0;
   }
 }
-.header-2 .header-main .header-right {
+.header-2 .header-main 
+ {
   gap: 40px;
 }
 @media (max-width: 1199px) {
@@ -11423,3 +11424,27 @@ p.sticky-label {
     body.popup-open {
       overflow: hidden;
     }
+
+  @media (max-width: 1400px) {
+    .header-main .main-menu ul li a {
+      font-size: 12px;
+    }
+    .header-main .main-menu ul li {
+      margin-inline-end:20px;
+    }
+  }
+
+  .header-right{
+    height: 100%;
+    padding: 10px;
+    background: #fe212a;
+    border-radius: 2px;
+  }
+  
+  .header-right .content p,h6 {
+    font-size:12px !important;
+    color:white;
+  }
+  .header-right .content p {
+    margin: 0 0 0px;
+  }
