@@ -486,7 +486,7 @@ if ($result === false) {
                     </li>
                     <li class="d-flex align-items-center">
                         <i class="far fa-phone"></i>
-                        <a href="tel:+18075007906" class="link">+1-8075007906</a>
+                        <a href="tel:+17785047140" class="link">+1-7785047140</a>
                     </li>
                     <li>
                         <i class="fas fa-map-marker-alt"></i>
@@ -781,7 +781,7 @@ if ($result === false) {
                                     <i class="fa fa-location"></i>&nbsp; 6060 Silver Drive, Burnaby BC V5H 2Y3
                                 </p>
                                 <p>
-                                    <i class="fa fa-phone"></i>&nbsp; +1-8075007906 <br>
+                                    <i class="fa fa-phone"></i>&nbsp; +1-7785047140 <br>
                                 </p>
                                 <a href="mailto:info@canucksimmigration.com" class="link" style="color:var(--text2)">
                                     <i class="fa fa-envelope"></i> &nbsp; info@canucksimmigration.com

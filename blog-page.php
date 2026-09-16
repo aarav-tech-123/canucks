@@ -1227,9 +1227,9 @@ if (!empty($img_url)) {
                         <i class="far fa-phone"></i>
 
                         <a
-                            href="tel:+18075007906"
+                            href="tel:+17785047140"
                             class="link">
-                            +1-8075007906
+                            +1-7785047140
                         </a>
 
                     </li>
@@ -2152,7 +2152,7 @@ if (!empty($img_url)) {
 
                                     <i class="fa fa-phone"></i>
 
-                                    &nbsp; +1-8075007906
+                                    &nbsp; +1-7785047140
 
                                     <br>
 

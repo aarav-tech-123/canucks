@@ -676,7 +676,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                     </li>
                     <li class="d-flex align-items-center">
                         <i class="far fa-phone"></i>
-                        <a href="tel:+18075007906" class="link">+1-8075007906</a>
+                        <a href="tel:+17785047140" class="link">+1-7785047140</a>
                     </li>
                     <li>
                         <i class="fas fa-map-marker-alt"></i>
@@ -892,7 +892,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                     <a href="https://canucksimmigration.com/contact.html" class="btn-primary">
                         <i class="fas fa-envelope"></i> Contact Us
                     </a>
-                    <a href="tel:+18075007906" class="btn-primary" style="background: var(--header);">
+                    <a href="tel:+17785047140" class="btn-primary" style="background: var(--header);">
                         <i class="fas fa-phone"></i> Call Us
                     </a>
                 </div>
@@ -955,7 +955,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                             </div>
                             <div class="footer-address-text">
                                 <p><i class="fa fa-location"></i>&nbsp; 6060 Silver Drive, Burnaby BC V5H 2Y3</p>
-                                <p><i class="fa fa-phone"></i>&nbsp; +1-8075007906</p>
+                                <p><i class="fa fa-phone"></i>&nbsp; +1-7785047140</p>
                                 <a href="mailto:info@canucksimmigration.com" class="link" style="color:var(--text2)">
                                     <i class="fa fa-envelope"></i> &nbsp; info@canucksimmigration.com
                                 </a>
