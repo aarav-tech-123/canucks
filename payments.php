@@ -129,20 +129,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://canucksimmigration.com/img/favicon.png">
+    <link rel="icon" href="https://www.canucksimmigration.com/img/favicon.png">
     <meta name="robots" content="index, follow">
     <title>Make a Payment - Canucks Immigration</title>
-    <link rel="shortcut icon" href="https://canucksimmigration.com/assets/img/logo/logo.png">
-    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/font-awesome.css">
-    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/animate.css">
-    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/meanmenu.css">
-    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/slick.css">
-    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/nice-select.css">
-    <link rel="stylesheet" href="https://canucksimmigration.com/assets/css/main.css">
-    <link rel="stylesheet" href="https://canucksimmigration.com/style.css">
+    <link rel="shortcut icon" href="https://www.canucksimmigration.com/assets/img/logo/logo.png">
+    <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/animate.css">
+    <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/meanmenu.css">
+    <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/slick.css">
+    <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/nice-select.css">
+    <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/main.css">
+    <link rel="stylesheet" href="https://www.canucksimmigration.com/style.css">
 
     <style>
         :root {
@@ -702,7 +702,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                         <div class="header-left">
                             <div class="logo">
                                 <a href="/" class="header-logo">
-                                    <img src="https://canucksimmigration.com/assets/img/logo/logo.png" alt="logo-img" style="width: 100px; height: 90px;">
+                                    <img src="https://www.canucksimmigration.com/assets/img/logo/logo.png" alt="logo-img" style="width: 100px; height: 90px;">
                                 </a>
                             </div>
                             <div class="mean__menu-wrapper">
@@ -710,29 +710,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                                     <nav id="mobile-menu">
                                         <ul>
                                             <li class="has-dropdown active menu-thumb">
-                                                <a href="https://canucksimmigration.com/">Home</a>
+                                                <a href="https://www.canucksimmigration.com/">Home</a>
                                             </li>
                                             <li>
-                                                <a href="https://canucksimmigration.com/about.html">About</a>
+                                                <a href="https://www.canucksimmigration.com/about.html">About</a>
                                             </li>
                                             <li>
                                                 <a href="javascript:void(0)">Services <i class="fas fa-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="https://canucksimmigration.com/business-investment-visa-for-canada.html">Business Investment Visa for Canada</a></li>
-                                                    <li><a href="https://canucksimmigration.com/canada-express-entry.html">Canada Express Entry</a></li>
-                                                    <li><a href="https://canucksimmigration.com/judicial-review.html">Judicial Review</a></li>
-                                                    <li><a href="https://canucksimmigration.com/provincial-nominee-program.html">PNP</a></li>
-                                                    <li><a href="https://canucksimmigration.com/canadian-immigration-services.html">Immigration Consulting Services</a></li>
+                                                    <li><a href="https://www.canucksimmigration.com/business-investment-visa-for-canada.html">Business Investment Visa for Canada</a></li>
+                                                    <li><a href="https://www.canucksimmigration.com/canada-express-entry.html">Canada Express Entry</a></li>
+                                                    <li><a href="https://www.canucksimmigration.com/judicial-review.html">Judicial Review</a></li>
+                                                    <li><a href="https://www.canucksimmigration.com/provincial-nominee-program.html">PNP</a></li>
+                                                    <li><a href="https://www.canucksimmigration.com/canadian-immigration-services.html">Immigration Consulting Services</a></li>
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="https://canucksimmigration.com/blogs.php">Blog</a>
+                                                <a href="https://www.canucksimmigration.com/blogs.php">Blog</a>
                                             </li>
                                             <li>
-                                                <a href="https://canucksimmigration.com/payments.php">Payment</a>
+                                                <a href="https://www.canucksimmigration.com/payments.php">Payment</a>
                                             </li>
                                             <li>
-                                                <a href="https://canucksimmigration.com/contact.html">Contact</a>
+                                                <a href="https://www.canucksimmigration.com/contact.html">Contact</a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -770,10 +770,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                     <p>Enter your email address and click Pay Now to complete your payment securely.</p>
                 </div>
                 <div class="banner-buttons">
-                    <a href="https://canucksimmigration.com/" class="banner-btn banner-btn-secondary">
+                    <a href="https://www.canucksimmigration.com/" class="banner-btn banner-btn-secondary">
                         <i class="fas fa-arrow-left"></i> Back to Home
                     </a>
-                    <a href="https://canucksimmigration.com/contact.html" class="banner-btn banner-btn-primary">
+                    <a href="https://www.canucksimmigration.com/contact.html" class="banner-btn banner-btn-primary">
                         <i class="fas fa-headset"></i> Need Help?
                     </a>
                 </div>
@@ -889,7 +889,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                     Our team is here to help with any questions about your payment or our services.
                 </p>
                 <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-                    <a href="https://canucksimmigration.com/contact.html" class="btn-primary">
+                    <a href="https://www.canucksimmigration.com/contact.html" class="btn-primary">
                         <i class="fas fa-envelope"></i> Contact Us
                     </a>
                     <a href="tel:+17785047140" class="btn-primary" style="background: var(--header);">
@@ -908,8 +908,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                     <div class="col-xl-3 col-sm-6 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".2s">
                         <div class="single-footer-widget">
                             <div class="widget-head">
-                                <a href="https://canucksimmigration.com/">
-                                    <img src="https://canucksimmigration.com/assets/img/logo/footer-logo.png" alt="logo-img">
+                                <a href="https://www.canucksimmigration.com/">
+                                    <img src="https://www.canucksimmigration.com/assets/img/logo/footer-logo.png" alt="logo-img">
                                 </a>
                             </div>
                             <div class="footer-content">
@@ -927,10 +927,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                                 <h5>Explore</h5>
                             </div>
                             <ul class="list-items">
-                                <li><a href="https://canucksimmigration.com/">Home</a></li>
-                                <li><a href="https://canucksimmigration.com/about.html">About</a></li>
-                                <li><a href="https://canucksimmigration.com/contact.html">Contact</a></li>
-                                <li><a href="https://canucksimmigration.com/blogs.php">Blogs</a></li>
+                                <li><a href="https://www.canucksimmigration.com/">Home</a></li>
+                                <li><a href="https://www.canucksimmigration.com/about.html">About</a></li>
+                                <li><a href="https://www.canucksimmigration.com/contact.html">Contact</a></li>
+                                <li><a href="https://www.canucksimmigration.com/blogs.php">Blogs</a></li>
                             </ul>
                         </div>
                     </div>
@@ -940,11 +940,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                                 <h5>Services</h5>
                             </div>
                             <ul class="list-items">
-                                <li><a href="https://canucksimmigration.com/business-investment-visa-for-canada.html">Business Investment Visa</a></li>
-                                <li><a href="https://canucksimmigration.com/canada-express-entry.html">Canada Express Entry</a></li>
-                                <li><a href="https://canucksimmigration.com/judicial-review.html">Judicial Review</a></li>
-                                <li><a href="https://canucksimmigration.com/provincial-nominee-program.html">PNP</a></li>
-                                <li><a href="https://canucksimmigration.com/canadian-immigration-services.html">Immigration Consulting</a></li>
+                                <li><a href="https://www.canucksimmigration.com/business-investment-visa-for-canada.html">Business Investment Visa</a></li>
+                                <li><a href="https://www.canucksimmigration.com/canada-express-entry.html">Canada Express Entry</a></li>
+                                <li><a href="https://www.canucksimmigration.com/judicial-review.html">Judicial Review</a></li>
+                                <li><a href="https://www.canucksimmigration.com/provincial-nominee-program.html">PNP</a></li>
+                                <li><a href="https://www.canucksimmigration.com/canadian-immigration-services.html">Immigration Consulting</a></li>
                             </ul>
                         </div>
                     </div>
@@ -969,11 +969,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
             <div class="container">
                 <div class="footer-wrapper d-flex align-items-center justify-content-between">
                     <p class="wow fadeInLeft color-2" data-wow-delay=".3s">
-                        Copyright © 2026 <a href="https://canucksimmigration.com/">Canucks Immigration</a>. All Rights Reserved.
+                        Copyright © 2026 <a href="https://www.canucksimmigration.com/">Canucks Immigration</a>. All Rights Reserved.
                     </p>
                     <ul class="footer-menu wow fadeInRight" data-wow-delay=".5s">
-                        <li><a href="https://canucksimmigration.com/terms-and-conditions.html">Terms & Conditions</a></li>
-                        <li><a href="https://canucksimmigration.com/privacy-policy.html">Privacy</a></li>
+                        <li><a href="https://www.canucksimmigration.com/terms-and-conditions.html">Terms & Conditions</a></li>
+                        <li><a href="https://www.canucksimmigration.com/privacy-policy.html">Privacy</a></li>
                     </ul>
                 </div>
             </div>
@@ -986,22 +986,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
     </a>
 
     <!-- JS -->
-    <script src="https://canucksimmigration.com/assets/js/jquery-3.7.1.min.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/gsap/gsap.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/gsap/gsap-scroll-trigger.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/gsap/gsap-split-text.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/jquery.nice-select.min.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/jquery.waypoints.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/jquery.counterup.min.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/slick.min.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/swiper-bundle.min.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/slick-animation.min.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/jquery.meanmenu.min.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/wow.min.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/circle-progress.js"></script>
-    <script src="https://canucksimmigration.com/assets/js/main.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/jquery-3.7.1.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/gsap/gsap.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/gsap/gsap-scroll-trigger.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/gsap/gsap-split-text.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/jquery.nice-select.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/jquery.waypoints.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/jquery.counterup.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/slick.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/swiper-bundle.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/slick-animation.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/jquery.meanmenu.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/wow.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/circle-progress.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/main.js"></script>
 
     <script>
         // Back to top button

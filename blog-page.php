@@ -17,14 +17,16 @@ if ($conn->connect_error) {
 }
 
 if (!function_exists('wp_strip_all_tags')) {
-    function wp_strip_all_tags($text) {
+    function wp_strip_all_tags($text)
+    {
         $text = preg_replace('/\s+/', ' ', strip_tags((string) $text));
         return trim($text);
     }
 }
 
 if (!function_exists('wp_trim_words')) {
-    function wp_trim_words($text, $num_words = 55, $more = null) {
+    function wp_trim_words($text, $num_words = 55, $more = null)
+    {
         $text = trim(preg_replace('/\s+/', ' ', strip_tags((string) $text)));
 
         if ($text === '') {
@@ -328,7 +330,7 @@ if (!empty($img_url)) {
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" href="https://canucksimmigration.com/img/favicon.png">
+    <link rel="icon" href="https://www.canucksimmigration.com/img/favicon.png">
 
     <meta name="robots" content="index, follow">
 
@@ -375,47 +377,47 @@ if (!empty($img_url)) {
 
     <link
         rel="shortcut icon"
-        href="https://canucksimmigration.com/assets/img/logo/logo.png">
+        href="https://www.canucksimmigration.com/assets/img/logo/logo.png">
 
     <link
         rel="stylesheet"
-        href="https://canucksimmigration.com/assets/css/bootstrap.min.css">
+        href="https://www.canucksimmigration.com/assets/css/bootstrap.min.css">
 
     <link
         rel="stylesheet"
-        href="https://canucksimmigration.com/assets/css/font-awesome.css">
+        href="https://www.canucksimmigration.com/assets/css/font-awesome.css">
 
     <link
         rel="stylesheet"
-        href="https://canucksimmigration.com/assets/css/animate.css">
+        href="https://www.canucksimmigration.com/assets/css/animate.css">
 
     <link
         rel="stylesheet"
-        href="https://canucksimmigration.com/assets/css/magnific-popup.css">
+        href="https://www.canucksimmigration.com/assets/css/magnific-popup.css">
 
     <link
         rel="stylesheet"
-        href="https://canucksimmigration.com/assets/css/meanmenu.css">
+        href="https://www.canucksimmigration.com/assets/css/meanmenu.css">
 
     <link
         rel="stylesheet"
-        href="https://canucksimmigration.com/assets/css/slick.css">
+        href="https://www.canucksimmigration.com/assets/css/slick.css">
 
     <link
         rel="stylesheet"
-        href="https://canucksimmigration.com/assets/css/swiper-bundle.min.css">
+        href="https://www.canucksimmigration.com/assets/css/swiper-bundle.min.css">
 
     <link
         rel="stylesheet"
-        href="https://canucksimmigration.com/assets/css/nice-select.css">
+        href="https://www.canucksimmigration.com/assets/css/nice-select.css">
 
     <link
         rel="stylesheet"
-        href="https://canucksimmigration.com/assets/css/main.css">
+        href="https://www.canucksimmigration.com/assets/css/main.css">
 
     <link
         rel="stylesheet"
-        href="https://canucksimmigration.com/style.css">
+        href="https://www.canucksimmigration.com/style.css">
 
 
     <!-- ============================= -->
@@ -1292,7 +1294,7 @@ if (!empty($img_url)) {
                                     class="header-logo">
 
                                     <img
-                                        src="https://canucksimmigration.com/assets/img/logo/logo.png"
+                                        src="https://www.canucksimmigration.com/assets/img/logo/logo.png"
                                         alt="logo-img"
                                         style="width: 100px; height: 90px;">
 
@@ -1853,7 +1855,7 @@ if (!empty($img_url)) {
 
 
                                         <a
-                                            href="https://canucksimmigration.com/blogs/<?php echo rawurlencode($row['post_name']); ?>"
+                                            href="https://www.canucksimmigration.com/blogs/<?php echo rawurlencode($row['post_name']); ?>"
                                             class="read-more-btn">
 
                                             Read More
@@ -2196,7 +2198,7 @@ if (!empty($img_url)) {
 
                         Copyright © 2026
 
-                        <a href="https://canucksimmigration.com/">
+                        <a href="https://www.canucksimmigration.com/">
                             Canucks Immigration
                         </a>
 
@@ -2254,39 +2256,39 @@ if (!empty($img_url)) {
 
     <!-- All JS Plugins -->
 
-    <script src="https://canucksimmigration.com/assets/js/jquery-3.7.1.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/jquery-3.7.1.min.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/viewport.jquery.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/viewport.jquery.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/bootstrap.bundle.min.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/gsap/gsap.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/gsap/gsap.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/gsap/gsap-scroll-trigger.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/gsap/gsap-scroll-trigger.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/gsap/gsap-split-text.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/gsap/gsap-split-text.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/jquery.nice-select.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/jquery.nice-select.min.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/jquery.waypoints.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/jquery.waypoints.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/jquery.counterup.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/jquery.counterup.min.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/slick.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/slick.min.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/swiper-bundle.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/swiper-bundle.min.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/slick-animation.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/slick-animation.min.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/jquery.meanmenu.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/jquery.meanmenu.min.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/jquery.magnific-popup.min.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/wow.min.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/wow.min.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/circle-progress.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/circle-progress.js"></script>
 
-    <script src="https://canucksimmigration.com/assets/js/main.js"></script>
+    <script src="https://www.canucksimmigration.com/assets/js/main.js"></script>
 
 
     <script>
