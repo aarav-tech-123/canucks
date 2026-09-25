@@ -285,7 +285,7 @@ $schema = [
 
         "logo" => [
             "@type" => "ImageObject",
-            "url" => $site_url . "/assets/img/logo/logo.png"
+            "url" => $site_url . "/assets/img/logo/logo.webp"
         ]
     ]
 ];
@@ -377,7 +377,7 @@ if (!empty($img_url)) {
 
     <link
         rel="shortcut icon"
-        href="https://www.canucksimmigration.com/assets/img/logo/logo.png">
+        href="https://www.canucksimmigration.com/assets/img/logo/logo.webp">
 
     <link
         rel="stylesheet"
@@ -1294,7 +1294,7 @@ if (!empty($img_url)) {
                                     class="header-logo">
 
                                     <img
-                                        src="https://www.canucksimmigration.com/assets/img/logo/logo.png"
+                                        src="https://www.canucksimmigration.com/assets/img/logo/logo.webp"
                                         alt="logo-img"
                                         style="width: 100px; height: 90px;">
 

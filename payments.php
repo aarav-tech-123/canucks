@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
     <link rel="icon" href="https://www.canucksimmigration.com/img/favicon.png">
     <meta name="robots" content="index, follow">
     <title>Make a Payment - Canucks Immigration</title>
-    <link rel="shortcut icon" href="https://www.canucksimmigration.com/assets/img/logo/logo.png">
+    <link rel="shortcut icon" href="https://www.canucksimmigration.com/assets/img/logo/logo.webp">
     <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/font-awesome.css">
     <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/animate.css">
@@ -702,7 +702,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                         <div class="header-left">
                             <div class="logo">
                                 <a href="/" class="header-logo">
-                                    <img src="https://www.canucksimmigration.com/assets/img/logo/logo.png" alt="logo-img" style="width: 100px; height: 90px;">
+                                    <img src="https://www.canucksimmigration.com/assets/img/logo/logo.webp" alt="logo-img" style="width: 100px; height: 90px;">
                                 </a>
                             </div>
                             <div class="mean__menu-wrapper">

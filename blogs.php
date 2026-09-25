@@ -41,7 +41,7 @@ if ($result === false) {
     <link rel="canonical" href="https://www.canucksimmigration.com/blogs.php" />
 
     <!-- CSS -->
-    <link rel="shortcut icon" href="https://www.canucksimmigration.com/assets/img/logo/logo.png">
+    <link rel="shortcut icon" href="https://www.canucksimmigration.com/assets/img/logo/logo.webp">
     <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/font-awesome.css">
     <link rel="stylesheet" href="https://www.canucksimmigration.com/assets/css/animate.css">
@@ -513,7 +513,7 @@ if ($result === false) {
                         <div class="header-left">
                             <div class="logo">
                                 <a href="https://www.canucksimmigration.com/" class="header-logo">
-                                    <img src="https://www.canucksimmigration.com/assets/img/logo/logo.png" alt="logo-img"
+                                    <img src="https://www.canucksimmigration.com/assets/img/logo/logo.webp" alt="logo-img"
                                         style="width: 100px; height: 90px;">
                                 </a>
                             </div>
