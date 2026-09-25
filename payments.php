@@ -969,8 +969,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
             <div class="container">
                 <div class="footer-wrapper d-flex align-items-center justify-content-between">
                     <p class="wow fadeInLeft color-2" data-wow-delay=".3s">
-                        Copyright © 2026 <a href="https://www.canucksimmigration.com/">Canucks Immigration</a>. All Rights Reserved. | Developed by
-                        <a href="https://aaravtech.net">Aarav Tech Services LLP</a>
+                        Copyright © 2026 <a href="https://www.canucksimmigration.com/">Canucks Immigration</a>. All Rights Reserved.
                     </p>
                     <ul class="footer-menu wow fadeInRight" data-wow-delay=".5s">
                         <li><a href="https://www.canucksimmigration.com/terms-and-conditions.html">Terms & Conditions</a></li>

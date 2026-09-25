@@ -2202,13 +2202,7 @@ if (!empty($img_url)) {
                             Canucks Immigration
                         </a>
 
-                        . All Rights Reserved. |
-
-                        Developed by
-
-                        <a href="https://www.canucksimmigration.com">
-                            Canucks Immigration
-                        </a>
+                        . All Rights Reserved.
 
                     </p>
 
